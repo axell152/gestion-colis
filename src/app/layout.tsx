@@ -33,23 +33,14 @@ export default function RootLayout({
             Accueil
           </Link>
 
-          " style={{ color: "white", textDecoration: "none" }}>
-            Entrée
-          </Link>
+          <Link href="/entree" style={{ color: "white>
 
-          " style={{ color: "white", textDecoration: "none" }}>
-            Recherche
-          </Link>
+          <Link href="/recherche" style={{ color: "whiteink>
 
-          /historique style={{ color: "white", textDecoration: "none" }}>
-            Historique
-          </Link>
+          <Link href="/historique" style={{ color: "white",nk>
 
-          /sortie style={{ color: "white", textDecoration: "none" }}>
-            Sortie
-          </Link>
-
-          /dispatch={{ color: "white", textDecoration: "none" }}>
+          <Link href="/sortie" style={{ color: "white",
+          dispatch" style={{ color: "white", textDecoration: "none" }}>
             Dispatch
           </Link>
         </nav>
