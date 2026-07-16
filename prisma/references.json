@@ -1,0 +1,654 @@
+[
+  {
+    "code": "EPPO426E",
+    "libelle": "POTEAUX P40 BRUT DE 2650"
+  },
+  {
+    "code": "EPPO429E",
+    "libelle": "POTEAUX P40 BRUT DE 2900"
+  },
+  {
+    "code": "EPPO431E",
+    "libelle": "POTEAUX P40 BRUT DE 3150"
+  },
+  {
+    "code": "EPPO458E",
+    "libelle": "POTEAUX P40 BRUT DE 5800"
+  },
+  {
+    "code": "EPPI426E",
+    "libelle": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2650"
+  },
+  {
+    "code": "EPPI429E",
+    "libelle": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2900"
+  },
+  {
+    "code": "EPPI431E",
+    "libelle": "POTEAUX INTERMEDIAIRE P40 BRUT DE 3150"
+  },
+  {
+    "code": "EPPI458E",
+    "libelle": "POTEAUX INTERMEDIAIRE P40 BRUT DE 5800"
+  },
+  {
+    "code": "EPTRANU4",
+    "libelle": "TRAVERSE P40 BRUT DE 1169"
+  },
+  {
+    "code": "EPLO426E",
+    "libelle": "LISSE P40 BRUT DE 2650"
+  },
+  {
+    "code": "EPLO429E",
+    "libelle": "LISSE P40 BRUT DE 2900"
+  },
+  {
+    "code": "EPLO431E",
+    "libelle": "LISSE P40 BRUT DE 3150"
+  },
+  {
+    "code": "EPLO458E",
+    "libelle": "LISSE P40 BRUT DE 5800"
+  },
+  {
+    "code": "EPTRANU2",
+    "libelle": "TRAVERSE P26 VRUT DE 1169"
+  },
+  {
+    "code": "EPPO226E",
+    "libelle": "POTEAUX P26 BRUT DE 2650"
+  },
+  {
+    "code": "EPPO229E",
+    "libelle": "POTEAUX P26 BRUT DE 2900"
+  },
+  {
+    "code": "EPPO231E",
+    "libelle": "POTEAUX P26 BRUT DE 3150"
+  },
+  {
+    "code": "EPPO258E",
+    "libelle": "POTEAUX P26 BRUT DE 5800"
+  },
+  {
+    "code": "EPPI226E",
+    "libelle": "POTEAUX INTERMEDIAIRE P26 BRUT DE 2650"
+  },
+  {
+    "code": "EPPI229E",
+    "libelle": "POTEAUX INTERMEDIAIRE P26 BRUT DE 2900"
+  },
+  {
+    "code": "EPPI231E",
+    "libelle": "POTEAUX INTERMEDIAIRE P26 BRUT DE 3150"
+  },
+  {
+    "code": "EPPI258E",
+    "libelle": "POTEAUX INTERMEDIAIRE P26 BRUT DE 5800"
+  },
+  {
+    "code": "EPLO226E",
+    "libelle": "LISSE P26 BRUT DE 2650"
+  },
+  {
+    "code": "EPLO229E",
+    "libelle": "LISSE P26 BRUT DE 2900"
+  },
+  {
+    "code": "EPLO231E",
+    "libelle": "LISSE P26 BRUT DE 3150"
+  },
+  {
+    "code": "EPLO258E",
+    "libelle": "LISSE P26 BRUT DE 5800"
+  },
+  {
+    "code": "CTRANUE",
+    "libelle": "TRAVERSE P100 BRUT DE 1169"
+  },
+  {
+    "code": "CPOT26E",
+    "libelle": "POTEAUX P100 BRUT DE 2650"
+  },
+  {
+    "code": "CPOT31E",
+    "libelle": "POTEAUX P100 BRUT DE 3150"
+  },
+  {
+    "code": "CPOT58E",
+    "libelle": "POTEAUX P100 BRUT DE 5800"
+  },
+  {
+    "code": "CPI426E",
+    "libelle": "POTEAUX INTERMEDIAIRE P100 BRUT DE 2650"
+  },
+  {
+    "code": "CPI431E",
+    "libelle": "POTEAUX INTERMEDIAIRE P100 BRUT DE 3150"
+  },
+  {
+    "code": "CPI458E",
+    "libelle": "POTEAUX INTERMEDIAIRE P100 BRUT DE 5800"
+  },
+  {
+    "code": "EPL4029B",
+    "libelle": "LISSE P40 DE 2900"
+  },
+  {
+    "code": "EPL4058B",
+    "libelle": "LISSE P40 DE 5800"
+  },
+  {
+    "code": "EPL2629B",
+    "libelle": "LISSE P26 DE 2900"
+  },
+  {
+    "code": "EPL2658B",
+    "libelle": "LISSE P26 DE 5800"
+  },
+  {
+    "code": "CL4029B",
+    "libelle": "LISSE P100 DE 2900"
+  },
+  {
+    "code": "CL4058B",
+    "libelle": "LISSE P100 DE 5800"
+  },
+  {
+    "code": "EPCJ426B",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ429B",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ431B",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 3150"
+  },
+  {
+    "code": "EPCJ226B",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ229B",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ231B",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 3150"
+  },
+  {
+    "code": "EPPACO26B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650 "
+  },
+  {
+    "code": "EPPACO29B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900"
+  },
+  {
+    "code": "EPPACO31B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150"
+  },
+  {
+    "code": "EPPHC53B",
+    "libelle": "HUISSERIE 75 CARREE DE 5300"
+  },
+  {
+    "code": "EPHABSC93B",
+    "libelle": "HUISSERIE CARREE 930 STANDARD"
+  },
+  {
+    "code": "EPP3D26B",
+    "libelle": "POTEAU 3D DE 2650"
+  },
+  {
+    "code": "EPP3D29B",
+    "libelle": "POTEAU 3D DE 2900"
+  },
+  {
+    "code": "EPP3D31B",
+    "libelle": "POTEAU 3D DE 3150"
+  },
+  {
+    "code": "EPGOU29B",
+    "libelle": "GOULOTTE ELECTRIQUE DE 2900"
+  },
+  {
+    "code": "EPGOU58B",
+    "libelle": "GOULOTTE ELECTRIQUE DE 5800"
+  },
+  {
+    "code": "EPPDV29B",
+    "libelle": "PARCLOSE DV DE 2900"
+  },
+  {
+    "code": "EPCPSC60B",
+    "libelle": "PROFIL CARRE PORTE SQUARE SV DE 6000"
+  },
+  {
+    "code": "EPCPDC60B",
+    "libelle": "PROFIL CARRE PORTE SQUARE DV DE 6000"
+  },
+  {
+    "code": "CPACO26B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650"
+  },
+  {
+    "code": "CPACO31B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 3150"
+  },
+  {
+    "code": "EPPAC26B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 2650"
+  },
+  {
+    "code": "EPPAC31B",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 3150"
+  },
+  {
+    "code": "EPCPABIA60B",
+    "libelle": "PROFIL PORTE ALU BIPLANE DE 6000"
+  },
+  {
+    "code": "EPHABSA93B",
+    "libelle": "HUISSERIE ARRONDIE 930 STANDARD"
+  },
+  {
+    "code": "EPL4029N",
+    "libelle": "LISSE P40 DE 2900"
+  },
+  {
+    "code": "EPL4058N",
+    "libelle": "LISSE P40 DE 5800"
+  },
+  {
+    "code": "EPL2629N",
+    "libelle": "LISSE P26 DE 2900"
+  },
+  {
+    "code": "EPL2658N",
+    "libelle": "LISSE P26 DE 5800"
+  },
+  {
+    "code": "CL4029N",
+    "libelle": "LISSE P100 DE 2900"
+  },
+  {
+    "code": "CL4058N",
+    "libelle": "LISSE P100 DE 5800"
+  },
+  {
+    "code": "EPCJ426N",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ429N",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ431N",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 3150"
+  },
+  {
+    "code": "EPCJ226N",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ229N",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ231N",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 3150"
+  },
+  {
+    "code": "EPPACO26N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650 "
+  },
+  {
+    "code": "EPPACO29N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900"
+  },
+  {
+    "code": "EPPACO31N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150"
+  },
+  {
+    "code": "EPPHC53N",
+    "libelle": "HUISSERIE 75 CARREE DE 5300"
+  },
+  {
+    "code": "EPHABSC93N",
+    "libelle": "HUISSERIE CARREE 930 STANDARD"
+  },
+  {
+    "code": "EPP3D26N",
+    "libelle": "POTEAU 3D DE 2650"
+  },
+  {
+    "code": "EPP3D29N",
+    "libelle": "POTEAU 3D DE 2900"
+  },
+  {
+    "code": "EPP3D31N",
+    "libelle": "POTEAU 3D DE 3150"
+  },
+  {
+    "code": "EPP3D58N",
+    "libelle": "POTEAU 3D DE 5800"
+  },
+  {
+    "code": "EPGOU29N",
+    "libelle": "GOULOTTE ELECTRIQUE DE 2900"
+  },
+  {
+    "code": "EPGOU58N",
+    "libelle": "GOULOTTE ELECTRIQUE DE 5800"
+  },
+  {
+    "code": "EPPDV29N",
+    "libelle": "PARCLOSE DV DE 2900"
+  },
+  {
+    "code": "EPCPSC60N",
+    "libelle": "PROFIL CARRE PORTE SQUARE SV DE 6000"
+  },
+  {
+    "code": "EPCPDC60N",
+    "libelle": "PROFIL CARRE PORTE SQUARE DV DE 6000"
+  },
+  {
+    "code": "CPACO26N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650"
+  },
+  {
+    "code": "CPACO31N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 3150"
+  },
+  {
+    "code": "EPPAC26N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 2650"
+  },
+  {
+    "code": "EPPAC31N",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 3150"
+  },
+  {
+    "code": "EPHABSCA93N",
+    "libelle": "HUISSERIE ARRONDIE 930 STANDARD"
+  },
+  {
+    "code": "EPHCSA83N",
+    "libelle": "HUISSERIE CLARIT ARRONDIE 830"
+  },
+  {
+    "code": "EPL4029G",
+    "libelle": "LISSE P40 DE 2900"
+  },
+  {
+    "code": "EPL4058G",
+    "libelle": "LISSE P40 DE 5800"
+  },
+  {
+    "code": "EPL2629G",
+    "libelle": "LISSE P26 DE 2900"
+  },
+  {
+    "code": "EPL2658G",
+    "libelle": "LISSE P26 DE 5800"
+  },
+  {
+    "code": "CL4029G",
+    "libelle": "LISSE P100 DE 2900"
+  },
+  {
+    "code": "CL4058G",
+    "libelle": "LISSE P100 DE 5800"
+  },
+  {
+    "code": "EPCJ426G",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ429G",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ431G",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 3150"
+  },
+  {
+    "code": "EPCJ226G",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ229G",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ231G",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 3150"
+  },
+  {
+    "code": "EPPACO26G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650 "
+  },
+  {
+    "code": "EPPACO29G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900"
+  },
+  {
+    "code": "EPPACO31G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150"
+  },
+  {
+    "code": "EPPHC53G",
+    "libelle": "HUISSERIE 75 CARREE DE 5300"
+  },
+  {
+    "code": "EPHABSC93G",
+    "libelle": "HUISSERIE CARREE 930 STANDARD"
+  },
+  {
+    "code": "EPP3D26G",
+    "libelle": "POTEAU 3D DE 2650"
+  },
+  {
+    "code": "EPP3D29G",
+    "libelle": "POTEAU 3D DE 2900"
+  },
+  {
+    "code": "EPP3D31G",
+    "libelle": "POTEAU 3D DE 3150"
+  },
+  {
+    "code": "EPGOU29G",
+    "libelle": "GOULOTTE ELECTRIQUE DE 2900"
+  },
+  {
+    "code": "EPGOU58G",
+    "libelle": "GOULOTTE ELECTRIQUE DE 5800"
+  },
+  {
+    "code": "EPPDV29G",
+    "libelle": "PARCLOSE DV DE 2900"
+  },
+  {
+    "code": "EPCPSC60G",
+    "libelle": "PROFIL CARRE PORTE SQUARE SV DE 6000"
+  },
+  {
+    "code": "EPCPDC60G",
+    "libelle": "PROFIL CARRE PORTE SQUARE DV DE 6000"
+  },
+  {
+    "code": "CPACO26G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650"
+  },
+  {
+    "code": "CPACO31G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 3150"
+  },
+  {
+    "code": "EPPAC26G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 2650"
+  },
+  {
+    "code": "EPPAC31G",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 3150"
+  },
+  {
+    "code": "EPHABSCA93G",
+    "libelle": "HUISSERIE ARRONDIE 930 STANDARD"
+  },
+  {
+    "code": "CHABFC93G",
+    "libelle": "HUISSERIE P100 2620 CARREE 930"
+  },
+  {
+    "code": "EPCPABIA60G",
+    "libelle": "PROFIL PORTE ALU BIPLANE DE 6000"
+  },
+  {
+    "code": "EPPHA53G",
+    "libelle": "PROFIL HUISSERIE ARRONDIE DE 5300"
+  },
+  {
+    "code": "EPHCSA83G",
+    "libelle": "HUISSERIE CLARIT ARRONDIE 830"
+  },
+  {
+    "code": "EPHBSA83G",
+    "libelle": "HUISSERIE BOIS ARRONDIE 830"
+  },
+  {
+    "code": "CPHC53G",
+    "libelle": "PROFIL HUISSERIE CARREE P100 DE 5300"
+  },
+  {
+    "code": "EPPSV29G",
+    "libelle": "PARCLOSE SV DE 2900"
+  },
+  {
+    "code": "EPL4029A",
+    "libelle": "LISSE P40 DE 2900"
+  },
+  {
+    "code": "EPL4058A",
+    "libelle": "LISSE P40 DE 5800"
+  },
+  {
+    "code": "EPL2629A",
+    "libelle": "LISSE P26 DE 2900"
+  },
+  {
+    "code": "EPL2658A",
+    "libelle": "LISSE P26 DE 5800"
+  },
+  {
+    "code": "CL4029A",
+    "libelle": "LISSE P100 DE 2900"
+  },
+  {
+    "code": "CL4058A",
+    "libelle": "LISSE P100 DE 5800"
+  },
+  {
+    "code": "EPCJ426A",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ429A",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ431A",
+    "libelle": "COUVRE-JOINT 40X1,5 DE 3150"
+  },
+  {
+    "code": "EPCJ226A",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2650"
+  },
+  {
+    "code": "EPCJ229A",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 2900"
+  },
+  {
+    "code": "EPCJ231A",
+    "libelle": "COUVRE-JOINT 26X1,5 DE 3150"
+  },
+  {
+    "code": "EPPACO26A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650 "
+  },
+  {
+    "code": "EPPACO29A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900"
+  },
+  {
+    "code": "EPPACO31A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150"
+  },
+  {
+    "code": "EPPHC53A",
+    "libelle": "HUISSERIE 75 CARREE DE 5300"
+  },
+  {
+    "code": "EPHABSC93A",
+    "libelle": "HUISSERIE CARREE 930 STANDARD"
+  },
+  {
+    "code": "EPP3D26A",
+    "libelle": "POTEAU 3D DE 2650"
+  },
+  {
+    "code": "EPP3D29A",
+    "libelle": "POTEAU 3D DE 2900"
+  },
+  {
+    "code": "EPP3D31A",
+    "libelle": "POTEAU 3D DE 3150"
+  },
+  {
+    "code": "EPGOU29A",
+    "libelle": "GOULOTTE ELECTRIQUE DE 2900"
+  },
+  {
+    "code": "EPGOU58A",
+    "libelle": "GOULOTTE ELECTRIQUE DE 5800"
+  },
+  {
+    "code": "EPPDV29A",
+    "libelle": "PARCLOSE DV DE 2900"
+  },
+  {
+    "code": "EPCPSC60A",
+    "libelle": "PROFIL CARRE PORTE SQUARE SV DE 6000"
+  },
+  {
+    "code": "EPCPDC60A",
+    "libelle": "PROFIL CARRE PORTE SQUARE DV DE 6000"
+  },
+  {
+    "code": "CPACO26A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650"
+  },
+  {
+    "code": "CPACO31A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 3150"
+  },
+  {
+    "code": "EPPAC26A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 2650"
+  },
+  {
+    "code": "EPPAC31A",
+    "libelle": "POTEAU D'ANGLE DROIT CARRE FERME DE 3150"
+  },
+  {
+    "code": "EPHABSCA93A",
+    "libelle": "HUISSERIE ARRONDIE 930 STANDARD"
+  }
+]

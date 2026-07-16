@@ -1,0 +1,9 @@
+{
+  "name": "Gestion des colis",
+  "short_name": "Colis",
+  "start_url": "/recherche",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": []
+}
