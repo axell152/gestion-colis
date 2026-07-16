@@ -29,27 +29,28 @@ export default function RootLayout({
             gap: "20px",
           }}
         >
-          /white" }}>
+          /
             Accueil
           </Link>
 
-          /entree
+          " style={{ color: "white", textDecoration: "none" }}>
             Entrée
           </Link>
 
-          /recherche color: "white" }}>
+          " style={{ color: "white", textDecoration: "none" }}>
             Recherche
           </Link>
 
-          /historique
+          /historique style={{ color: "white", textDecoration: "none" }}>
             Historique
           </Link>
 
-          /sortie style={{ color: "white" }}>
+          /sortie style={{ color: "white", textDecoration: "none" }}>
             Sortie
           </Link>
 
-          <Link href="/dispatch" stylech
+          /dispatch={{ color: "white", textDecoration: "none" }}>
+            Dispatch
           </Link>
         </nav>
 
