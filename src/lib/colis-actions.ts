@@ -26,7 +26,7 @@ export async function entrerColis(input: {
   utilisateurId: string
 }) {
   const catalogue = await prisma.referenceCatalogue.findUnique({
-    where: { code: input.reference.trim() },
+    where: { code: input.reference.trim().toUpperCase() },
   })
 
   if (!catalogue) {
@@ -41,17 +41,17 @@ export async function entrerColis(input: {
   try {
     const colis = await prisma.colis.create({
       data: {
-        reference: input.reference.trim(),
-        numeroColis: input.numeroColis.trim(),
+        reference: input.reference.trim().toUpperCase(),
+        numeroColis: input.numeroColis.trim().toUpperCase(),
         designation: catalogue.libelle,
         finition,
         quantite: input.quantite,
-        emplacement: input.emplacement.trim(),
+        emplacement: input.emplacement.trim().toUpperCase(),
         statut: 'EN_STOCK',
         mouvements: {
           create: {
             type: 'ENTREE',
-            emplacementApres: input.emplacement.trim(),
+            emplacementApres: input.emplacement.trim().toUpperCase(),
             utilisateurId: input.utilisateurId,
           },
         },
