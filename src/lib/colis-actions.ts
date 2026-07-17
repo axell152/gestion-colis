@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from './prisma'
+import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
@@ -34,24 +35,39 @@ export async function entrerColis(input: {
   }
   const finition = deduireFinition(input.reference)
 
-  const colis = await prisma.colis.create({
-    data: {
-      reference: input.reference.trim(),
-      numeroColis: input.numeroColis.trim(),
-      designation: catalogue.libelle,
-      finition,
-      quantite: input.quantite,
-      emplacement: input.emplacement.trim(),
-      statut: 'EN_STOCK',
-      mouvements: {
-        create: {
-          type: 'ENTREE',
-          emplacementApres: input.emplacement.trim(),
-          utilisateurId: input.utilisateurId,
+  let colis
+
+  try {
+    colis = await prisma.colis.create({
+      data: {
+        reference: input.reference.trim(),
+        numeroColis: input.numeroColis.trim(),
+        designation: catalogue.libelle,
+        finition,
+        quantite: input.quantite,
+        emplacement: input.emplacement.trim(),
+        statut: 'EN_STOCK',
+        mouvements: {
+          create: {
+            type: 'ENTREE',
+            emplacementApres: input.emplacement.trim(),
+            utilisateurId: input.utilisateurId,
+          },
         },
       },
-    },
-  })
+    })
+  } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === 'P2002'
+    ) {
+      throw new Error(
+        `Le numéro de colis "${input.numeroColis}" est déjà utilisé.`
+      )
+    }
+
+  throw error
+}
 
   revalidatePath('/historique')
   revalidatePath('/dispatch')
