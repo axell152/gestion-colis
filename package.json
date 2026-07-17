@@ -9,6 +9,7 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
+    "prisma:push": "prisma db push",
     "prisma:seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "prisma": {
@@ -20,12 +21,7 @@
     "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "qrcode": "^1.5.4"
-
-  "scripts": {
-  ...
-  "prisma:push": "prisma db push"
-  }  
+    "qrcode": "^1.5.4" 
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
