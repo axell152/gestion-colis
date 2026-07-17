@@ -14,7 +14,7 @@ export default function EntreePage() {
     e.preventDefault()
     setMessage(null)
     try {
-      const result = await entrerColis({
+      await entrerColis({
   ...form,
   utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
 })
