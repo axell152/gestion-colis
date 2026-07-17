@@ -83,25 +83,28 @@ export async function entrerColis(input: {
   }
 }
 
-export async function sortirColis(input: { numeroColis: string; utilisateurId: string }) {
-  const colis = await prisma.colis.findUnique({ where: { numeroColis: input.numeroColis.trim() } })
+export async function sortirColis(input: {
+  numeroColis: string
+  utilisateurId: string
+}) {
+  const colis = await prisma.colis.findUnique({
+    where: { numeroColis: input.numeroColis.trim() },
+  })
+
   if (!colis) {
-  return {
-    success: false,
-    message: `Le colis "${input.numeroColis}" est introuvable.`,
+    return {
+      success: false,
+      message: `Le colis "${input.numeroColis}" est introuvable.`,
     }
   }
+
   if (colis.statut === 'SORTI') {
-  return {
-    success: false,
-    message: `Le colis "${input.numeroColis}" est déjà sorti.`,
+    return {
+      success: false,
+      message: `Le colis "${input.numeroColis}" est déjà sorti.`,
     }
   }
-  return {
-  success: true,
-  colis: updated,
-  }
-  
+
   const updated = await prisma.colis.update({
     where: { id: colis.id },
     data: {
@@ -118,7 +121,11 @@ export async function sortirColis(input: { numeroColis: string; utilisateurId: s
 
   revalidatePath('/historique')
   revalidatePath('/dispatch')
-  return updated
+
+  return {
+    success: true,
+    colis: updated,
+  }
 }
 
 export async function deplacerColis(input: {
