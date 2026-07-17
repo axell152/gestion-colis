@@ -14,12 +14,31 @@ export default function SortiePage() {
     e.preventDefault()
     setMessage(null)
     try {
-      await sortirColis({ numeroColis, utilisateurId: UTILISATEUR_ID_TEMPORAIRE })
-      setMessage({ type: 'ok', texte: `Colis ${numeroColis} sorti du stock.` })
-      setNumeroColis('')
-    } catch (err: any) {
-      setMessage({ type: 'error', texte: err.message })
-    }
+  const result = await sortirColis({
+    numeroColis,
+    utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+  })
+
+  if (!result.success) {
+    setMessage({
+      type: 'error',
+      texte: result.message ?? 'Erreur inconnue',
+    })
+    return
+  }
+
+  setMessage({
+    type: 'ok',
+    texte: `Colis ${numeroColis} sorti du stock.`,
+  })
+
+  setNumeroColis('')
+} catch (err: any) {
+  setMessage({
+    type: 'error',
+    texte: err.message,
+  })
+}
   }
 
   async function onDeplacement(e: React.FormEvent) {
