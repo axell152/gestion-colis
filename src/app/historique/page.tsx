@@ -37,6 +37,7 @@ export default async function HistoriquePage() {
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{LABEL_TYPE[m.type]}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.numeroColis}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.reference}</td>
+              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.quantite}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.emplacementAvant ?? '—'}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.emplacementApres ?? '—'}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.utilisateur.name}</td>
