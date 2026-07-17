@@ -22,8 +22,8 @@ export default function RootLayout({
             gap: "15px",
           }}
         >
-          /entreeEntrée</Link>
-          /rechercheRecherche</Link>
+          ">Entrée</Link>
+          <Link hrefRechervhe</Link>
           /historiqueHistorique</Link>
           /sortieSortie</Link>
           /dispatchDispatch</Link>
