@@ -22,8 +22,7 @@ export default function RootLayout({
             gap: "20px",
           }}
         >
-          entree" style={{ color: "white" }}>
-            Entrée
+          <Link href="/entree Entrée
           </Link>
 
           /recherche: "white" }}>
