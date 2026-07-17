@@ -85,9 +85,23 @@ export async function entrerColis(input: {
 
 export async function sortirColis(input: { numeroColis: string; utilisateurId: string }) {
   const colis = await prisma.colis.findUnique({ where: { numeroColis: input.numeroColis.trim() } })
-  if (!colis) throw new Error(`Colis "${input.numeroColis}" introuvable.`)
-  if (colis.statut === 'SORTI') throw new Error(`Le colis "${input.numeroColis}" est déjà sorti.`)
-
+  if (!colis) {
+  return {
+    success: false,
+    message: `Le colis "${input.numeroColis}" est introuvable.`,
+    }
+  }
+  if (colis.statut === 'SORTI') {
+  return {
+    success: false,
+    message: `Le colis "${input.numeroColis}" est déjà sorti.`,
+    }
+  }
+  return {
+  success: true,
+  colis: updated,
+  }
+  
   const updated = await prisma.colis.update({
     where: { id: colis.id },
     data: {
