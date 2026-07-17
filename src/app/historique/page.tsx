@@ -21,7 +21,7 @@ export default async function HistoriquePage() {
       <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: 16 }}>
         <thead>
           <tr>
-            {['Date', 'Type', 'Colis', 'Référence', 'Avant', 'Après', 'Utilisateur'].map((h) => (
+            {['Date', 'Type', 'Colis', 'Référence', 'Quantité', 'Avant', 'Après', 'Utilisateur'].map((h) => (
               <th key={h} style={{ textAlign: 'left', borderBottom: '2px solid #333', padding: 8 }}>
                 {h}
               </th>
