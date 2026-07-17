@@ -18,14 +18,6 @@ export default function EntreePage() {
   ...form,
   utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
 })
-
-if (!result.success) {
-  setMessage({
-    type: 'error',
-    texte: result.message,
-  })
-  return
-}
       setMessage({ type: 'ok', texte: `Colis ${form.numeroColis} enregistré en stock.` })
       setForm({ reference: '', numeroColis: '', emplacement: '', quantite: 1 })
     } catch (err: any) {
