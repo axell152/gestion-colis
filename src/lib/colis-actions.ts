@@ -61,10 +61,9 @@ export async function entrerColis(input: {
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === 'P2002'
     ) {
-      return {
-  success: false,
-  message: `Le numéro de colis "${input.numeroColis}" est déjà utilisé.`,
-}
+      throw new Error(
+        `Le numéro de colis "${input.numeroColis}" est déjà utilisé.`
+      )
     }
 
   throw error
