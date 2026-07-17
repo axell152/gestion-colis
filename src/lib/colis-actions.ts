@@ -28,17 +28,18 @@ export async function entrerColis(input: {
   const catalogue = await prisma.referenceCatalogue.findUnique({
     where: { code: input.reference.trim() },
   })
+
   if (!catalogue) {
-    throw new Error(
-      `Référence "${input.reference}" introuvable dans le catalogue. Vérifie la saisie.`
-    )
+    return {
+      success: false,
+      message: `Référence "${input.reference}" introuvable dans le catalogue.`,
+    }
   }
+
   const finition = deduireFinition(input.reference)
 
-  let colis
-
   try {
-    colis = await prisma.colis.create({
+    const colis = await prisma.colis.create({
       data: {
         reference: input.reference.trim(),
         numeroColis: input.numeroColis.trim(),
@@ -56,22 +57,30 @@ export async function entrerColis(input: {
         },
       },
     })
+
+    revalidatePath('/historique')
+    revalidatePath('/dispatch')
+
+    return {
+      success: true,
+      colis,
+    }
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === 'P2002'
     ) {
-      throw new Error(
-        `Le numéro de colis "${input.numeroColis}" est déjà utilisé.`
-      )
+      return {
+        success: false,
+        message: `Le numéro de colis "${input.numeroColis}" est déjà utilisé.`,
+      }
     }
 
-  throw error
-}
-
-  revalidatePath('/historique')
-  revalidatePath('/dispatch')
-  return colis
+    return {
+      success: false,
+      message: 'Une erreur est survenue.',
+    }
+  }
 }
 
 export async function sortirColis(input: { numeroColis: string; utilisateurId: string }) {
