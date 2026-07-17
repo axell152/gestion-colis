@@ -21,7 +21,7 @@ export default function EntreePage() {
       if (!result.success) {
   setMessage({
     type: 'error',
-    texte: result.message,
+    texte: result.message ?? 'Erreur inconnue',
   })
   return
 }
