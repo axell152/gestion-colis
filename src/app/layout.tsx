@@ -14,18 +14,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <nav
-          style={{
-            padding: "10px",
-            backgroundColor: "#f0f0f0",
-            display: "flex",
-            gap: "15px",
-          }}
-        >
-          ">Entrée</Link>
-          <Link hrefRechervhe</Link>
-          /historiqueHistorique</Link>
-          /sortieSortie</Link>
+        <nav>
+          /Entrée</Link>{" | "}
+          <Link href="/herche</Link>{" | "}
+          historique">Historique</Link>{" | "}
+          sortie">Sortie</Link>{" | "}
           /dispatchDispatch</Link>
         </nav>
 
