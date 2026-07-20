@@ -15,15 +15,17 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <nav>
-          <Link href="/entree">Entrée</Link>
+          <Link href="/entree">Entrée📥</Link>
           {' | '}
-          <Link href="/recherche">Recherche</Link>
+          <Link href="/recherche">Recherche🔍</Link>
           {' | '}
-          <Link href="/historique">Historique</Link>
+          <Link href="/sortie">Sortie📤</Link>
           {' | '}
-          <Link href="/sortie">Sortie</Link>
+          <Link href="/deplacement">Déplacement📦</Link>
           {' | '}
-          <Link href="/dispatch">Dispatch</Link>
+          <Link href="/historique">Historique📜</Link>
+          {' | '}          
+          <Link href="/dispatch">Dispatch📊</Link>
         </nav>
 
         {children}
