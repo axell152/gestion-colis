@@ -55,7 +55,7 @@ export default function DeplacementPage() {
       >
         <input
           value={numeroColis}
-          onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
+          onChange={(e) => setNumeroColis(e.target.value)}
           placeholder="Numéro de colis"
           style={{
             padding: 12,
@@ -68,7 +68,7 @@ export default function DeplacementPage() {
         <input
           value={nouvelEmplacement}
           onChange={(e) =>
-            setNouvelEmplacement(e.target.value.toUpperCase())
+            setNouvelEmplacement(e.target.value)
           }
           placeholder="Nouvel emplacement"
           style={{
