@@ -165,7 +165,7 @@ export async function deplacerColis(input: {
   })
 
   revalidatePath('/historique')
-  return updated
+  return {
     success: true,
     colis: updated,
 }
