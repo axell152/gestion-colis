@@ -87,9 +87,10 @@ export async function sortirColis(input: {
   numeroColis: string
   utilisateurId: string
 }) {
+  const numeroColis = input.numeroColis.trim().toUpperCase()
   const colis = await prisma.colis.findUnique({
-    where: { numeroColis: input.numeroColis.trim() },
-  })
+  where: { numeroColis },
+})
 
   if (!colis) {
     return {
@@ -133,7 +134,10 @@ export async function deplacerColis(input: {
   nouvelEmplacement: string
   utilisateurId: string
 }) {
-  const colis = await prisma.colis.findUnique({ where: { numeroColis: input.numeroColis.trim() } })
+  const numeroColis = input.numeroColis.trim().toUpperCase()
+  const colis = await prisma.colis.findUnique({
+  where: { numeroColis }, 
+  })
   if (!colis) throw new Error(`Colis "${input.numeroColis}" introuvable.`)
 
   const updated = await prisma.colis.update({
