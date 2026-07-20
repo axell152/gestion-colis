@@ -23,7 +23,7 @@ export default function RootLayout({
           {' | '}
           <Link href="/deplacement">Déplacement📦</Link>
           {' | '}
-          <Link href="/ajustement">Ajustement🔢</Link>
+          <Link href="/quantite">Ajustement🔢</Link>
           {' | '}
           <Link href="/historique">Historique📜</Link>
           {' | '}          
