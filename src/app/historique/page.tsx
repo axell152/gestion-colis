@@ -9,7 +9,11 @@ const LABEL_TYPE: Record<string, string> = {
   AJUSTEMENT: 'Ajustement',
 }
 
-export default async function HistoriquePage() {
+export default async function HistoriquePage({
+  searchParams,
+}: {
+  searchParams: { type?: string }
+}) {
   const mouvements = await prisma.mouvement.findMany({
     orderBy: { date: 'desc' },
     take: 200,
