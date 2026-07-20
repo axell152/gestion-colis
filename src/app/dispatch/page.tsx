@@ -8,6 +8,7 @@ export default async function DispatchPage({
 }: {
   searchParams: {
     finition?: string
+    code?: string
   }
 }) {
   const colisEnStock = await prisma.colis.findMany({
@@ -18,8 +19,14 @@ export default async function DispatchPage({
   const finitionSelectionnee =
     (searchParams.finition as FinitionCode) || 'BRUT'
 
-  const colis = colisEnStock.filter(
-    (c) => c.finition === finitionSelectionnee
+  const colis = colisEnStock
+  .filter((c) => c.finition === finitionSelectionnee)
+  .filter(
+    (c) =>
+      !searchParams.code ||
+      c.reference
+        .toUpperCase()
+        .includes(searchParams.code.toUpperCase())
   )
   
   return (
@@ -52,7 +59,35 @@ export default async function DispatchPage({
             finitionSelectionnee === code ? 'bold' : 'normal',
         }}
       >
-   
+   /dispatch
+  <input
+    type="hidden"
+    name="finition"
+    value={finitionSelectionnee}
+  />
+
+  <input
+    type="text"
+    name="code"
+    placeholder="Rechercher un code"
+    defaultValue={searchParams.code ?? ''}
+    style={{
+      padding: 8,
+      minWidth: 250,
+    }}
+  />
+
+  <button
+    type="submit"
+    style={{
+      marginLeft: 8,
+      padding: '8px 12px',
+    }}
+  >
+    Rechercher
+  </button>
+</form>
+      
       <section>
   <h2>
     {finitionSelectionnee} — {libelleFinition(finitionSelectionnee)} ({colis.length})
