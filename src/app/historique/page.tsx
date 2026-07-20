@@ -12,17 +12,110 @@ const LABEL_TYPE: Record<string, string> = {
 export default async function HistoriquePage({
   searchParams,
 }: {
-  searchParams: { type?: string }
+  searchParams: {
+  type?: string
+  utilisateur?: string
+  code?: string
+}
 }) {
+  const utilisateurs = await prisma.utilisateur.findMany({
+  orderBy: {
+    name: 'asc',
+  },
+})
   const mouvements = await prisma.mouvement.findMany({
-    orderBy: { date: 'desc' },
-    take: 200,
-    include: { colis: true, utilisateur: true },
-  })
+  where: {
+    ...(searchParams.type
+      ? { type: searchParams.type as any }
+      : {}),
+    ...(searchParams.utilisateur
+      ? { utilisateurId: searchParams.utilisateur }
+      : {}),
+    ...(searchParams.code
+      ? {
+      colis: {
+        reference: {
+          contains: searchParams.code,
+          mode: 'insensitive',
+        },
+      },
+    }
+  : {}),
+
+  },
+  orderBy: { date: 'desc' },
+  take: 200,
+  include: { colis: true, utilisateur: true },
+})
 
   return (
     <main style={{ padding: 24 }}>
       <h1>Historique des mouvements</h1>
+      <form
+  action="/historique"
+  style={{
+    display: 'flex',
+    gap: 12,
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginTop: 16,
+    marginBottom: 16,
+  }}
+>
+  <label>
+    Type :
+    <select
+      name="type"
+      default<option value="SORTIE">Sortie</option>
+      <option value="DEPLACEMENT">Déplacement</option>
+      <option value="AJUSTEMENT">Ajustement</option>
+    </select>
+  </label>
+
+  <label>
+    Utilisateur :
+    <select
+      name="utilisateur"
+      defaultValue={searchParams.utilisateur ?? ''}
+      style={{ marginLeft: 8 }}
+    >
+      <option value="">Tous</option>
+
+      {utilisateurs.map((u) => (
+        <option key={u.id} value={u.id}>
+          {u.name}
+        </option>
+      ))}
+    </select>
+  </label>
+
+  <label>
+    Code :
+    <input
+      type="text"
+      name="code"
+      placeholder="Rechercher un code"
+      defaultValue={searchParams.code ?? ''}
+      style={{
+        marginLeft: 8,
+        padding: 6,
+      }}
+    />
+  </label>
+
+  <button
+    type="submit"
+    style={{
+      padding: '6px 12px',
+    }}
+  >
+    Filtrer
+  </button>
+
+  ">
+    Réinitialiser
+  </a>
+</form>
       <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: 16 }}>
         <thead>
           <tr>
