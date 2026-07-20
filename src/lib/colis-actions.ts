@@ -32,10 +32,6 @@ export async function entrerColis(input: {
   const catalogue = await prisma.referenceCatalogue.findUnique({
     where: { code: reference },
   })
- {
-  const catalogue = await prisma.referenceCatalogue.findUnique({
-    where: { code: reference }
-  })
 
   if (!catalogue) {
     return {
@@ -96,7 +92,6 @@ export async function sortirColis(input: {
   utilisateurId: string
 }) {
   const numeroColis = normaliserTexte(input.numeroColis) {
-  const numeroColis = input.numeroColis.trim().toUpperCase()
   const colis = await prisma.colis.findUnique({
   where: { numeroColis },
 })
@@ -144,7 +139,6 @@ export async function deplacerColis(input: {
   utilisateurId: string
 }) {
   const numeroColis = normaliserTexte(input.numeroColis)
-  const numeroColis = input.numeroColis.trim().toUpperCase()
   const colis = await prisma.colis.findUnique({
   where: { numeroColis }, 
   })
