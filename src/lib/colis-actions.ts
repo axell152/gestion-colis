@@ -56,6 +56,7 @@ export async function entrerColis(input: {
           create: {
             type: 'ENTREE',
             emplacementApres: input.emplacement.trim().toUpperCase(),
+            quantiteApres: input.quantite,
             utilisateurId: input.utilisateurId,
           },
         },
