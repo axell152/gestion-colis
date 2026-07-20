@@ -92,10 +92,10 @@ export async function entrerColis(input: {
 }
 
 export async function sortirColis(input: {
-  const numeroColis = normaliserTexte(input.numeroColis)
   numeroColis: string
   utilisateurId: string
 }) {
+  const numeroColis = normaliserTexte(input.numeroColis) {
   const numeroColis = input.numeroColis.trim().toUpperCase()
   const colis = await prisma.colis.findUnique({
   where: { numeroColis },
@@ -139,11 +139,11 @@ export async function sortirColis(input: {
 }
 
 export async function deplacerColis(input: {
-  const numeroColis = normaliserTexte(input.numeroColis)
   numeroColis: string
   nouvelEmplacement: string
   utilisateurId: string
 }) {
+  const numeroColis = normaliserTexte(input.numeroColis)
   const numeroColis = input.numeroColis.trim().toUpperCase()
   const colis = await prisma.colis.findUnique({
   where: { numeroColis }, 
