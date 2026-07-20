@@ -60,9 +60,9 @@ export default function SortiePage() {
 
       <input
         value={numeroColis}
-        onChange={(e) => setNumeroColis(e.target.value)}
+        onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
         placeholder="Numéro de colis"
-        style={{ padding: 12, fontSize: 16, width: '100%', marginTop: 12, boxSizing: 'border-box' }}
+        style={{ padding: 12, fontSize: 16, width: '100%', marginTop: 12, boxSizing: 'border-box', textTransform: 'uppercase' }}
       />
 
       <form onSubmit={onSortie} style={{ marginTop: 16 }}>
@@ -74,9 +74,9 @@ export default function SortiePage() {
       <form onSubmit={onDeplacement} style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
         <input
           value={nouvelEmplacement}
-          onChange={(e) => setNouvelEmplacement(e.target.value)}
+          onChange={(e) => setNouvelEmplacement(e.target.value.toUpperCase())}
           placeholder="Nouvel emplacement"
-          style={{ padding: 12, fontSize: 16 }}
+          style={{ padding: 12, fontSize: 16, textTransform: 'uppercase' }}
         />
         <button type="submit" style={{ padding: 14, fontSize: 16 }}>
           Modifier l'emplacement
