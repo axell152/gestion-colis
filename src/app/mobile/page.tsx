@@ -26,13 +26,17 @@ export default async function MobilePage() {
         }}
       >
         {utilisateurs.map((u) => (
-          <button
-            key={u.id}
-            style={{
-              padding: 16,
-              fontSize: 18,
-              cursor: 'pointer',
-            }}
+  <button
+    key={u.id}
+    style={{
+      padding: 16,
+      fontSize: 18,
+      cursor: 'pointer',
+    }}
+  >
+    {u.name}
+  </button>
+))}
           >
             {u.name}
           </button>
