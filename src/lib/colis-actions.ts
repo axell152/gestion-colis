@@ -1,5 +1,6 @@
 'use server'
 
+import { normaliserTexte } from './normalisation'
 import { prisma } from './prisma'
 import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
@@ -11,7 +12,7 @@ import { revalidatePath } from 'next/cache'
 export async function rechercherColisParReference(reference: string) {
   return prisma.colis.findMany({
     where: {
-      reference: { equals: reference.trim(), mode: 'insensitive' },
+      reference: { equals: normaliserTexte(reference), mode: 'insensitive' },
       statut: 'EN_STOCK',
     },
     orderBy: { createdAt: 'desc' },
@@ -19,6 +20,8 @@ export async function rechercherColisParReference(reference: string) {
 }
 
 export async function entrerColis(input: {
+  const reference = normaliserTexte(input.reference)
+  const numeroColis = normaliserTexte(input.numeroColis)
   reference: string
   numeroColis: string
   emplacement: string
@@ -26,7 +29,7 @@ export async function entrerColis(input: {
   utilisateurId: string
 }) {
   const catalogue = await prisma.referenceCatalogue.findUnique({
-    where: { code: input.reference.trim().toUpperCase() },
+    where: { code: reference }
   })
 
   if (!catalogue) {
@@ -41,8 +44,8 @@ export async function entrerColis(input: {
   try {
     const colis = await prisma.colis.create({
       data: {
-        reference: input.reference.trim().toUpperCase(),
-        numeroColis: input.numeroColis.trim().toUpperCase(),
+        reference,
+        numeroColis,
         designation: catalogue.libelle,
         finition,
         quantite: input.quantite,
@@ -84,6 +87,7 @@ export async function entrerColis(input: {
 }
 
 export async function sortirColis(input: {
+  const numeroColis = normaliserTexte(input.numeroColis)
   numeroColis: string
   utilisateurId: string
 }) {
@@ -130,6 +134,7 @@ export async function sortirColis(input: {
 }
 
 export async function deplacerColis(input: {
+  const numeroColis = normaliserTexte(input.numeroColis)
   numeroColis: string
   nouvelEmplacement: string
   utilisateurId: string
