@@ -24,6 +24,7 @@ enum TypeMouvement {
   ENTREE
   SORTIE
   DEPLACEMENT
+  AJUSTEMENT
 }
 
 enum Finition {
