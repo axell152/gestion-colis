@@ -142,7 +142,12 @@ export async function deplacerColis(input: {
   const colis = await prisma.colis.findUnique({
   where: { numeroColis }, 
   })
-  if (!colis) throw new Error(`Colis "${input.numeroColis}" introuvable.`)
+  if (!colis) {
+  return {
+    success: false,
+    message: `Le colis "${input.numeroColis}" est introuvable.`,
+  }
+}
 
   const updated = await prisma.colis.update({
     where: { id: colis.id },
@@ -161,4 +166,6 @@ export async function deplacerColis(input: {
 
   revalidatePath('/historique')
   return updated
+    success: true,
+    colis: updated,
 }
