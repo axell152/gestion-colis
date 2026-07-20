@@ -20,14 +20,19 @@ export async function rechercherColisParReference(reference: string) {
 }
 
 export async function entrerColis(input: {
-  const reference = normaliserTexte(input.reference)
-  const numeroColis = normaliserTexte(input.numeroColis)
   reference: string
   numeroColis: string
   emplacement: string
   quantite: number
   utilisateurId: string
 }) {
+  const reference = normaliserTexte(input.reference)
+  const numeroColis = normaliserTexte(input.numeroColis)
+
+  const catalogue = await prisma.referenceCatalogue.findUnique({
+    where: { code: reference },
+  })
+ {
   const catalogue = await prisma.referenceCatalogue.findUnique({
     where: { code: reference }
   })
