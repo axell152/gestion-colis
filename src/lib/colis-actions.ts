@@ -91,7 +91,7 @@ export async function sortirColis(input: {
   numeroColis: string
   utilisateurId: string
 }) {
-  const numeroColis = normaliserTexte(input.numeroColis) {
+  const numeroColis = normaliserTexte(input.numeroColis)
   const colis = await prisma.colis.findUnique({
   where: { numeroColis },
 })
