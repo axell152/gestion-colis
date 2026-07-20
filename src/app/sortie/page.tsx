@@ -46,7 +46,7 @@ export default function SortiePage() {
 
       <input
         value={numeroColis}
-        onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
+        onChange={(e) => setNumeroColis(e.target.value)}
         placeholder="Numéro de colis"
         style={{ padding: 12, fontSize: 16, width: '100%', marginTop: 12, boxSizing: 'border-box', textTransform: 'uppercase' }}
       />
