@@ -169,7 +169,7 @@ export async function deplacerColis(input: {
     success: true,
     colis: updated,
 }
-
+}
 export async function ajusterQuantite(input: {
   numeroColis: string
   quantite: number
