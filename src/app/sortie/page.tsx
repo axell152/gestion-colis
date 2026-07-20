@@ -42,7 +42,7 @@ export default function SortiePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
-      <h1 style={{ fontSize: 20 }}>Sortie</h1>
+      <h1 style={{ fontSize: 20 }}>Sortie de stock</h1>
 
       <input
         value={numeroColis}
