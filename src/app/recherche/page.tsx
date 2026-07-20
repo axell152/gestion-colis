@@ -22,7 +22,7 @@ export default function RecherchePage() {
       <form onSubmit={onSearch} style={{ display: 'flex', gap: 8, marginTop: 12 }}>
         <input
           value={reference}
-          onChange={(e) => setReference(e.target.value)}
+          onChange={(e) => setReference(e.target.value.toUpperCase())}
           placeholder="Référence (ex: EPPO426E)"
           style={{ flex: 1, padding: 12, fontSize: 16 }}
           autoFocus
