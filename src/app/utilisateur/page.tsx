@@ -1,0 +1,85 @@
+// Schéma de la base de données - Gestion des colis
+// Base : PostgreSQL gratuit (Neon ou Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PREPARATEUR
+  BUREAU
+}
+
+enum StatutColis {
+  EN_STOCK
+  SORTI
+}
+
+enum TypeMouvement {
+  ENTREE
+  SORTIE
+  DEPLACEMENT
+  AJUSTEMENT
+}
+
+enum Finition {
+  E // Brut
+  B // Blanc
+  G // Gris
+  A // Anodisé
+  N // Noir
+}
+
+// Table de correspondance CODE -> LIBELLE, importée depuis le fichier Excel existant
+model ReferenceCatalogue {
+  code    String @id
+  libelle String
+}
+
+model User {
+  id        String  @id @default(cuid())
+  name      String
+  email     String  @unique
+  role      Role    @default(PREPARATEUR)
+  mouvements Mouvement[]
+}
+
+model Colis {
+  id            String        @id @default(cuid())
+  numeroColis   String        @unique // numéro donné au colis
+  reference     String        // ex: EPPO426E, sert à retrouver la désignation
+  designation   String        // déduite automatiquement de `reference` via ReferenceCatalogue
+  finition      Finition      // déduite de la dernière lettre de `reference`
+  quantite      Int
+  emplacement   String
+  statut        StatutColis   @default(EN_STOCK)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  mouvements    Mouvement[]
+
+  @@index([reference])
+  @@index([finition])
+  @@index([statut])
+}
+
+model Mouvement {
+  id               String        @id @default(cuid())
+  colis            Colis         @relation(fields: [colisId], references: [id])
+  colisId          String
+  type             TypeMouvement
+  emplacementAvant String?
+  emplacementApres String?
+  quantiteAvant Int?
+  quantiteApres Int?
+  utilisateur      User          @relation(fields: [utilisateurId], references: [id])
+  utilisateurId    String
+  date             DateTime      @default(now())
+
+  @@index([colisId])
+  @@index([date])
+}
