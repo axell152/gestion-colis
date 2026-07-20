@@ -22,7 +22,16 @@ export default async function HistoriquePage() {
       <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: 16 }}>
         <thead>
           <tr>
-            {['Date', 'Type', 'Colis', 'Référence', 'Détail', 'Utilisateur'].map((h) => (
+            {[
+  'Type de mouvement',
+  'Code',
+  'Libellé',
+  'N° Colis',
+  'Quantité',
+  'Zone',
+  'Utilisateur',
+  'Date',
+].map((h) => (
               <th key={h} style={{ textAlign: 'left', borderBottom: '2px solid #333', padding: 8 }}>
                 {h}
               </th>
@@ -32,25 +41,38 @@ export default async function HistoriquePage() {
         <tbody>
           {mouvements.map((m) => (
             <tr key={m.id}>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
-                {m.date.toLocaleString('fr-FR')}
-              </td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{LABEL_TYPE[m.type]}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.numeroColis}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.reference}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
-                {m.type === 'AJUSTEMENT'
-                ? `${m.quantiteAvant} → ${m.quantiteApres}`
-                : m.type === 'DEPLACEMENT'
-                ? `${m.emplacementAvant} → ${m.emplacementApres}`
-                : m.type === 'ENTREE'
-                ? `Qté : ${m.quantiteApres}`
-                : m.type === 'SORTIE'
-                ? `${m.emplacementAvant} → Sortie`
-                : '—'}
-              </td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.utilisateur.name}</td>
-            </tr>
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {LABEL_TYPE[m.type]}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.colis.reference}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.colis.designation}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.colis.numeroColis}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.quantiteApres ?? m.colis.quantite}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.emplacementApres ?? m.colis.emplacement}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.utilisateur.name}
+  </td>
+
+  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+    {m.date.toLocaleDateString('fr-FR')}
+  </td>
+</tr>
           ))}
         </tbody>
       </table>
