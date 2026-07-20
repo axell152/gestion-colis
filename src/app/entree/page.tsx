@@ -38,21 +38,21 @@ export default function EntreePage() {
       <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }}>
         <input
           value={form.reference}
-          onChange={(e) => setForm({ ...form, reference: e.target.value })}
+          onChange={(e) => setForm({ ...form, reference: e.target.value.toUpperCase() })}
           placeholder="Référence (ex: EPPO426E)"
           style={{ padding: 12, fontSize: 16 }}
           required
         />
         <input
           value={form.numeroColis}
-          onChange={(e) => setForm({ ...form, numeroColis: e.target.value })}
+          onChange={(e) => setForm({ ...form, numeroColis: e.target.value.toUpperCase() })}
           placeholder="Numéro de colis"
           style={{ padding: 12, fontSize: 16 }}
           required
         />
         <input
           value={form.emplacement}
-          onChange={(e) => setForm({ ...form, emplacement: e.target.value })}
+          onChange={(e) => setForm({ ...form, emplacement: e.target.value.toUpperCase() })}
           placeholder="Emplacement"
           style={{ padding: 12, fontSize: 16 }}
           required
