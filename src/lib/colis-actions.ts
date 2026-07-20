@@ -169,4 +169,43 @@ export async function deplacerColis(input: {
     success: true,
     colis: updated,
 }
+
+export async function ajusterQuantite(input: {
+  numeroColis: string
+  quantite: number
+  utilisateurId: string
+}) {
+  const numeroColis = normaliserTexte(input.numeroColis)
+
+  const colis = await prisma.colis.findUnique({
+    where: { numeroColis },
+  })
+
+  if (!colis) {
+    return {
+      success: false,
+      message: `Le colis "${numeroColis}" est introuvable.`,
+    }
+  }
+
+  const updated = await prisma.colis.update({
+    where: { id: colis.id },
+    data: {
+      quantite: input.quantite,
+      mouvements: {
+        create: {
+          type: 'AJUSTEMENT',
+          utilisateurId: input.utilisateurId,
+        },
+      },
+    },
+  })
+
+  revalidatePath('/historique')
+
+  return {
+    success: true,
+    colis: updated,
+  }
+}
 }
