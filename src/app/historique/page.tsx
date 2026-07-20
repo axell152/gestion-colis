@@ -6,6 +6,7 @@ const LABEL_TYPE: Record<string, string> = {
   ENTREE: 'Entrée',
   SORTIE: 'Sortie',
   DEPLACEMENT: 'Déplacement',
+  AJUSTEMENT: 'Ajustement',
 }
 
 export default async function HistoriquePage() {
