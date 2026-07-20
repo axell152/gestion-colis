@@ -196,6 +196,9 @@ export async function ajusterQuantite(input: {
         create: {
           type: 'AJUSTEMENT',
           utilisateurId: input.utilisateurId,
+          quantiteAvant: colis.quantite,
+          quantiteApres: input.quantite,
+
         },
       },
     },
