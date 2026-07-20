@@ -22,7 +22,7 @@ export default async function HistoriquePage() {
       <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: 16 }}>
         <thead>
           <tr>
-            {['Date', 'Type', 'Colis', 'Référence', 'Quantité', 'Avant', 'Après', 'Utilisateur'].map((h) => (
+            {['Date', 'Type', 'Colis', 'Référence', 'Détail', 'Utilisateur'].map((h) => (
               <th key={h} style={{ textAlign: 'left', borderBottom: '2px solid #333', padding: 8 }}>
                 {h}
               </th>
@@ -38,9 +38,17 @@ export default async function HistoriquePage() {
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{LABEL_TYPE[m.type]}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.numeroColis}</td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.reference}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.colis.quantite}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.emplacementAvant ?? '—'}</td>
-              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.emplacementApres ?? '—'}</td>
+              <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+                {m.type === 'AJUSTEMENT'
+                ? `${m.quantiteAvant} → ${m.quantiteApres}`
+                : m.type === 'DEPLACEMENT'
+                ? `${m.emplacementAvant} → ${m.emplacementApres}`
+                : m.type === 'ENTREE'
+                ? `Qté : ${m.quantiteApres}`
+                : m.type === 'SORTIE'
+                ? `${m.emplacementAvant} → Sortie`
+                : '—'}
+              </td>
               <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>{m.utilisateur.name}</td>
             </tr>
           ))}
