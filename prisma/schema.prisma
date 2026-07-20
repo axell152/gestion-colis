@@ -74,6 +74,8 @@ model Mouvement {
   type             TypeMouvement
   emplacementAvant String?
   emplacementApres String?
+  quantiteAvant Int?
+  quantiteApres Int?
   utilisateur      User          @relation(fields: [utilisateurId], references: [id])
   utilisateurId    String
   date             DateTime      @default(now())
