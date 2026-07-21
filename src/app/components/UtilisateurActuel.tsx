@@ -27,9 +27,12 @@ export default function UtilisateurActuel() {
       }}
     >
       👤 {nom}{' '}
-      /mobile
-        Changer
-      </Link>
+     /mobile {
+    localStorage.clear()
+  }}
+>
+  Changer d'utilisateur
+</Link>
     </div>
   )
 }
