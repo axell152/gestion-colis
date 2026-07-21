@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { sortirColis, } from '@/lib/colis-actions'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function SortiePage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -58,6 +59,7 @@ export default function SortiePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Sortie de stock</h1>
 
       <input
