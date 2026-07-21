@@ -5,15 +5,25 @@ import { useEffect, useState } from 'react'
 
 export default function Menu() {
   const [role, setRole] = useState('')
+  const [connecte, setConnecte] = useState(false)
 
   useEffect(() => {
+    const id = localStorage.getItem('utilisateurId')
     const r = localStorage.getItem('role')
+
+    if (id) {
+      setConnecte(true)
+    }
 
     if (r) {
       setRole(r)
     }
   }, [])
 
+  if (!connecte) {
+    return null
+  }
+  
   return (
     <nav>
       <Link href="/entree">Entrée📥</Link>
