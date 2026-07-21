@@ -27,11 +27,13 @@ const role = new URLSearchParams(
   window.location.search
 ).get('role')
 
+alert('ROLE=' + role)
+    
 if (role) {
   localStorage.setItem('role', role)
 }
     
-    router.push('/entree')
+    setTimeout(() => { router.push('/entree') }, 500)
   }, [params.id, router])
 
   return (
