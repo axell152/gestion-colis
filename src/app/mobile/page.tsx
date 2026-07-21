@@ -5,9 +5,6 @@ export const dynamic = 'force-dynamic'
 
 export default async function MobilePage() {
   const utilisateurs = await prisma.user.findMany({
-    where: {
-      role: 'PREPARATEUR',
-    },
     orderBy: {
       name: 'asc',
     },
