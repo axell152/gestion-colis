@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import Link from 'next/link' 
 
 export const dynamic = 'force-dynamic'
 
@@ -26,16 +27,21 @@ export default async function MobilePage() {
         }}
       >
         {utilisateurs.map((u) => (
-  <button
-    key={u.id}
-    style={{
-      padding: 16,
-      fontSize: 18,
-      cursor: 'pointer',
-    }}
-  >
-    {u.name}
-  </button>
+<Link
+  key={u.id}
+  href={`/mobile/${u.id}`}
+  style={{
+    padding: 16,
+    fontSize: 18,
+    cursor: 'pointer',
+    border: '1px solid #888',
+    textAlign: 'center',
+    textDecoration: 'none',
+    color: 'inherit',
+  }}
+>
+  {u.name}
+</Link>  
 ))}
       </div>
     </main>
