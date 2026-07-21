@@ -24,6 +24,10 @@ export default function Menu() {
   
   return (
     <nav>
+      
+      ROLE ACTUEL = {role}
+      <br />
+      
       <Link href="/entree">Entrée📥</Link>
       {' | '}
       <Link href ="recherche">Recherche🔍</Link>
