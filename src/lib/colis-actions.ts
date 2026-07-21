@@ -16,9 +16,25 @@ export async function creerUtilisateur(input: {
   return prisma.user.create({
     data: {
       name: input.name,
+      email: `${Date.now()}@local.test`,
       role: input.role,
     },
   })
+}
+
+async function onSubmit(
+  e: React.FormEvent
+) {
+  e.preventDefault()
+
+  await creerUtilisateur({
+    name,
+    role,
+  })
+
+  setName('')
+
+  window.location.reload()
 }
 
 export async function rechercherColisParReference(reference: string) {
