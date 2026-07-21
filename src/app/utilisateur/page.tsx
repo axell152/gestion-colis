@@ -51,6 +51,25 @@ export default async function UtilisateursPage() {
           ))}
         </tbody>
       </table>
+
+<h2 style={{ marginTop: 32 }}>Ajouter un utilisateur</h2>
+
+<form style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+  <input
+    type="text"
+    placeholder="Nom"
+  />
+
+  <select>
+    <option>PREPARATEUR</option>
+    <option>BUREAU</option>
+  </select>
+
+  <button>
+    Créer
+  </button>
+</form>
+      
     </main>
   )
 }
