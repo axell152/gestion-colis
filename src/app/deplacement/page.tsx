@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { deplacerColis } from '@/lib/colis-actions'
 
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
 
 export default function DeplacementPage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -12,15 +11,31 @@ export default function DeplacementPage() {
     type: 'ok' | 'error'
     texte: string
   } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
+  useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
 
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+  
   async function onDeplacement(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
 
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
+    
     const result = await deplacerColis({
       numeroColis,
       nouvelEmplacement,
-      utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+      utilisateurId,
     })
 
     if (!result.success) {
