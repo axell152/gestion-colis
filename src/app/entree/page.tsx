@@ -19,6 +19,15 @@ export default function EntreePage() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
+    
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
+    
     try {
       const result = await entrerColis({
   ...form,
