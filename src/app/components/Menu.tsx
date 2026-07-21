@@ -15,21 +15,22 @@ export default function Menu() {
     }
 
     chargerRole()
+
+    window.addEventListener('role-changed', chargerRole)
+
+    return () =>
+      window.removeEventListener('role-changed', chargerRole)
   }, [])
 
-  if (pathname === '/mobile') {
+  if (pathname === '/mobile' || pathname.startsWith('/mobile/')) {
     return null
   }
 
   return (
     <nav>
-      
-      ROLE ACTUEL = {role}
-      <br />
-      
       <Link href="/entree">Entrée📥</Link>
       {' | '}
-      <Link href ="recherche">Recherche🔍</Link>
+      <Link href="/recherche">Recherche🔍</Link>
       {' | '}
       <Link href="/sortie">Sortie📤</Link>
       {' | '}
