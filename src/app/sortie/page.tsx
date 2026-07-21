@@ -1,21 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { sortirColis, } from '@/lib/colis-actions'
-
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
 
 export default function SortiePage() {
   const [numeroColis, setNumeroColis] = useState('')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; texte: string } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
 
   async function onSortie(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
+
+    useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
+
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+    
     try {
   const result = await sortirColis({
     numeroColis,
-    utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+    utilisateurId,
   })
 
   if (!result.success) {
