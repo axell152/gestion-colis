@@ -40,7 +40,7 @@ export default async function MobilePage() {
     color: 'inherit',
   }}
 >
-  {u.name}
+  {u.name} ({u.role})
 </Link>  
 ))}
       </div>
