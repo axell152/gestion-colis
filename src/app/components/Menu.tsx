@@ -2,26 +2,25 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Menu() {
   const [role, setRole] = useState('')
-  const [connecte, setConnecte] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const id = localStorage.getItem('utilisateurId')
-    const r = localStorage.getItem('role')
-
-    if (id) {
-      setConnecte(true)
-    }
-
-    if (r) {
+    const chargerRole = () => {
+      const r = localStorage.getItem('role') ?? ''
       setRole(r)
     }
+
+    chargerRole()
   }, [])
 
+  if (pathname === '/mobile') {
+    return null
+  }
 
-  
   return (
     <nav>
       
