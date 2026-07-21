@@ -37,10 +37,6 @@ export default async function MobilePage() {
     {u.name}
   </button>
 ))}
-          >
-            {u.name}
-          </button>
-        ))}
       </div>
     </main>
   )
