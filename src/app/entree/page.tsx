@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { entrerColis } from '@/lib/colis-actions'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function EntreePage() {
   const [form, setForm] = useState({ reference: '', numeroColis: '', emplacement: '', quantite: 1 })
@@ -49,6 +50,7 @@ export default function EntreePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Entrée en stock</h1>
       <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }}>
         <input
