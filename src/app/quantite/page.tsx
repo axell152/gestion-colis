@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { ajusterQuantite } from '@/lib/colis-actions'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -57,6 +58,7 @@ export default function QuantitePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Ajustement de quantité</h1>
 
       <form
