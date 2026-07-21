@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import FormulaireUtilisateur from './FormulaireUtilisateur'
 
 export const dynamic = 'force-dynamic'
 
@@ -70,6 +71,7 @@ export default async function UtilisateursPage() {
   </button>
 </form>
       
+    <FormulaireUtilisateur />  
     </main>
   )
 }
