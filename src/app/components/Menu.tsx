@@ -24,7 +24,7 @@ export default function Menu() {
       {' | '}
       /deplacementDéplacement📦</Link>
       {' | '}
-      /quantiteAjustement🔢</Link>
+      /quantiteAjustements🔢</Link>
 
       {role === 'BUREAU' && (
         <>
