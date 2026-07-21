@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { rechercherColisParReference } from '@/lib/colis-actions'
 import { libelleFinition } from '@/lib/finition'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function RecherchePage() {
   const [reference, setReference] = useState('')
@@ -18,6 +19,7 @@ export default function RecherchePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Recherche colis en stock</h1>
       <form onSubmit={onSearch} style={{ display: 'flex', gap: 8, marginTop: 12 }}>
         <input
