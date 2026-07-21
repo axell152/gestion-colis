@@ -20,9 +20,7 @@ export default function Menu() {
     }
   }, [])
 
-  if (!connecte) {
-    return null
-  }
+
   
   return (
     <nav>
