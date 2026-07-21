@@ -29,15 +29,15 @@ export default function UtilisateurActuel() {
     👤 {nom}{' '}
 
     <Link
-  href="/mobile"
-  onClick={() => {
-    localStorage.removeItem('utilisateurId')
-    localStorage.removeItem('utilisateurNom')
-    localStorage.removeItem('role')
-  }}
->
-  Changer d'utilisateur
-</Link>
+      href="/mobile"
+      onClick={() => {
+        localStorage.removeItem('utilisateurId')
+        localStorage.removeItem('utilisateurNom')
+        localStorage.removeItem('role')
+      }}
+    >
+      Changer d'utilisateur
+    </Link>
   </div>
 )
 }
