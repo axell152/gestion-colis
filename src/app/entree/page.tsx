@@ -1,22 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { entrerColis } from '@/lib/colis-actions'
-
-// TODO: remplacer 'demo-user' par l'ID de l'utilisateur connecté une fois NextAuth branché
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
 
 export default function EntreePage() {
   const [form, setForm] = useState({ reference: '', numeroColis: '', emplacement: '', quantite: 1 })
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; texte: string } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
 
+  useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
+
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+  
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
     try {
       const result = await entrerColis({
   ...form,
-  utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+  utilisateurId,
 })
       if (!result.success) {
   setMessage({
