@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ajusterQuantite } from '@/lib/colis-actions'
-
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
 
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -12,15 +10,24 @@ export default function QuantitePage() {
     type: 'ok' | 'error'
     texte: string
   } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
 
+    useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
+
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+    
     const result = await ajusterQuantite({
       numeroColis,
       quantite,
-      utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+      utilisateurId,
     })
 
     if (!result.success) {
