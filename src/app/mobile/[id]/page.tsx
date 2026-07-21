@@ -23,6 +23,14 @@ if (nom) {
   localStorage.setItem('utilisateurNom', nom)
 }
 
+const role = new URLSearchParams(
+  window.location.search
+).get('role')
+
+if (role) {
+  localStorage.setItem('role', role)
+}
+    
     router.push('/entree')
   }, [params.id, router])
 
