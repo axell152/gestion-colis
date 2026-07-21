@@ -8,17 +8,25 @@ export default function SortiePage() {
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; texte: string } | null>(null)
   const [utilisateurId, setUtilisateurId] = useState('')
 
-  async function onSortie(e: React.FormEvent) {
-    e.preventDefault()
-    setMessage(null)
-
-    useEffect(() => {
+  useEffect(() => {
   const id = localStorage.getItem('utilisateurId')
 
   if (id) {
     setUtilisateurId(id)
   }
 }, [])
+  
+  async function onSortie(e: React.FormEvent) {
+    e.preventDefault()
+    setMessage(null)
+
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
     
     try {
   const result = await sortirColis({
