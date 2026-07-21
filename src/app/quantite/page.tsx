@@ -12,17 +12,25 @@ export default function QuantitePage() {
   } | null>(null)
   const [utilisateurId, setUtilisateurId] = useState('')
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setMessage(null)
-
-    useEffect(() => {
+  useEffect(() => {
   const id = localStorage.getItem('utilisateurId')
 
   if (id) {
     setUtilisateurId(id)
   }
 }, [])
+  
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setMessage(null)
+
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
     
     const result = await ajusterQuantite({
       numeroColis,
