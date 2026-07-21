@@ -44,7 +44,7 @@ model ReferenceCatalogue {
 model User {
   id        String  @id @default(cuid())
   name      String
-  email     String  @unique
+  email     String?  @unique
   role      Role    @default(PREPARATEUR)
   mouvements Mouvement[]
 }
