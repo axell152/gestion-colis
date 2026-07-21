@@ -18,21 +18,24 @@ export default function UtilisateurActuel() {
   if (!nom) return null
 
   return (
-    <div
-      style={{
-        padding: 12,
-        marginBottom: 12,
-        border: '1px solid #ddd',
-        borderRadius: 8,
+  <div
+    style={{
+      padding: 12,
+      marginBottom: 12,
+      border: '1px solid #ddd',
+      borderRadius: 8,
+    }}
+  >
+    👤 {nom}{' '}
+
+    /mobile {
+        localStorage.removeItem('utilisateurId')
+        localStorage.removeItem('utilisateurNom')
+        localStorage.removeItem('role')
       }}
     >
-      👤 {nom}{' '}
-     /mobile {
-    localStorage.clear()
-  }}
->
-  Changer d'utilisateur
-</Link>
-    </div>
-  )
+      Changer d'utilisateur
+    </Link>
+  </div>
+)
 }
