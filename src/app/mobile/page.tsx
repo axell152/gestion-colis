@@ -29,7 +29,7 @@ export default async function MobilePage() {
         {utilisateurs.map((u) => (
 <Link
   key={u.id}
-  href={`/mobile/${u.id}?nom=${encodeURIComponent(u.name)}`}
+  href={`/mobile/${u.id}?nom=${encodeURIComponent(u.name)}&role=${u.role}`}
   style={{
     padding: 16,
     fontSize: 18,
