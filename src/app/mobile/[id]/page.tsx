@@ -15,6 +15,14 @@ export default function MobileLoginPage({
   useEffect(() => {
     localStorage.setItem('utilisateurId', params.id)
 
+const nom = new URLSearchParams(
+  window.location.search
+).get('nom')
+
+if (nom) {
+  localStorage.setItem('utilisateurNom', nom)
+}
+
     router.push('/entree')
   }, [params.id, router])
 
