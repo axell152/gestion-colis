@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { deplacerColis } from '@/lib/colis-actions'
-
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function DeplacementPage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -12,15 +11,31 @@ export default function DeplacementPage() {
     type: 'ok' | 'error'
     texte: string
   } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
+  useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
 
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+  
   async function onDeplacement(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
 
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
+    
     const result = await deplacerColis({
       numeroColis,
       nouvelEmplacement,
-      utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+      utilisateurId,
     })
 
     if (!result.success) {
@@ -42,6 +57,7 @@ export default function DeplacementPage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Déplacement de colis</h1>
 
       <form
@@ -55,7 +71,7 @@ export default function DeplacementPage() {
       >
         <input
           value={numeroColis}
-          onChange={(e) => setNumeroColis(e.target.value)}
+          onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
           placeholder="Numéro de colis"
           style={{
             padding: 12,
@@ -68,7 +84,7 @@ export default function DeplacementPage() {
         <input
           value={nouvelEmplacement}
           onChange={(e) =>
-            setNouvelEmplacement(e.target.value)
+            setNouvelEmplacement(e.target.value.toUpperCase())
           }
           placeholder="Nouvel emplacement"
           style={{

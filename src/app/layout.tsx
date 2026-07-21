@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Menu from '@/app/components/Menu'
 
 export const metadata: Metadata = {
   title: "Gestion des colis",
@@ -14,21 +15,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <nav>
-          <Link href="/entree">Entrée📥</Link>
-          {' | '}
-          <Link href="/recherche">Recherche🔍</Link>
-          {' | '}
-          <Link href="/sortie">Sortie📤</Link>
-          {' | '}
-          <Link href="/deplacement">Déplacement📦</Link>
-          {' | '}
-          <Link href="/quantite">Ajustement🔢</Link>
-          {' | '}
-          <Link href="/historique">Historique📜</Link>
-          {' | '}          
-          <Link href="/dispatch">Dispatch📊</Link>
-        </nav>
+        <Menu />
 
         {children}
       </body>

@@ -1,21 +1,38 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { sortirColis, } from '@/lib/colis-actions'
-
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function SortiePage() {
   const [numeroColis, setNumeroColis] = useState('')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; texte: string } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
 
+  useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
+
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+  
   async function onSortie(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
+
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
+    
     try {
   const result = await sortirColis({
     numeroColis,
-    utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+    utilisateurId,
   })
 
   if (!result.success) {
@@ -42,11 +59,12 @@ export default function SortiePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Sortie de stock</h1>
 
       <input
         value={numeroColis}
-        onChange={(e) => setNumeroColis(e.target.value)}
+        onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
         placeholder="Numéro de colis"
         style={{ padding: 12, fontSize: 16, width: '100%', marginTop: 12, boxSizing: 'border-box', textTransform: 'uppercase' }}
       />

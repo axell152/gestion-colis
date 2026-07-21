@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ajusterQuantite } from '@/lib/colis-actions'
-
-const UTILISATEUR_ID_TEMPORAIRE = 'demo-user'
+import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
@@ -12,15 +11,32 @@ export default function QuantitePage() {
     type: 'ok' | 'error'
     texte: string
   } | null>(null)
+  const [utilisateurId, setUtilisateurId] = useState('')
 
+  useEffect(() => {
+  const id = localStorage.getItem('utilisateurId')
+
+  if (id) {
+    setUtilisateurId(id)
+  }
+}, [])
+  
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
 
+    if (!utilisateurId) {
+  setMessage({
+    type: 'error',
+    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+  })
+  return
+}
+    
     const result = await ajusterQuantite({
       numeroColis,
       quantite,
-      utilisateurId: UTILISATEUR_ID_TEMPORAIRE,
+      utilisateurId,
     })
 
     if (!result.success) {
@@ -42,6 +58,7 @@ export default function QuantitePage() {
 
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+      <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Ajustement de quantité</h1>
 
       <form
