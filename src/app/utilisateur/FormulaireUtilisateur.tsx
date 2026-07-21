@@ -20,6 +20,7 @@ export default function FormulaireUtilisateur() {
     })
 
     setName('')
+    window.location.reload()
   }
 
   return (
