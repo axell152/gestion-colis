@@ -9,6 +9,18 @@ import { revalidatePath } from 'next/cache'
 // NOTE: `utilisateurId` est passé explicitement pour l'instant en attendant
 // le branchement de NextAuth (récupération de l'utilisateur connecté côté session).
 
+export async function creerUtilisateur(input: {
+  name: string
+  role: 'PREPARATEUR' | 'BUREAU'
+}) {
+  return prisma.user.create({
+    data: {
+      name: input.name,
+      role: input.role,
+    },
+  })
+}
+
 export async function rechercherColisParReference(reference: string) {
   return prisma.colis.findMany({
     where: {
