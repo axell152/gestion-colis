@@ -16,26 +16,26 @@ export default function Menu() {
 
   return (
     <nav>
-      /entreeEntrée📥</Link>
+      <Link href="/entree">Entrée📥</Link>
       {' | '}
-      cherche">Recherche🔍</Link>
+      <Link href ="recherche">Recherche🔍</Link>
       {' | '}
-      /sortieSortie📤</Link>
+      <Link href="/sortie">Sortie📤</Link>
       {' | '}
-      /deplacementDéplacement📦</Link>
+      <Link href="/deplacement">Déplacement📦</Link>
       {' | '}
-      /quantiteAjustements🔢</Link>
+      <Link href="/quantite">Ajustements🔢</Link>
 
       {role === 'BUREAU' && (
         <>
           {' | '}
-          /historiqueHistorique📜</Link>
+          <Link href="/historique">Historique📜</Link>
 
           {' | '}
-          /dispatchDispatch📊</Link>
+          <Link href="/dispatch">Dispatch📊</Link>
 
           {' | '}
-          /utilisateursUtilisateurs👥</Link>
+          <Link href="/utilisateurs">Utilisateurs👥</Link>
         </>
       )}
     </nav>
