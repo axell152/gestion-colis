@@ -22,20 +22,7 @@ export async function creerUtilisateur(input: {
   })
 }
 
-async function onSubmit(
-  e: React.FormEvent
-) {
-  e.preventDefault()
 
-  await creerUtilisateur({
-    name,
-    role,
-  })
-
-  setName('')
-
-  window.location.reload()
-}
 
 export async function rechercherColisParReference(reference: string) {
   return prisma.colis.findMany({
