@@ -33,17 +33,10 @@ export default async function DispatchPage({
     )
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Dispatch</h1>
-      <div
-        style={{
-          display: 'flex',
-          gap: 12,
-          marginTop: 16,
-          marginBottom: 24,
-          flexWrap: 'wrap',
-        }}
-      >
+    <main className="p-4 max-w-md mx-auto">
+      <h1 className="text-xl font-semibold text-[#1A1A1A] text-center">Dispatch</h1>
+      <div className="flex justify-center gap-3 mt-4 mb-6 flex-wrap">
+        
         {Object.keys(FINITIONS).map((code) => {
           const count = colisEnStock.filter(
             (c: ColisItem) => c.finition === code
@@ -72,11 +65,6 @@ export default async function DispatchPage({
         finitionSelectionnee={finitionSelectionnee}
         codeInitial={searchParams.code ?? ''}
       />
-
-      <section>
-        <h2>
-          {finitionSelectionnee} — {libelleFinition(finitionSelectionnee)} ({colis.length})
-        </h2>
 
         {colis.length === 0 ? (
           <p style={{ color: '#888' }}>
