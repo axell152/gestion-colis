@@ -12,7 +12,7 @@ export default function RechercheForm({
   const [code, setCode] = useState(codeInitial)
 
   return (
-    <div className="max-w-sm mt-6">
+    <div className="max-w-sm mt-6 mx-auto">
       <form className="flex flex-col gap-3">
         <input type="hidden" name="finition" value={finitionSelectionnee} />
         <input
