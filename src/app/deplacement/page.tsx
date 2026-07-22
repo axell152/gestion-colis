@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { deplacerColis } from '@/lib/colis-actions'
 import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
+const champClass =
+  'w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
+
 export default function DeplacementPage() {
   const [numeroColis, setNumeroColis] = useState('')
   const [nouvelEmplacement, setNouvelEmplacement] = useState('')
@@ -56,59 +59,37 @@ export default function DeplacementPage() {
   }
 
   return (
-    <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+    <main className="p-4 max-w-md mx-auto">
       <UtilisateurActuel />
-      <h1 style={{ fontSize: 20 }}>Déplacement de colis</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Déplacement de colis</h1>
 
-      <form
-        onSubmit={onDeplacement}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 12,
-          marginTop: 12,
-        }}
-      >
+      <form onSubmit={onDeplacement} className="flex flex-col gap-3 mt-4">
         <input
           value={numeroColis}
           onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
-          placeholder="Numéro de colis"
-          style={{
-            padding: 12,
-            fontSize: 16,
-            textTransform: 'uppercase',
-          }}
+          placeholder="Numéro de colis (ex: E001)"
+          className={champClass}
           required
         />
 
         <input
           value={nouvelEmplacement}
-          onChange={(e) =>
-            setNouvelEmplacement(e.target.value.toUpperCase())
-          }
-          placeholder="Nouvel emplacement"
-          style={{
-            padding: 12,
-            fontSize: 16,
-            textTransform: 'uppercase',
-          }}
+          onChange={(e) => setNouvelEmplacement(e.target.value.toUpperCase())}
+          placeholder="Nouvel emplacement (ex: R10)"
+          className={champClass}
           required
         />
 
-        <button type="submit" style={{ padding: 14, fontSize: 16 }}>
+        <button
+          type="submit"
+          className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+        >
           Déplacer le colis
         </button>
       </form>
 
       {message && (
-        <p
-          style={{
-            marginTop: 16,
-            color: message.type === 'ok' ? 'green' : '#b00',
-          }}
-        >
-          {message.texte}
-        </p>
+        <p className={`mt-4 text-sm ${message.type === 'ok' ? 'text-green-700' : 'text-red-700'}`}>{message.texte}</p>
       )}
     </main>
   )

@@ -168,12 +168,12 @@ export async function deplacerColis(input: {
   const updated = await prisma.colis.update({
     where: { id: colis.id },
     data: {
-      emplacement: input.nouvelEmplacement.trim(),
+      emplacement: input.nouvelEmplacement.trim().toUpperCase(),
       mouvements: {
         create: {
           type: 'DEPLACEMENT',
           emplacementAvant: colis.emplacement,
-          emplacementApres: input.nouvelEmplacement.trim(),
+          emplacementApres: input.nouvelEmplacement.trim().toUpperCase(),
           utilisateurId: input.utilisateurId,
         },
       },

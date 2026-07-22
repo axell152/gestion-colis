@@ -24,14 +24,10 @@ export default function FormulaireUtilisateur() {
   }
 
   return (
+    <div className="max-w-sm mt-6">
     <form
       onSubmit={onSubmit}
-      style={{
-        marginTop: 24,
-        display: 'flex',
-        gap: 12,
-        alignItems: 'center',
-      }}
+      className="flex flex-col gap-3"
     >
       <input
         value={name}
@@ -39,6 +35,7 @@ export default function FormulaireUtilisateur() {
           setName(e.target.value)
         }
         placeholder="Nom"
+        className="w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20"
         required
       />
 
@@ -51,6 +48,7 @@ export default function FormulaireUtilisateur() {
               | 'BUREAU'
           )
         }
+        className="w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20"
       >
         <option value="PREPARATEUR">
           PREPARATEUR
@@ -61,9 +59,13 @@ export default function FormulaireUtilisateur() {
         </option>
       </select>
 
-      <button type="submit">
+      <button
+        type="submit"
+        className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+      >
         Créer
       </button>
     </form>
+    </div>  
   )
 }

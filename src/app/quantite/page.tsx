@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react'
 import { ajusterQuantite } from '@/lib/colis-actions'
 import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
+const champClass =
+  'w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
+
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
-  const [quantite, setQuantite] = useState(1)
+  const [quantite, setQuantite] = useState('')
   const [message, setMessage] = useState<{
     type: 'ok' | 'error'
     texte: string
@@ -35,7 +38,7 @@ export default function QuantitePage() {
     
     const result = await ajusterQuantite({
       numeroColis,
-      quantite,
+      quantite: Number(quantite),
       utilisateurId,
     })
 
@@ -53,28 +56,20 @@ export default function QuantitePage() {
     })
 
     setNumeroColis('')
-    setQuantite(1)
+    setQuantite('')
   }
 
   return (
-    <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
+    <main className="p-4 max-w-md mx-auto">
       <UtilisateurActuel />
-      <h1 style={{ fontSize: 20 }}>Ajustement de quantité</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Ajustement de quantité</h1>
 
-      <form
-        onSubmit={onSubmit}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 12,
-          marginTop: 12,
-        }}
-      >
+      <form onSubmit={onSubmit} className="flex flex-col gap-3 mt-4">
         <input
           value={numeroColis}
           onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
-          placeholder="Numéro de colis"
-          style={{ padding: 12, fontSize: 16 }}
+          placeholder="Numéro de colis (ex: E001)"
+          className={champClass}
           required
         />
 
@@ -82,26 +77,22 @@ export default function QuantitePage() {
           type="number"
           min={0}
           value={quantite}
-          onChange={(e) => setQuantite(Number(e.target.value))}
-          placeholder="Nouvelle quantité"
-          style={{ padding: 12, fontSize: 16 }}
+          onChange={(e) => setQuantite(e.target.value)}
+          placeholder="Nouvelle quantité (ex: 80)"
+          className={champClass}
           required
         />
 
-        <button type="submit" style={{ padding: 14, fontSize: 16 }}>
+        <button
+          type="submit"
+          className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+        >
           Mettre à jour la quantité
         </button>
       </form>
 
       {message && (
-        <p
-          style={{
-            marginTop: 16,
-            color: message.type === 'ok' ? 'green' : '#b00',
-          }}
-        >
-          {message.texte}
-        </p>
+        <p className={`mt-4 text-sm ${message.type === 'ok' ? 'text-green-700' : 'text-red-700'}`}>{message.texte}</p>
       )}
     </main>
   )

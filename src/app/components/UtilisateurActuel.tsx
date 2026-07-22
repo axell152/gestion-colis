@@ -18,26 +18,20 @@ export default function UtilisateurActuel() {
   if (!nom) return null
 
   return (
-  <div
-    style={{
-      padding: 12,
-      marginBottom: 12,
-      border: '1px solid #ddd',
-      borderRadius: 8,
-    }}
-  >
-    👤 {nom}{' '}
+    <div className="flex items-center justify-between px-4 py-3 mb-4 bg-white border border-[#EAE4D9] rounded-xl">
+      <span className="text-[#1A1A1A]">👤 {nom}</span>
 
-    <Link
-      href="/mobile"
-      onClick={() => {
-        localStorage.removeItem('utilisateurId')
-        localStorage.removeItem('utilisateurNom')
-        localStorage.removeItem('role')
-      }}
-    >
-      Changer d'utilisateur
-    </Link>
-  </div>
-)
+      <Link
+        href="/mobile"
+        onClick={() => {
+          localStorage.removeItem('utilisateurId')
+          localStorage.removeItem('utilisateurNom')
+          localStorage.removeItem('role')
+        }}
+        className="text-sm text-[#E8703A] underline"
+      >
+        Changer d'utilisateur
+      </Link>
+    </div>
+  )
 }
