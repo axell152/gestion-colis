@@ -21,18 +21,21 @@ export default function RecherchePage() {
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
       <UtilisateurActuel />
       <h1 style={{ fontSize: 20 }}>Recherche colis en stock</h1>
-      <form onSubmit={onSearch} style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-        <input
-          value={reference}
-          onChange={(e) => setReference(e.target.value.toUpperCase())}
-          placeholder="Référence (ex: EPPO426E)"
-          style={{ flex: 1, padding: 12, fontSize: 16 }}
-          autoFocus
-        />
-        <button type="submit" style={{ padding: '12px 16px', fontSize: 16 }}>
-          Chercher
-        </button>
-      </form>
+      <form onSubmit={onSearch} className="flex flex-col gap-3 mt-4">
+  <input
+    value={reference}
+    onChange={(e) => setReference(e.target.value.toUpperCase())}
+    placeholder="Référence (ex: EPPO426E)"
+    className="w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20"
+    autoFocus
+  />
+  <button
+    type="submit"
+    className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+  >
+    Chercher
+  </button>
+</form>
 
       {recherche && resultats.length === 0 && (
         <p style={{ marginTop: 16, color: '#b00' }}>Aucun colis en stock pour cette référence.</p>
