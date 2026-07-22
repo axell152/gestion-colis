@@ -50,7 +50,7 @@ export default async function DispatchPage({
           ).length
 
           return (
-            
+            <a
               key={code}
               href={`/dispatch?finition=${code}`}
               style={{
