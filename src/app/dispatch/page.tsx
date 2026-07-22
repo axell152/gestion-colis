@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { FINITIONS, FinitionCode, libelleFinition } from '@/lib/finition'
+import RechercheForm from './RechercheForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -33,7 +34,7 @@ export default async function DispatchPage({
 
   return (
     <main style={{ padding: 24 }}>
-      <h1>Dispatch des colis par finition</h1>
+      <h1>Dispatch</h1>
       <div
         style={{
           display: 'flex',
@@ -49,7 +50,7 @@ export default async function DispatchPage({
           ).length
 
           return (
-            <a
+            
               key={code}
               href={`/dispatch?finition=${code}`}
               style={{
@@ -67,34 +68,10 @@ export default async function DispatchPage({
         })}
       </div>
 
-      <form>
-        <input
-          type="hidden"
-          name="finition"
-          value={finitionSelectionnee}
-        />
-
-        <input
-          type="text"
-          name="code"
-          placeholder="Rechercher un code"
-          defaultValue={searchParams.code ?? ''}
-          style={{
-            padding: 8,
-            minWidth: 250,
-          }}
-        />
-
-        <button
-          type="submit"
-          style={{
-            marginLeft: 8,
-            padding: '8px 12px',
-          }}
-        >
-          Rechercher
-        </button>
-      </form>
+      <RechercheForm
+        finitionSelectionnee={finitionSelectionnee}
+        codeInitial={searchParams.code ?? ''}
+      />
 
       <section>
         <h2>
