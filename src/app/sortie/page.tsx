@@ -67,7 +67,7 @@ export default function SortiePage() {
 
       <input
         value={numeroColis}
-        onChange={(e) => setNumeroColis(e.target.value)}
+        onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
         placeholder="Numéro de colis (ex: E001)"
         className={`${champClass} mt-4`}
       />
