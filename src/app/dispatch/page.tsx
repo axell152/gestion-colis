@@ -32,40 +32,44 @@ export default async function DispatchPage({
           .includes(searchParams.code.toUpperCase())
     )
 
-  return (
-    <main className="p-4 max-w-md mx-auto">
-      <h1 className="text-xl font-semibold text-[#1A1A1A] text-center">Dispatch</h1>
-      <div className="flex justify-center gap-3 mt-4 mb-6 flex-wrap">
-        
-        {Object.keys(FINITIONS).map((code) => {
-          const count = colisEnStock.filter(
-            (c: ColisItem) => c.finition === code
-          ).length
+ return (
+    <main className="p-4">
+      <div className="max-w-md mx-auto">
+        <h1 className="text-xl font-semibold text-[#1A1A1A] text-center">Dispatch</h1>
 
-          return (
-            <a
-              key={code}
-              href={`/dispatch?finition=${code}`}
-              style={{
-                padding: '8px 12px',
-                border: '1px solid #ccc',
-                borderRadius: 6,
-                textDecoration: 'none',
-                fontWeight:
-                  finitionSelectionnee === code ? 'bold' : 'normal',
-              }}
-            >
-              {libelleFinition(code as FinitionCode)} ({count})
-            </a>
-          )
-        })}
+        <div className="flex justify-center gap-2 mt-4 mb-6 overflow-x-auto">
+          {Object.keys(FINITIONS).map((code) => {
+            const count = colisEnStock.filter(
+              (c: ColisItem) => c.finition === code
+            ).length
+
+            return (
+              
+                key={code}
+                href={`/dispatch?finition=${code}`}
+                style={{
+                  padding: '8px 12px',
+                  border: '1px solid #ccc',
+                  borderRadius: 6,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  fontWeight:
+                    finitionSelectionnee === code ? 'bold' : 'normal',
+                }}
+              >
+                {libelleFinition(code as FinitionCode)} ({count})
+              </a>
+            )
+          })}
+        </div>
+
+        <RechercheForm
+          finitionSelectionnee={finitionSelectionnee}
+          codeInitial={searchParams.code ?? ''}
+        />
       </div>
 
-      <RechercheForm
-        finitionSelectionnee={finitionSelectionnee}
-        codeInitial={searchParams.code ?? ''}
-      />
-
+      <div className="mt-6">
         {colis.length === 0 ? (
           <p style={{ color: '#888' }}>
             Aucun colis en stock.
@@ -122,6 +126,7 @@ export default async function DispatchPage({
             </tbody>
           </table>
         )}
+      </div>
     </main>
   )
 }
