@@ -15,7 +15,7 @@ const liens = [
 const liensBureau = [
   { href: '/historique', label: 'Historique', icone: '📜' },
   { href: '/dispatch', label: 'Dispatch', icone: '📊' },
-  { href: '/utilisateurs', label: 'Utilisateurs', icone: '👥' },
+  { href: '/utilisateur', label: 'Utilisateurs', icone: '👥' },
 ]
 
 export default function Menu() {
