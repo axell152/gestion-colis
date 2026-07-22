@@ -122,7 +122,6 @@ export default async function DispatchPage({
             </tbody>
           </table>
         )}
-      </section>
     </main>
   )
 }
