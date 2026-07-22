@@ -212,6 +212,3 @@ export async function ajusterQuantite(input: {
     colis: updated,
   }
 }
-export async function viderHistorique() {
-  await prisma.mouvement.deleteMany({})
-}
