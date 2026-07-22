@@ -34,10 +34,10 @@ export default async function DispatchPage({
 
  return (
     <main className="p-4">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-2x1 mx-auto">
         <h1 className="text-xl font-semibold text-[#1A1A1A] text-center">Dispatch</h1>
 
-        <div className="flex justify-center gap-2 mt-4 mb-6 overflow-x-auto">
+        <div className="flex justify-center gap-2 mt-4 mb-6">
           {Object.keys(FINITIONS).map((code) => {
             const count = colisEnStock.filter(
               (c: ColisItem) => c.finition === code
