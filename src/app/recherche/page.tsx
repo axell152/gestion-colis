@@ -20,7 +20,7 @@ export default function RecherchePage() {
   return (
     <main style={{ padding: 16, maxWidth: 480, margin: '0 auto' }}>
       <UtilisateurActuel />
-      <h1 style={{ fontSize: 20 }}>Recherche colis en stock</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Recherche colis en stock</h1>
       <form onSubmit={onSearch} className="flex flex-col gap-3 mt-4">
   <input
     value={reference}
