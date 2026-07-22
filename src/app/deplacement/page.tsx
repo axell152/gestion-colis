@@ -66,7 +66,7 @@ export default function DeplacementPage() {
       <form onSubmit={onDeplacement} className="flex flex-col gap-3 mt-4">
         <input
           value={numeroColis}
-          onChange={(e) => setNumeroColis(e.target.value)}
+          onChange={(e) => setNumeroColis(e.target.value.toUpperCase())}
           placeholder="Numéro de colis (ex: E001)"
           className={champClass}
           required
@@ -74,7 +74,7 @@ export default function DeplacementPage() {
 
         <input
           value={nouvelEmplacement}
-          onChange={(e) => setNouvelEmplacement(e.target.value)}
+          onChange={(e) => setNouvelEmplacement(e.target.value.toUpperCase())}
           placeholder="Nouvel emplacement (ex: R10)"
           className={champClass}
           required
