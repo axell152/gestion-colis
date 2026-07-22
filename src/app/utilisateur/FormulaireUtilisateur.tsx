@@ -24,9 +24,10 @@ export default function FormulaireUtilisateur() {
   }
 
   return (
+    <div className="max-w-sm mt-6">
     <form
       onSubmit={onSubmit}
-      className="flex flex-col gap-3 mt-6"
+      className="flex flex-col gap-3"
     >
       <input
         value={name}
@@ -65,5 +66,6 @@ export default function FormulaireUtilisateur() {
         Créer
       </button>
     </form>
+    </div>  
   )
 }
