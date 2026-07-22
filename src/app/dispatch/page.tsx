@@ -88,7 +88,7 @@ export default async function DispatchPage({
                   <th
                     key={h}
                     style={{
-                      textAlign: 'left',
+                      textAlign: ['Quantité', 'N° Colis', 'Zone'].includes(h) ? 'center' : 'left',
                       borderBottom: '2px solid #333',
                       padding: 8,
                     }}
@@ -110,15 +110,15 @@ export default async function DispatchPage({
                     {c.designation}
                   </td>
 
-                  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+                  <td style={{ borderBottom: '1px solid #ddd', padding: 8, textAlign: 'center' }}>
                     {c.quantite}
                   </td>
 
-                  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+                  <td style={{ borderBottom: '1px solid #ddd', padding: 8, textAlign: 'center' }}>
                     {c.numeroColis}
                   </td>
 
-                  <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+                  <td style={{ borderBottom: '1px solid #ddd', padding: 8, textAlign: 'center' }}>
                     {c.emplacement}
                   </td>
                 </tr>
