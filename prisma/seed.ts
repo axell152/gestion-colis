@@ -4,19 +4,6 @@ import references from './references.json'
 const prisma = new PrismaClient()
 
 async function main() {
-  // Création de l'utilisateur temporaire
-  await prisma.user.upsert({
-    where: {
-      email: "admin@gestion-colis.local",
-    },
-    update: {},
-    create: {
-      id: "demo-user",
-      name: "Administrateur",
-      email: "admin@gestion-colis.local",
-      role: "BUREAU",
-    },
-  })
 
   console.log(`Import de ${references.length} références...`)
 
