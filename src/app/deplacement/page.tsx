@@ -95,7 +95,7 @@ export default function DeplacementPage() {
           <div>
             <p className="font-semibold text-[#1A1A1A]">{colisTrouve.designation}</p>
             <p className="text-sm text-[#8A8378] mt-1">
-              Référence : {colisTrouve.reference} · Quantité : {colisTrouve.quantite}
+              Référence : {colisTrouve.reference} · Quantité : {colisTrouve.quantite} · Zone : {colisTrouve.emplacement}
             </p>
           </div>
 
