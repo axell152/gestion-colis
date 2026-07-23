@@ -75,12 +75,12 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
       }
       titre.alignment = { vertical: 'middle', horizontal: 'center' }
 
-      feuille.getColumn(1).width = 22
+      feuille.getColumn(1).width = 26
       feuille.getColumn(5).width = 14
 
       feuille.addImage(logoId, {
-        tl: { col: 0.25, row: 0.15 },
-        ext: { width: 150, height: 66 },
+        tl: { col: 0.12, row: 0.15 },
+        ext: { width: 130, height: 57 },
       })
 
       feuille.addImage(illustrationId, {
