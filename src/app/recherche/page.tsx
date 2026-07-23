@@ -50,7 +50,7 @@ export default function RecherchePage() {
             <strong>Colis {c.numeroColis.toUpperCase()}</strong>
             <div>{c.designation}</div>
             <div>Finition : {libelleFinition(c.finition as any)}</div>
-            <div>Emplacement : <strong>{c.emplacement.toUpperCase()}</strong></div>
+            <div>Zone : <strong>{c.emplacement.toUpperCase()}</strong></div>
             <div>Quantité : {c.quantite}</div>
           </li>
         ))}
