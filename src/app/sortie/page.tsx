@@ -82,7 +82,7 @@ export default function SortiePage() {
           type="button"
           onClick={onVerifier}
           disabled={!numeroColis || recherche}
-          className="px-5 rounded-xl border border-[#D9D2C4] font-semibold text-[#1A1A1A] disabled:opacity-40"
+          className="px-5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
         >
           Vérifier
         </button>
