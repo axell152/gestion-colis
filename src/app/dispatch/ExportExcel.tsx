@@ -17,10 +17,11 @@ const COULEURS_FINITION: Record<FinitionCode, string> = {
   B: 'FFED7D31', // Blanc → orange
   G: 'FFC00000', // Gris → rouge
   A: 'FFFFC000', // Anodisé → jaune
-  N: 'FF1F4E79', // Noir → bleu
+  N: 'FF005B9E', // Noir → bleu
 }
 
 const TEXTE_BLANC: FinitionCode[] = ['E', 'B', 'G', 'N']
+const COULEUR_ENTETE = 'FF005B9E'
 
 async function chargerImage(url: string) {
   const reponse = await fetch(url)
@@ -47,46 +48,56 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
         properties: { tabColor: { argb: couleur } },
       })
 
-      // Bannière (lignes 1-2)
-      feuille.getRow(1).height = 45
-      feuille.getRow(2).height = 45
+      // Bannière (lignes 1-2) — réduite pour correspondre à la taille des images
+      feuille.getRow(1).height = 32
+      feuille.getRow(2).height = 32
 
       feuille.mergeCells('A1:A2')
       feuille.mergeCells('B1:D2')
       feuille.mergeCells('E1:E2')
 
+      for (let ligne = 1; ligne <= 2; ligne++) {
+        for (let colonne = 2; colonne <= 4; colonne++) {
+          feuille.getCell(ligne, colonne).fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: { argb: couleur },
+          }
+        }
+      }
+
       const titre = feuille.getCell('B1')
       titre.value = `Liste colis en stock  |  ${libelleFinition(code).toUpperCase()}`
       titre.font = {
         bold: true,
-        size: 14,
+        size: 13,
         color: { argb: texteBlanc ? 'FFFFFFFF' : 'FF000000' },
       }
       titre.alignment = { vertical: 'middle', horizontal: 'center' }
-      titre.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: couleur } }
+
+      feuille.getColumn(1).width = 22
+      feuille.getColumn(5).width = 14
 
       feuille.addImage(logoId, {
-        tl: { col: 0.1, row: 0.1 },
-        ext: { width: 130, height: 57 },
+        tl: { col: 0.25, row: 0.15 },
+        ext: { width: 150, height: 66 },
       })
 
       feuille.addImage(illustrationId, {
-        tl: { col: 4.15, row: 0.1 },
-        ext: { width: 70, height: 58 },
+        tl: { col: 4.3, row: 0.15 },
+        ext: { width: 80, height: 66 },
       })
 
-      // En-têtes (ligne 3)
+      // En-têtes (ligne 3) — toujours en bleu, quelle que soit la finition
       const entetes = ['Code', 'Libellé', 'Quantité', 'N° Colis', 'Zone']
       const ligneEntete = feuille.getRow(3)
 
       entetes.forEach((libelle, index) => {
         const cellule = ligneEntete.getCell(index + 1)
         cellule.value = libelle
-        cellule.font = {
-          bold: true,
-          color: { argb: texteBlanc ? 'FFFFFFFF' : 'FF000000' },
-        }
-        cellule.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: couleur } }
+        cellule.font = { bold: true, color: { argb: 'FFFFFFFF' } }
+        cellule.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: COULEUR_ENTETE } }
+        cellule.alignment = { horizontal: 'center', vertical: 'middle' }
       })
 
       // Données (à partir de la ligne 4)
@@ -94,8 +105,11 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
         .filter((c) => c.finition === code)
         .map((c) => [c.reference, c.designation, c.quantite, c.numeroColis, c.emplacement])
 
-      lignes.forEach((ligne) => {
-        feuille.addRow(ligne)
+     lignes.forEach((ligne) => {
+        const rangee = feuille.addRow(ligne)
+        rangee.eachCell((cellule) => {
+          cellule.alignment = { horizontal: 'center', vertical: 'middle' }
+        })
       })
 
       // Largeur des colonnes ajustée au contenu
@@ -109,7 +123,8 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
       })
 
       largeurs.forEach((largeur, index) => {
-        feuille.getColumn(index + 1).width = largeur + 3
+        const colonne = feuille.getColumn(index + 1)
+        colonne.width = Math.max(largeur + 3, colonne.width ?? 0)
       })
     }
 
