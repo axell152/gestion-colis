@@ -34,6 +34,20 @@ export async function rechercherColisParReference(reference: string) {
   })
 }
 
+export async function rechercherColisParNumero(numeroColis: string) {
+  const numero = normaliserTexte(numeroColis)
+
+  const colis = await prisma.colis.findUnique({
+    where: { numeroColis: numero },
+  })
+
+  if (!colis || colis.statut === 'SORTI') {
+    return null
+  }
+
+  return colis
+}
+
 export async function entrerColis(input: {
   reference: string
   numeroColis: string
