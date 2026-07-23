@@ -60,7 +60,7 @@ export default function EntreePage() {
         <input
           value={form.reference}
           onChange={(e) => setForm({ ...form, reference: e.target.value.toUpperCase() })}
-          placeholder="Référence (ex: EPPO426E)"
+          placeholder="Code (ex: EPPO426E)"
           className={champClass}
           required
         />
@@ -74,7 +74,7 @@ export default function EntreePage() {
         <input
           value={form.emplacement}
           onChange={(e) => setForm({ ...form, emplacement: e.target.value.toUpperCase() })}
-          placeholder="Emplacement (ex: R10)"
+          placeholder="Zone (ex: R10)"
           className={champClass}
           required
         />
