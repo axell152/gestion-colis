@@ -22,56 +22,93 @@ const COULEURS_FINITION: Record<FinitionCode, string> = {
 
 const TEXTE_BLANC: FinitionCode[] = ['N']
 
+async function chargerImage(url: string) {
+  const reponse = await fetch(url)
+  return reponse.arrayBuffer()
+}
+
 export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[] }) {
   async function exporter() {
     const classeur = new ExcelJS.Workbook()
 
+    const [logoBuffer, illustrationBuffer] = await Promise.all([
+      chargerImage('/logo-abcd.png'),
+      chargerImage('/illustration-rack.png'),
+    ])
+
+    const logoId = classeur.addImage({ buffer: logoBuffer, extension: 'png' })
+    const illustrationId = classeur.addImage({ buffer: illustrationBuffer, extension: 'png' })
+
     for (const code of Object.keys(FINITIONS) as FinitionCode[]) {
+      const couleur = COULEURS_FINITION[code]
+      const texteBlanc = TEXTE_BLANC.includes(code)
+
       const feuille = classeur.addWorksheet(libelleFinition(code), {
-        properties: { tabColor: { argb: COULEURS_FINITION[code] } },
+        properties: { tabColor: { argb: couleur } },
       })
 
-      feuille.columns = [
-        { header: 'Code', key: 'code' },
-        { header: 'Libellé', key: 'libelle' },
-        { header: 'Quantité', key: 'quantite' },
-        { header: 'N° Colis', key: 'numeroColis' },
-        { header: 'Zone', key: 'zone' },
-      ]
+      // Bannière (lignes 1-2)
+      feuille.getRow(1).height = 45
+      feuille.getRow(2).height = 45
 
-      const entete = feuille.getRow(1)
-      entete.font = {
+      feuille.mergeCells('A1:A2')
+      feuille.mergeCells('B1:D2')
+      feuille.mergeCells('E1:E2')
+
+      const titre = feuille.getCell('B1')
+      titre.value = `Liste colis en stock  |  ${libelleFinition(code).toUpperCase()}`
+      titre.font = {
         bold: true,
-        color: { argb: TEXTE_BLANC.includes(code) ? 'FFFFFFFF' : 'FF000000' },
+        size: 14,
+        color: { argb: texteBlanc ? 'FFFFFFFF' : 'FF000000' },
       }
-      entete.fill = {
-        type: 'pattern',
-        pattern: 'solid',
-        fgColor: { argb: COULEURS_FINITION[code] },
-      }
+      titre.alignment = { vertical: 'middle', horizontal: 'center' }
+      titre.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: couleur } }
 
-      colisEnStock
-        .filter((c) => c.finition === code)
-        .forEach((c) => {
-          feuille.addRow({
-            code: c.reference,
-            libelle: c.designation,
-            quantite: c.quantite,
-            numeroColis: c.numeroColis,
-            zone: c.emplacement,
-          })
-        })
-
-      feuille.columns.forEach((colonne) => {
-        let largeurMax = String(colonne.header ?? '').length
-
-        colonne.eachCell?.({ includeEmpty: false }, (cellule) => {
-          const longueur = cellule.value ? String(cellule.value).length : 0
-          if (longueur > largeurMax) largeurMax = longueur
-        })
-
-        colonne.width = largeurMax + 3
+      feuille.addImage(logoId, {
+        tl: { col: 0.1, row: 0.1 },
+        ext: { width: 130, height: 57 },
       })
+
+      feuille.addImage(illustrationId, {
+        tl: { col: 4.15, row: 0.1 },
+        ext: { width: 70, height: 58 },
+      })
+
+      // En-têtes (ligne 3)
+      const entetes = ['Code', 'Libellé', 'Quantité', 'N° Colis', 'Zone']
+      const ligneEntete = feuille.getRow(3)
+
+      entetes.forEach((libelle, index) => {
+        const cellule = ligneEntete.getCell(index + 1)
+        cellule.value = libelle
+        cellule.font = {
+          bold: true,
+          color: { argb: texteBlanc ? 'FFFFFFFF' : 'FF000000' },
+        }
+        cellule.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: couleur } }
+      })
+
+      // Données (à partir de la ligne 4)
+      const lignes = colisEnStock
+        .filter((c) => c.finition === code)
+        .map((c) => [c.reference, c.designation, c.quantite, c.numeroColis, c.emplacement])
+
+      lignes.forEach((ligne) => {
+        feuille.addRow(ligne)
+      })
+
+      // Largeur des colonnes ajustée au contenu
+      const largeurs = entetes.map((h) => h.length)
+
+      lignes.forEach((ligne) => {
+        ligne.forEach((valeur, index) => {
+          const longueur = String(valeur).length
+          if (longueur > largeurs[index]) largeurs[index] = longueur
+        })
+      })
+
+      feuille.columns = largeurs.map((largeur) => ({ width: largeur + 3 }))
     }
 
     const buffer = await classeur.xlsx.writeBuffer()
