@@ -18,7 +18,7 @@ export default async function HistoriquePage({
   code?: string
 }
 }) {
-  const utilisateurs = await prisma.utilisateur.findMany({
+  const utilisateurs = await prisma.user.findMany({
   orderBy: {
     name: 'asc',
   },
@@ -117,7 +117,10 @@ export default async function HistoriquePage({
     Filtrer
   </button>
 
-  ">
+  <a      
+  href="/historique"
+    style={{ padding: '6px 12px', textDecoration: 'none', color: '#333' }}
+  >
     Réinitialiser
   </a>
 </form>
