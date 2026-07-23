@@ -13,14 +13,14 @@ type ColisItem = {
 }
 
 const COULEURS_FINITION: Record<FinitionCode, string> = {
-  E: 'FFD9A066',
-  B: 'FFE5E0D5',
-  G: 'FF9CA3AF',
-  A: 'FF60A5FA',
-  N: 'FF374151',
+  E: 'FF2E7D32', // Brut → vert
+  B: 'FFED7D31', // Blanc → orange
+  G: 'FFC00000', // Gris → rouge
+  A: 'FFFFC000', // Anodisé → jaune
+  N: 'FF1F4E79', // Noir → bleu
 }
 
-const TEXTE_BLANC: FinitionCode[] = ['N']
+const TEXTE_BLANC: FinitionCode[] = ['E', 'B', 'G', 'N']
 
 async function chargerImage(url: string) {
   const reponse = await fetch(url)
@@ -108,7 +108,9 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
         })
       })
 
-      feuille.columns = largeurs.map((largeur) => ({ width: largeur + 3 }))
+      largeurs.forEach((largeur, index) => {
+        feuille.getColumn(index + 1).width = largeur + 3
+      })
     }
 
     const buffer = await classeur.xlsx.writeBuffer()
