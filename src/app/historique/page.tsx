@@ -20,6 +20,7 @@ export default async function HistoriquePage({
     type?: string
     utilisateur?: string
     code?: string
+    numeroColis?: string
   }
 }) {
   const utilisateurs = await prisma.user.findMany({
@@ -41,6 +42,16 @@ export default async function HistoriquePage({
             colis: {
               reference: {
                 contains: searchParams.code,
+                mode: 'insensitive',
+              },
+            },
+          }
+        : {}),
+      ...(searchParams.numeroColis
+        ? {
+            colis: {
+              numeroColis: {
+                equals: searchParams.numeroColis,
                 mode: 'insensitive',
               },
             },
@@ -74,6 +85,13 @@ function detailMouvement(m: (typeof mouvements)[number]) {
           Historique des mouvements
         </h1>
 
+        {searchParams.numeroColis && (
+          <div className="mt-3 flex items-center justify-between px-4 py-2 rounded-xl bg-[#FBEADD] text-sm text-[#B0602A]">
+            <span>Historique du colis {searchParams.numeroColis}</span>
+            <a href="/historique" className="underline font-semibold">Voir tout</a>
+          </div>
+        )}
+        
         <form
           action="/historique"
           className="flex flex-col gap-3 mt-4"
