@@ -84,8 +84,8 @@ export default function ExportExcel({ colisEnStock }: { colisEnStock: ColisItem[
       })
 
       feuille.addImage(illustrationId, {
-        tl: { col: 4.3, row: 0.15 },
-        ext: { width: 80, height: 66 },
+        tl: { col: 4.55, row: 0.15 },
+        ext: { width: 72, height: 60 },
       })
 
       // En-têtes (ligne 3) — toujours en bleu, quelle que soit la finition
