@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import ChampCode from './ChampCode'
 
 export const dynamic = 'force-dynamic'
 
@@ -102,13 +103,7 @@ function detailMouvement(m: (typeof mouvements)[number]) {
             ))}
           </select>
 
-          <input
-            type="text"
-            name="code"
-            placeholder="Rechercher un code"
-            defaultValue={searchParams.code ?? ''}
-            className={'${champClass} uppercase'}
-          />
+          <ChampCode valeurInitiale={searchParams.code ?? ''} />
 
           <div className="flex gap-3">
             <button
