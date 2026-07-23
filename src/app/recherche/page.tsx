@@ -25,7 +25,7 @@ export default function RecherchePage() {
   <input
     value={reference}
     onChange={(e) => setReference(e.target.value.toUpperCase())}
-    placeholder="Référence (ex: EPPO426E)"
+    placeholder="Code (ex: EPPO426E)"
     className="w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20"
     autoFocus
   />
