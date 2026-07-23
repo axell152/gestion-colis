@@ -66,7 +66,12 @@ export default async function HistoriquePage({
     Type :
     <select
       name="type"
-      default<option value="SORTIE">Sortie</option>
+      defaultValue={searchParams.type ?? ''}
+      style={{ marginLeft: 8 }}
+    >
+      <option value="">Tous</option>
+      <option value="ENTREE">Entrée</option>
+      <option value="SORTIE">Sortie</option>
       <option value="DEPLACEMENT">Déplacement</option>
       <option value="AJUSTEMENT">Ajustement</option>
     </select>
