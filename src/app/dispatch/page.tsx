@@ -120,7 +120,12 @@ export default async function DispatchPage({
                   </td>
 
                   <td style={{ borderBottom: '1px solid #ddd', padding: 8, textAlign: 'center' }}>
-                    {c.numeroColis}
+                    <a
+                      href={`/historique?numeroColis=${c.numeroColis}`}
+                      style={{ color: '#E8703A', textDecoration: 'underline' }}
+                    >
+                      {c.numeroColis}
+                    </a>
                   </td>
 
                   <td style={{ borderBottom: '1px solid #ddd', padding: 8, textAlign: 'center' }}>
