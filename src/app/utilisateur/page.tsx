@@ -12,7 +12,7 @@ export default async function UtilisateursPage() {
 
   return (
     <main style={{ padding: 24 }}>
-      <h1>Utilisateurs</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Utilisateurs</h1>
 
       <table
         style={{
