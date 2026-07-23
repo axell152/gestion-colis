@@ -107,7 +107,7 @@ function detailMouvement(m: (typeof mouvements)[number]) {
             name="code"
             placeholder="Rechercher un code"
             defaultValue={searchParams.code ?? ''}
-            className={'${champClass} upprcase'}
+            className={'${champClass} uppercase'}
           />
 
           <div className="flex gap-3">
