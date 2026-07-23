@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { FINITIONS, FinitionCode, libelleFinition } from '@/lib/finition'
 import RechercheForm from './RechercheForm'
+import ExportExcel from './ExportExcel'
 
 export const dynamic = 'force-dynamic'
 
@@ -67,6 +68,10 @@ export default async function DispatchPage({
           finitionSelectionnee={finitionSelectionnee}
           codeInitial={searchParams.code ?? ''}
         />
+
+        <div className="flex justify-center mt-4">
+          <ExportExcel colisEnStock={colisEnStock} />
+        </div>
       </div>
 
       <div className="mt-6">
