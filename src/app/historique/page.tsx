@@ -51,6 +51,21 @@ export default async function HistoriquePage({
     include: { colis: true, utilisateur: true },
   })
 
+function detailMouvement(m: (typeof mouvements)[number]) {
+    switch (m.type) {
+      case 'ENTREE':
+        return `Qté : ${m.quantiteApres}`
+      case 'SORTIE':
+        return `Sorti (${m.emplacementAvant})`
+      case 'DEPLACEMENT':
+        return `${m.emplacementAvant} → ${m.emplacementApres}`
+      case 'AJUSTEMENT':
+        return `${m.quantiteAvant} → ${m.quantiteApres}`
+      default:
+        return '—'
+    }
+  }
+  
   return (
     <main className="p-4">
       <div className="max-w-2xl mx-auto">
@@ -122,8 +137,7 @@ export default async function HistoriquePage({
                 'Code',
                 'Libellé',
                 'N° Colis',
-                'Quantité',
-                'Zone',
+                'Détail',
                 'Utilisateur',
                 'Date',
               ].map((h) => (
@@ -160,13 +174,9 @@ export default async function HistoriquePage({
                   {m.colis.numeroColis}
                 </td>
 
-                <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
-                  {m.quantiteApres ?? m.colis.quantite}
-                </td>
-
-                <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
-                  {m.emplacementApres ?? m.colis.emplacement}
-                </td>
+                 <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
+                    {detailMouvement(m)}
+                 </td>
 
                 <td style={{ borderBottom: '1px solid #ddd', padding: 8 }}>
                   {m.utilisateur.name}
