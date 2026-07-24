@@ -12,8 +12,8 @@ type ColisTrouve = Awaited<ReturnType<typeof rechercherColisParNumero>>
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
   const [quantite, setQuantite] = useState('')
-  const [nouveauCode, setNouveauCode] = useState('') // <-- AJOUT : État pour le nouveau code
-  const [utilisateurRole, setUtilisateurRole] = useState('') // <-- AJOUT : État pour le rôle
+  const [nouveauCode, setNouveauCode] = useState('') 
+  const [utilisateurRole, setUtilisateurRole] = useState('') 
   const [message, setMessage] = useState<{
     type: 'ok' | 'error'
     texte: string
@@ -24,7 +24,7 @@ export default function QuantitePage() {
 
   useEffect(() => {
     const id = localStorage.getItem('utilisateurId')
-    const role = localStorage.getItem('utilisateurRole') // <-- AJOUT : Récupération du rôle (adaptez la clé si besoin selon votre app)
+    const role = localStorage.getItem('utilisateurRole') 
 
     if (id) {
       setUtilisateurId(id)
@@ -52,7 +52,7 @@ export default function QuantitePage() {
     }
 
     setColisTrouve(colis)
-    setNouveauCode(colis.reference ?? '') // <-- AJOUT : Pré-remplir avec le code actuel du colis
+    setNouveauCode(colis.numeroColis ?? '') // Utilisation correcte de numeroColis
   }
   
   async function onSubmit(e: React.FormEvent) {
@@ -67,8 +67,8 @@ export default function QuantitePage() {
       return
     }
     
-    // 1. Si l'utilisateur est "bureau" et qu'il a saisi un nouveau code différent, on met à jour le code en plus (ou à la place)
-    if (utilisateurRole === 'bureau' && nouveauCode && colisTrouve && nouveauCode !== colisTrouve.code) {
+    // Si l'utilisateur est "bureau" et souhaite modifier le numéro/code du colis
+    if (utilisateurRole === 'bureau' && nouveauCode && colisTrouve && nouveauCode !== colisTrouve.numeroColis) {
       try {
         await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
       } catch (err: any) {
@@ -77,9 +77,9 @@ export default function QuantitePage() {
       }
     }
 
-    // 2. Ajustement de la quantité classique
+    // Ajustement de la quantité classique
     const result = await ajusterQuantite({
-      numeroColis: nouveauCode || numeroColis, // Utilise le nouveau code si modifié
+      numeroColis: nouveauCode || numeroColis, 
       quantite: Number(quantite),
       utilisateurId,
     })
@@ -154,11 +154,11 @@ export default function QuantitePage() {
 
         {colisTrouve && (
           <>
-            {/* --- AJOUT : Champ pour modifier le code, visible UNIQUEMENT si rôle === "bureau" --- */}
+            {/* Champ pour modifier le code/numéro du colis, visible UNIQUEMENT si rôle === "bureau" */}
             {utilisateurRole === 'bureau' && (
               <div className="flex flex-col gap-1 mt-2 p-3 bg-orange-50 rounded-xl border border-orange-200">
                 <label className="text-xs font-semibold text-orange-800">
-                  Correction du code du colis (Réservé au Bureau) :
+                  Modification du code du colis (Réservé au Bureau) :
                 </label>
                 <input
                   type="text"
