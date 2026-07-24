@@ -6,8 +6,6 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
-import { prisma } from "./prisma";
-
 export async function modifierCodeColis(colisId: string, nouveauCode: string, utilisateurRole: string) {
   // Vérification stricte du rôle "bureau"
   if (utilisateurRole !== "bureau") {
@@ -21,32 +19,11 @@ export async function modifierCodeColis(colisId: string, nouveauCode: string, ut
   try {
     const colisMisAJour = await prisma.colis.update({
       where: { id: colisId },
-      data: { code: nouveauCode.trim() },
+      data: { code: nouveauCode.trim() }, // Modification effective du champ 'code'
     });
 
-    return { success: true, colis: colisMisAJour };
-  } catch (error) {
-    console.error("Erreur lors de la modification du code du colis :", error);
-    throw new Error("Impossible de modifier le code du colis.");
-  }
-}
-
-export async function modifierCodeColis(colisId: string, nouveauCode: string, utilisateurRole: string) {
-  // Vérification stricte du rôle "bureau"
-  if (utilisateurRole !== "bureau") {
-    throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier le code d'un colis.");
-  }
-
-  if (!nouveauCode || nouveauCode.trim() === "") {
-    throw new Error("Le nouveau code ne peut pas être vide.");
-  }
-
-  try {
-    const colisMisAJour = await prisma.colis.update({
-      where: { id: colisId },
-      data: { code: nouveauCode.trim() },
-    });
-
+    revalidatePath('/quantite');
+    revalidatePath('/historique');
     return { success: true, colis: colisMisAJour };
   } catch (error) {
     console.error("Erreur lors de la modification du code du colis :", error);
@@ -69,8 +46,6 @@ export async function creerUtilisateur(input: {
     },
   })
 }
-
-
 
 export async function rechercherColisParReference(reference: string) {
   return prisma.colis.findMany({
@@ -248,6 +223,7 @@ export async function deplacerColis(input: {
     colis: updated,
 }
 }
+
 export async function ajusterQuantite(input: {
   numeroColis: string
   quantite: number
@@ -276,7 +252,6 @@ export async function ajusterQuantite(input: {
           utilisateurId: input.utilisateurId,
           quantiteAvant: colis.quantite,
           quantiteApres: input.quantite,
-
         },
       },
     },
