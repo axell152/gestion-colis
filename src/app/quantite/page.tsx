@@ -52,7 +52,7 @@ export default function QuantitePage() {
     }
 
     setColisTrouve(colis)
-    setNouveauCode(colis.code ?? '') // <-- AJOUT : Pré-remplir avec le code actuel du colis
+    setNouveauCode(colis.reference ?? '') // <-- AJOUT : Pré-remplir avec le code actuel du colis
   }
   
   async function onSubmit(e: React.FormEvent) {
