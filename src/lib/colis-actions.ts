@@ -7,8 +7,10 @@ import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
 export async function modifierCodeColis(colisId: string, nouvelleReference: string, utilisateurRole: string) {
-  // On accepte le rôle qu'il soit en majuscules ou minuscules
-  if (!utilisateurRole || utilisateurRole.toLowerCase() !== "bureau") {
+  // On convertit en minuscules pour accepter "BUREAU" ou "bureau"
+  const roleNormalize = utilisateurRole ? utilisateurRole.toLowerCase().trim() : ""
+
+  if (roleNormalize !== "bureau") {
     return { success: false, message: "Action non autorisée : seuls les utilisateurs du bureau peuvent modifier la référence." };
   }
 
@@ -18,7 +20,6 @@ export async function modifierCodeColis(colisId: string, nouvelleReference: stri
     return { success: false, message: "La nouvelle référence ne peut pas être vide." };
   }
 
-  // Vérifier si la référence existe dans le catalogue
   const catalogue = await prisma.referenceCatalogue.findUnique({
     where: { code: referenceNormalisee },
   })
