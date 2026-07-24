@@ -35,19 +35,8 @@ export default async function MobilePage() {
                   {initiale}
                 </div>
 
-                <div className="flex-1 text-left">
-                  <div className="text-base font-medium text-[#1A1A1A]">
-                    {u.name}
-                  </div>
-                  <span
-                    className={`inline-block mt-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-                      estBureau
-                        ? 'bg-[#E7EEF7] text-[#3B5B82]'
-                        : 'bg-[#FBEADD] text-[#B0602A]'
-                    }`}
-                  >
-                    {estBureau ? 'Bureau' : 'Préparateur'}
-                  </span>
+                <div className="flex-1 text-center text-base font-medium text-[#1A1A1A]">
+                  {u.name}
                 </div>
               </Link>
             )
