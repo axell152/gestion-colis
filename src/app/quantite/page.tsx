@@ -69,11 +69,11 @@ export default function QuantitePage() {
 
     let actionFaite = false
     
-    // 1. Modification de la référence si renseignée et différente
+   // 1. Modification de la référence si renseignée et différente
     if (nouveauCode && colisTrouve && nouveauCode !== colisTrouve.reference) {
-      const resModif = await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
-      if (!resModif && typeof resModif === 'object' && 'success' in resModif && !resModif.success) {
-        setMessage({ type: 'error', texte: (resModif as any).message })
+      const resModif: any = await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
+      if (resModif && resModif.success === false) {
+        setMessage({ type: 'error', texte: resModif.message })
         return
       }
       actionFaite = true
