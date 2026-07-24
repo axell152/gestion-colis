@@ -139,7 +139,7 @@ export default function QuantitePage() {
             </p>
 
             <p className="text-sm text-[#8A8378] mt-1">
-              Référence : {colisTrouve.reference}
+              Code : {colisTrouve.reference}
             </p>
 
             <p className="text-sm text-[#8A8378]">
