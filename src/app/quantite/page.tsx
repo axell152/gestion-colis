@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import UtilisateurActuel from '@/app/components/UtilisateurActuel'
-import { ajusterQuantite, rechercherColisParNumero } from '@/lib/colis-actions'
+import { ajusterQuantite, rechercherColisParNumero, modifierCodeColis } from '@/lib/colis-actions'
 
 const champClass =
   'w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
@@ -12,6 +12,8 @@ type ColisTrouve = Awaited<ReturnType<typeof rechercherColisParNumero>>
 export default function QuantitePage() {
   const [numeroColis, setNumeroColis] = useState('')
   const [quantite, setQuantite] = useState('')
+  const [nouveauCode, setNouveauCode] = useState('') // <-- AJOUT : État pour le nouveau code
+  const [utilisateurRole, setUtilisateurRole] = useState('') // <-- AJOUT : État pour le rôle
   const [message, setMessage] = useState<{
     type: 'ok' | 'error'
     texte: string
@@ -21,47 +23,63 @@ export default function QuantitePage() {
   const [recherche, setRecherche] = useState(false)
 
   useEffect(() => {
-  const id = localStorage.getItem('utilisateurId')
+    const id = localStorage.getItem('utilisateurId')
+    const role = localStorage.getItem('utilisateurRole') // <-- AJOUT : Récupération du rôle (adaptez la clé si besoin selon votre app)
 
-  if (id) {
-    setUtilisateurId(id)
+    if (id) {
+      setUtilisateurId(id)
+    }
+    if (role) {
+      setUtilisateurRole(role)
+    }
+  }, [])
+
+  async function onVerifier() {
+    setMessage(null)
+    setRecherche(true)
+
+    const colis = await rechercherColisParNumero(numeroColis)
+
+    setRecherche(false)
+
+    if (!colis) {
+      setColisTrouve(null)
+      setMessage({
+        type: 'error',
+        texte: `Colis "${numeroColis}" introuvable ou déjà sorti.`,
+      })
+      return
+    }
+
+    setColisTrouve(colis)
+    setNouveauCode(colis.code ?? '') // <-- AJOUT : Pré-remplir avec le code actuel du colis
   }
-}, [])
-
-async function onVerifier() {
-  setMessage(null)
-  setRecherche(true)
-
-  const colis = await rechercherColisParNumero(numeroColis)
-
-  setRecherche(false)
-
-  if (!colis) {
-    setColisTrouve(null)
-    setMessage({
-      type: 'error',
-      texte: `Colis "${numeroColis}" introuvable ou déjà sorti.`,
-    })
-    return
-  }
-
-  setColisTrouve(colis)
-}
   
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
 
     if (!utilisateurId) {
-  setMessage({
-    type: 'error',
-    texte: 'Veuillez sélectionner un utilisateur sur /mobile',
-  })
-  return
-}
+      setMessage({
+        type: 'error',
+        texte: 'Veuillez sélectionner un utilisateur sur /mobile',
+      })
+      return
+    }
     
+    // 1. Si l'utilisateur est "bureau" et qu'il a saisi un nouveau code différent, on met à jour le code en plus (ou à la place)
+    if (utilisateurRole === 'bureau' && nouveauCode && colisTrouve && nouveauCode !== colisTrouve.code) {
+      try {
+        await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
+      } catch (err: any) {
+        setMessage({ type: 'error', texte: err.message })
+        return
+      }
+    }
+
+    // 2. Ajustement de la quantité classique
     const result = await ajusterQuantite({
-      numeroColis,
+      numeroColis: nouveauCode || numeroColis, // Utilise le nouveau code si modifié
       quantite: Number(quantite),
       utilisateurId,
     })
@@ -76,82 +94,100 @@ async function onVerifier() {
 
     setMessage({
       type: 'ok',
-      texte: `Quantité du colis ${numeroColis} mise à jour.`,
+      texte: `Mise à jour effectuée avec succès pour le colis ${nouveauCode || numeroColis}.`,
     })
 
     setNumeroColis('')
     setQuantite('')
+    setNouveauCode('')
+    setColisTrouve(null)
   }
 
   return (
     <main className="p-4 max-w-md mx-auto">
       <UtilisateurActuel />
-      <h1 className="text-xl font-semibold text-[#1A1A1A]">Ajustement de quantité</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Ajustement de quantité et code</h1>
 
       <form onSubmit={onSubmit} className="flex flex-col gap-3 mt-4">
         <div className="flex gap-2">
-  <input
-    value={numeroColis}
-    onChange={(e) => {
-      setNumeroColis(e.target.value.toUpperCase())
-      setColisTrouve(null)
-      setMessage(null)
-    }}
-    placeholder="Numéro de colis (ex: E001)"
-    className={champClass}
-    required
-  />
+          <input
+            value={numeroColis}
+            onChange={(e) => {
+              setNumeroColis(e.target.value.toUpperCase())
+              setColisTrouve(null)
+              setMessage(null)
+            }}
+            placeholder="Numéro de colis (ex: E001)"
+            className={champClass}
+            required
+          />
 
-  <button
-    type="button"
-    onClick={onVerifier}
-    disabled={!numeroColis || recherche}
-    className="px-5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
-  >
-    Vérifier
-  </button>
-</div>
-
-{colisTrouve && (
-  <div className="p-4 rounded-xl border border-[#D9D2C4] bg-white">
-    <p className="font-semibold text-[#1A1A1A]">
-      {colisTrouve.designation}
-    </p>
-
-    <p className="text-sm text-[#8A8378] mt-1">
-      Référence : {colisTrouve.reference}
-    </p>
-
-    <p className="text-sm text-[#8A8378]">
-      Quantité actuelle : {colisTrouve.quantite}
-    </p>
-
-    <p className="text-sm text-[#8A8378]">
-      Zone : {colisTrouve.emplacement}
-    </p>
-  </div>
-)}
+          <button
+            type="button"
+            onClick={onVerifier}
+            disabled={!numeroColis || recherche}
+            className="px-5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
+          >
+            Vérifier
+          </button>
+        </div>
 
         {colisTrouve && (
-<>
-<input
-  type="number"
-  min={0}
-  value={quantite}
-  onChange={(e) => setQuantite(e.target.value)}
-  placeholder="Nouvelle quantité (ex: 80)"
-  className={champClass}
-  required
-/>
+          <div className="p-4 rounded-xl border border-[#D9D2C4] bg-white">
+            <p className="font-semibold text-[#1A1A1A]">
+              {colisTrouve.designation}
+            </p>
 
-<button
-  type="submit"
-  className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
->
-  Mettre à jour la quantité
-</button>
-</>
-)}
+            <p className="text-sm text-[#8A8378] mt-1">
+              Référence : {colisTrouve.reference}
+            </p>
+
+            <p className="text-sm text-[#8A8378]">
+              Quantité actuelle : {colisTrouve.quantite}
+            </p>
+
+            <p className="text-sm text-[#8A8378]">
+              Zone : {colisTrouve.emplacement}
+            </p>
+          </div>
+        )}
+
+        {colisTrouve && (
+          <>
+            {/* --- AJOUT : Champ pour modifier le code, visible UNIQUEMENT si rôle === "bureau" --- */}
+            {utilisateurRole === 'bureau' && (
+              <div className="flex flex-col gap-1 mt-2 p-3 bg-orange-50 rounded-xl border border-orange-200">
+                <label className="text-xs font-semibold text-orange-800">
+                  Correction du code du colis (Réservé au Bureau) :
+                </label>
+                <input
+                  type="text"
+                  value={nouveauCode}
+                  onChange={(e) => setNouveauCode(e.target.value.toUpperCase())}
+                  placeholder="Nouveau code du colis"
+                  className={champClass}
+                />
+              </div>
+            )}
+
+            <input
+              type="number"
+              min={0}
+              value={quantite}
+              onChange={(e) => setQuantite(e.target.value)}
+              placeholder="Nouvelle quantité (ex: 80)"
+              className={champClass}
+              required
+            />
+
+            <button
+              type="submit"
+              className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+            >
+              Mettre à jour
+            </button>
+          </>
+        )}
       </form>
 
       {message && (
