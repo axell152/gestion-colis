@@ -6,36 +6,41 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
-export async function modifierCodeColis(colisId: string, nouveauNumeroColis: string, utilisateurRole: string) {
-  // Vérification stricte du rôle "bureau"
+export async function modifierCodeColis(colisId: string, nouvelleReference: string, utilisateurRole: string) {
   if (utilisateurRole !== "bureau") {
-    throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier le code d'un colis.");
+    throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier la référence d'un colis.");
   }
 
-  const numeroNormalise = normaliserTexte(nouveauNumeroColis)
+  const referenceNormalisee = normaliserTexte(nouvelleReference)
 
-  if (!numeroNormalise) {
-    throw new Error("Le nouveau code ne peut pas être vide.");
+  if (!referenceNormalisee) {
+    throw new Error("La nouvelle référence ne peut pas être vide.");
+  }
+
+  // Vérifier si la référence existe dans le catalogue
+  const catalogue = await prisma.referenceCatalogue.findUnique({
+    where: { code: referenceNormalisee },
+  })
+
+  if (!catalogue) {
+    throw new Error(`La référence "${nouvelleReference}" est introuvable dans le catalogue.`);
   }
 
   try {
     const colisMisAJour = await prisma.colis.update({
       where: { id: colisId },
-      data: { numeroColis: numeroNormalise }, // Utilisation correcte du champ numeroColis
+      data: { 
+        reference: referenceNormalisee,
+        designation: catalogue.libelle, // Met à jour automatiquement la désignation associée
+      }, 
     });
 
     revalidatePath('/quantite');
     revalidatePath('/historique');
     return { success: true, colis: colisMisAJour };
   } catch (error) {
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === 'P2002'
-    ) {
-      throw new Error(`Le code "${nouveauNumeroColis}" est déjà utilisé par un autre colis.`);
-    }
-    console.error("Erreur lors de la modification du code du colis :", error);
-    throw new Error("Impossible de modifier le code du colis.");
+    console.error("Erreur lors de la modification de la référence du colis :", error);
+    throw new Error("Impossible de modifier la référence du colis.");
   }
 }
 
