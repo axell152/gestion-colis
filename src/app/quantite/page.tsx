@@ -52,7 +52,6 @@ export default function QuantitePage() {
     }
 
     setColisTrouve(colis)
-    // On pré-remplit avec la référence (ex: EPPO426E) au lieu du numéro de colis
     setNouveauCode(colis.reference ?? '')
   }
   
@@ -70,20 +69,17 @@ export default function QuantitePage() {
 
     let actionFaite = false
     
-    // Si la référence/code a été modifié et que le colis existe
+    // 1. Modification de la référence si renseignée et différente
     if (nouveauCode && colisTrouve && nouveauCode !== colisTrouve.reference) {
-      try {
-        // Note: Si vous souhaitez modifier la référence en base, assurez-vous d'avoir une fonction dédiée 
-        // ou adaptez modifierCodeColis pour cibler la référence si c'est bien l'effet voulu.
-        await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
-        actionFaite = true
-      } catch (err: any) {
-        setMessage({ type: 'error', texte: err.message })
+      const resModif = await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
+      if (!resModif && typeof resModif === 'object' && 'success' in resModif && !resModif.success) {
+        setMessage({ type: 'error', texte: (resModif as any).message })
         return
       }
+      actionFaite = true
     }
 
-    // Ajustement de la quantité si renseignée
+    // 2. Ajustement de la quantité si renseignée
     if (quantite !== '') {
       const result = await ajusterQuantite({
         numeroColis, 
@@ -114,10 +110,13 @@ export default function QuantitePage() {
       texte: `Mise à jour effectuée avec succès pour le colis ${numeroColis}.`,
     })
 
-    setNumeroColis('')
+    // Réinitialisation complète et re-vérification automatique pour afficher la nouvelle référence
     setQuantite('')
-    setNouveauCode('')
-    setColisTrouve(null)
+    if (numeroColis) {
+      const colisMaj = await rechercherColisParNumero(numeroColis)
+      setColisTrouve(colisMaj)
+      if (colisMaj) setNouveauCode(colisMaj.reference ?? '')
+    }
   }
 
   return (
@@ -160,6 +159,10 @@ export default function QuantitePage() {
             </p>
 
             <p className="text-sm text-[#8A8378]">
+              Code actuel : {colisTrouve.reference}
+            </p>
+
+            <p className="text-sm text-[#8A8378]">
               Quantité actuelle : {colisTrouve.quantite}
             </p>
 
@@ -173,7 +176,7 @@ export default function QuantitePage() {
           <>
             <div className="flex flex-col gap-1 mt-2 p-3 bg-orange-50 rounded-xl border border-orange-200">
               <label className="text-xs font-semibold text-orange-800">
-                Modification du code / référence :
+                Modification du code :
               </label>
               <input
                 type="text"
