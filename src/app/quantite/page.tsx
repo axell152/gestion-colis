@@ -156,7 +156,7 @@ export default function QuantitePage() {
         {colisTrouve && (
           <>
             {/* Zone de saisie JSX pour modifier le code du colis (affichée si le rôle est bureau) */}
-            {utilisateurRole === 'bureau' && (
+            
               <div className="flex flex-col gap-1 mt-2 p-3 bg-orange-50 rounded-xl border border-orange-200">
                 <label className="text-xs font-semibold text-orange-800">
                   Modification du code du colis (Réservé au Bureau) :
@@ -169,7 +169,7 @@ export default function QuantitePage() {
                   className={champClass}
                 />
               </div>
-            )}
+            
 
             <input
               type="number"
