@@ -6,6 +6,54 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
+import { prisma } from "./prisma";
+
+export async function modifierCodeColis(colisId: string, nouveauCode: string, utilisateurRole: string) {
+  // Vérification stricte du rôle "bureau"
+  if (utilisateurRole !== "bureau") {
+    throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier le code d'un colis.");
+  }
+
+  if (!nouveauCode || nouveauCode.trim() === "") {
+    throw new Error("Le nouveau code ne peut pas être vide.");
+  }
+
+  try {
+    const colisMisAJour = await prisma.colis.update({
+      where: { id: colisId },
+      data: { code: nouveauCode.trim() },
+    });
+
+    return { success: true, colis: colisMisAJour };
+  } catch (error) {
+    console.error("Erreur lors de la modification du code du colis :", error);
+    throw new Error("Impossible de modifier le code du colis.");
+  }
+}
+
+export async function modifierCodeColis(colisId: string, nouveauCode: string, utilisateurRole: string) {
+  // Vérification stricte du rôle "bureau"
+  if (utilisateurRole !== "bureau") {
+    throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier le code d'un colis.");
+  }
+
+  if (!nouveauCode || nouveauCode.trim() === "") {
+    throw new Error("Le nouveau code ne peut pas être vide.");
+  }
+
+  try {
+    const colisMisAJour = await prisma.colis.update({
+      where: { id: colisId },
+      data: { code: nouveauCode.trim() },
+    });
+
+    return { success: true, colis: colisMisAJour };
+  } catch (error) {
+    console.error("Erreur lors de la modification du code du colis :", error);
+    throw new Error("Impossible de modifier le code du colis.");
+  }
+}
+
 // NOTE: `utilisateurId` est passé explicitement pour l'instant en attendant
 // le branchement de NextAuth (récupération de l'utilisateur connecté côté session).
 
