@@ -6,33 +6,38 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
-export async function modifierCodeColis(colisId: string, nouveauCode: string, utilisateurRole: string) {
+export async function modifierCodeColis(colisId: string, nouveauNumeroColis: string, utilisateurRole: string) {
   // Vérification stricte du rôle "bureau"
   if (utilisateurRole !== "bureau") {
     throw new Error("Action non autorisée : seuls les utilisateurs du bureau peuvent modifier le code d'un colis.");
   }
 
-  if (!nouveauCode || nouveauCode.trim() === "") {
+  const numeroNormalise = normaliserTexte(nouveauNumeroColis)
+
+  if (!numeroNormalise) {
     throw new Error("Le nouveau code ne peut pas être vide.");
   }
 
   try {
     const colisMisAJour = await prisma.colis.update({
       where: { id: colisId },
-      data: { code: nouveauCode.trim() }, // Modification effective du champ 'code'
+      data: { numeroColis: numeroNormalise }, // Utilisation correcte du champ numeroColis
     });
 
     revalidatePath('/quantite');
     revalidatePath('/historique');
     return { success: true, colis: colisMisAJour };
   } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === 'P2002'
+    ) {
+      throw new Error(`Le code "${nouveauNumeroColis}" est déjà utilisé par un autre colis.`);
+    }
     console.error("Erreur lors de la modification du code du colis :", error);
     throw new Error("Impossible de modifier le code du colis.");
   }
 }
-
-// NOTE: `utilisateurId` est passé explicitement pour l'instant en attendant
-// le branchement de NextAuth (récupération de l'utilisateur connecté côté session).
 
 export async function creerUtilisateur(input: {
   name: string
@@ -146,8 +151,8 @@ export async function sortirColis(input: {
 }) {
   const numeroColis = normaliserTexte(input.numeroColis)
   const colis = await prisma.colis.findUnique({
-  where: { numeroColis },
-})
+    where: { numeroColis },
+  })
 
   if (!colis) {
     return {
@@ -193,14 +198,14 @@ export async function deplacerColis(input: {
 }) {
   const numeroColis = normaliserTexte(input.numeroColis)
   const colis = await prisma.colis.findUnique({
-  where: { numeroColis }, 
+    where: { numeroColis }, 
   })
   if (!colis) {
-  return {
-    success: false,
-    message: `Le colis "${input.numeroColis}" est introuvable.`,
+    return {
+      success: false,
+      message: `Le colis "${input.numeroColis}" est introuvable.`,
+    }
   }
-}
 
   const updated = await prisma.colis.update({
     where: { id: colis.id },
@@ -221,7 +226,7 @@ export async function deplacerColis(input: {
   return {
     success: true,
     colis: updated,
-}
+  }
 }
 
 export async function ajusterQuantite(input: {
