@@ -30,7 +30,8 @@ export default function QuantitePage() {
       setUtilisateurId(id)
     }
     if (role) {
-      setUtilisateurRole(role)
+      // On met le rôle en minuscules pour éviter les soucis de casse ("BUREAU" vs "bureau")
+      setUtilisateurRole(role.toLowerCase())
     }
   }, [])
 
@@ -52,7 +53,7 @@ export default function QuantitePage() {
     }
 
     setColisTrouve(colis)
-    setNouveauCode(colis.numeroColis ?? '') // Utilisation correcte de numeroColis
+    setNouveauCode(colis.numeroColis ?? '')
   }
   
   async function onSubmit(e: React.FormEvent) {
@@ -67,7 +68,7 @@ export default function QuantitePage() {
       return
     }
     
-    // Si l'utilisateur est "bureau" et souhaite modifier le numéro/code du colis
+    // Si l'utilisateur est "bureau" et souhaite modifier le code du colis
     if (utilisateurRole === 'bureau' && nouveauCode && colisTrouve && nouveauCode !== colisTrouve.numeroColis) {
       try {
         await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
@@ -106,7 +107,7 @@ export default function QuantitePage() {
   return (
     <main className="p-4 max-w-md mx-auto">
       <UtilisateurActuel />
-      <h1 className="text-xl font-semibold text-[#1A1A1A]">Ajustement de quantité et code</h1>
+      <h1 className="text-xl font-semibold text-[#1A1A1A]">Ajustement du colis</h1>
 
       <form onSubmit={onSubmit} className="flex flex-col gap-3 mt-4">
         <div className="flex gap-2">
@@ -154,7 +155,7 @@ export default function QuantitePage() {
 
         {colisTrouve && (
           <>
-            {/* Champ pour modifier le code/numéro du colis, visible UNIQUEMENT si rôle === "bureau" */}
+            {/* Zone de saisie JSX pour modifier le code du colis (affichée si le rôle est bureau) */}
             {utilisateurRole === 'bureau' && (
               <div className="flex flex-col gap-1 mt-2 p-3 bg-orange-50 rounded-xl border border-orange-200">
                 <label className="text-xs font-semibold text-orange-800">
