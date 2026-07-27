@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
-export async function modifierCodeColis(colisId: string, nouvelleReference: string, utilisateurRole: string) {
+export async function modifierCodeColis(colisId: string, nouvelleReference: string, utilisateurRole: string, utilisateurId: string) {
   // On convertit en minuscules pour accepter "BUREAU" ou "bureau"
   const roleNormalize = utilisateurRole ? utilisateurRole.toLowerCase().trim() : ""
 
@@ -29,12 +29,22 @@ export async function modifierCodeColis(colisId: string, nouvelleReference: stri
   }
 
   try {
+    const colisAvant = await prisma.colis.findUnique({ where: { id: colisId } })
+
     const colisMisAJour = await prisma.colis.update({
       where: { id: colisId },
-      data: { 
+      data: {
         reference: referenceNormalisee,
         designation: catalogue.libelle,
-      }, 
+        mouvements: {
+          create: {
+            type: 'MODIFICATION_CODE',
+            referenceAvant: colisAvant?.reference,
+            referenceApres: referenceNormalisee,
+            utilisateurId,
+          },
+        },
+      },
     });
 
     revalidatePath('/quantite');
