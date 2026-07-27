@@ -16,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <Menu />
+        <div className="print:hidden">
+          <Menu />
+        </div>
 
         {children}
       </body>
