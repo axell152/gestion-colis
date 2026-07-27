@@ -4,6 +4,7 @@ import BoutonGenerer from './BoutonGenerer'
 import LigneComptage from './LigneComptage'
 import AjouterLigneManuelle from './AjouterLigneManuelle'
 import BoutonImprimer from './BoutonImprimer'
+import SelectionneurCompteur from './SelectionneurCompteur'
 
 export const dynamic = 'force-dynamic'
 
@@ -16,10 +17,30 @@ export default async function InventairePage() {
     <main className="max-w-6xl mx-auto px-4 py-6 space-y-6">
       <h1 className="text-xl font-bold text-[#1A1A1A] print:hidden">Inventaire tournant</h1>
 
-      <div className="flex flex-wrap gap-2 print:hidden">
+      {/* Titre + compteur visibles uniquement sur la feuille imprimée */}
+      {inventaire && (
+        <div className="hidden print:block">
+          <h1 className="text-2xl font-bold">INVENTAIRE TOURNANT</h1>
+          <p className="text-sm">
+            Compté par : {inventaire.compteParNom ?? '_______________'} — {inventaire.date.toLocaleDateString('fr-FR')}
+          </p>
+        </div>
+      )}
+
+      <div className="flex flex-wrap items-center gap-3 print:hidden">
         <BoutonGenerer dejaUnInventaire={inventaire !== null} />
         {inventaire && <BoutonImprimer />}
       </div>
+
+      {inventaire && (
+        <div className="print:hidden">
+          <SelectionneurCompteur
+            inventaireId={inventaire.id}
+            compteurActuel={inventaire.compteParNom}
+            utilisateurs={utilisateurs}
+          />
+        </div>
+      )}
 
       <div className="print:hidden">
         <AjouterLigneManuelle />
@@ -27,7 +48,7 @@ export default async function InventairePage() {
 
       {inventaire && (
         <div className="space-y-2">
-          <p className="text-sm text-[#ADA695]">
+          <p className="text-sm text-[#ADA695] print:hidden">
             Généré le {inventaire.date.toLocaleDateString('fr-FR')} — {inventaire.lignes.length} référence(s)
           </p>
           <div className="overflow-x-auto rounded-xl border border-[#EAE4D9] print:border-none print:overflow-visible">
@@ -41,14 +62,13 @@ export default async function InventairePage() {
                   <th className="px-2 py-2">Q. comptée</th>
                   <th className="px-2 py-2 print:hidden">Q. dispo</th>
                   <th className="px-3 py-2 text-center print:hidden">Écart</th>
-                  <th className="px-3 py-2 print:hidden">Compté par</th>
                   <th className="px-3 py-2 print:hidden">Date</th>
                   <th className="px-2 py-2 print:hidden"></th>
                 </tr>
               </thead>
               <tbody>
                 {inventaire.lignes.map((ligne) => (
-                  <LigneComptage key={ligne.id} ligne={ligne} utilisateurs={utilisateurs} />
+                  <LigneComptage key={ligne.id} ligne={ligne} />
                 ))}
               </tbody>
             </table>
