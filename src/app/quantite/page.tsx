@@ -75,7 +75,7 @@ export default function QuantitePage() {
     
    // 1. Modification de la référence si renseignée et différente
     if (nouveauCode && colisTrouve && nouveauCode !== colisTrouve.reference) {
-      const resModif: any = await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole)
+      const resModif: any = await modifierCodeColis(colisTrouve.id, nouveauCode, utilisateurRole, utilisateurId)
       if (resModif && resModif.success === false) {
         setMessage({ type: 'error', texte: resModif.message })
         return
