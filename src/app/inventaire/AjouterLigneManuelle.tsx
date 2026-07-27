@@ -38,14 +38,14 @@ export default function AjouterLigneManuelle() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Ajouter un code à l'inventaire (ex:DV8248)"
+          placeholder="Ajouter un code à l'inventaire (ex: DV8248)"
           value={code}
-          onChange={(e) => setCode(e.target.value)}
+          // On force la valeur en majuscule directement dans le state à la frappe
+          onChange={(e) => setCode(e.target.value.toUpperCase())}
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleAjouter()
           }}
-          // On ajoute la classe "uppercase" ici pour que seule la saisie le soit, pas le placeholder
-          className={`${champClass} uppercase`}
+          className={champClass}
         />
         <button onClick={handleAjouter} disabled={isPending} className={boutonClass}>
           {isPending ? '...' : 'Ajouter'}
