@@ -92,7 +92,7 @@ export default function SortiePage() {
         <div className="mt-4 p-4 rounded-xl border border-[#D9D2C4] bg-white">
           <p className="font-semibold text-[#1A1A1A]">{colisTrouve.designation}</p>
           <p className="text-sm text-[#8A8378] mt-1">
-            Référence : {colisTrouve.reference} · Quantité : {colisTrouve.quantite} · Zone : {colisTrouve.emplacement}
+            Code : {colisTrouve.reference} · Quantité : {colisTrouve.quantite} · Zone : {colisTrouve.emplacement}
           </p>
 
           <button

@@ -6,8 +6,55 @@ import { Prisma } from '@prisma/client'
 import { deduireFinition } from './finition'
 import { revalidatePath } from 'next/cache'
 
-// NOTE: `utilisateurId` est passé explicitement pour l'instant en attendant
-// le branchement de NextAuth (récupération de l'utilisateur connecté côté session).
+export async function modifierCodeColis(colisId: string, nouvelleReference: string, utilisateurRole: string, utilisateurId: string) {
+  // On convertit en minuscules pour accepter "BUREAU" ou "bureau"
+  const roleNormalize = utilisateurRole ? utilisateurRole.toLowerCase().trim() : ""
+
+  if (roleNormalize !== "bureau") {
+    return { success: false, message: "Action non autorisée : seuls les utilisateurs du bureau peuvent modifier la référence." };
+  }
+
+  const referenceNormalisee = normaliserTexte(nouvelleReference)
+
+  if (!referenceNormalisee) {
+    return { success: false, message: "La nouvelle référence ne peut pas être vide." };
+  }
+
+  const catalogue = await prisma.referenceCatalogue.findUnique({
+    where: { code: referenceNormalisee },
+  })
+
+  if (!catalogue) {
+    return { success: false, message: `La référence "${nouvelleReference}" est introuvable dans le catalogue.` };
+  }
+
+  try {
+    const colisAvant = await prisma.colis.findUnique({ where: { id: colisId } })
+
+    const colisMisAJour = await prisma.colis.update({
+      where: { id: colisId },
+      data: {
+        reference: referenceNormalisee,
+        designation: catalogue.libelle,
+        mouvements: {
+          create: {
+            type: 'MODIFICATION_CODE',
+            referenceAvant: colisAvant?.reference,
+            referenceApres: referenceNormalisee,
+            utilisateurId,
+          },
+        },
+      },
+    });
+
+    revalidatePath('/quantite');
+    revalidatePath('/historique');
+    return { success: true, colis: colisMisAJour };
+  } catch (error) {
+    console.error("Erreur lors de la modification de la référence du colis :", error);
+    return { success: false, message: "Erreur technique lors de la modification de la référence." };
+  }
+}
 
 export async function creerUtilisateur(input: {
   name: string
@@ -21,8 +68,6 @@ export async function creerUtilisateur(input: {
     },
   })
 }
-
-
 
 export async function rechercherColisParReference(reference: string) {
   return prisma.colis.findMany({
@@ -123,8 +168,8 @@ export async function sortirColis(input: {
 }) {
   const numeroColis = normaliserTexte(input.numeroColis)
   const colis = await prisma.colis.findUnique({
-  where: { numeroColis },
-})
+    where: { numeroColis },
+  })
 
   if (!colis) {
     return {
@@ -170,14 +215,14 @@ export async function deplacerColis(input: {
 }) {
   const numeroColis = normaliserTexte(input.numeroColis)
   const colis = await prisma.colis.findUnique({
-  where: { numeroColis }, 
+    where: { numeroColis }, 
   })
   if (!colis) {
-  return {
-    success: false,
-    message: `Le colis "${input.numeroColis}" est introuvable.`,
+    return {
+      success: false,
+      message: `Le colis "${input.numeroColis}" est introuvable.`,
+    }
   }
-}
 
   const updated = await prisma.colis.update({
     where: { id: colis.id },
@@ -198,8 +243,9 @@ export async function deplacerColis(input: {
   return {
     success: true,
     colis: updated,
+  }
 }
-}
+
 export async function ajusterQuantite(input: {
   numeroColis: string
   quantite: number
@@ -228,7 +274,6 @@ export async function ajusterQuantite(input: {
           utilisateurId: input.utilisateurId,
           quantiteAvant: colis.quantite,
           quantiteApres: input.quantite,
-
         },
       },
     },
