@@ -164,18 +164,24 @@ export async function listerUtilisateurs() {
   return prisma.user.findMany({ orderBy: { name: 'asc' } })
 }
 
+export async function definirCompteur(inventaireId: string, nom: string) {
+  await prisma.inventaireTournant.update({
+    where: { id: inventaireId },
+    data: { compteParNom: nom === '' ? null : nom },
+  })
+  revalidatePath('/inventaire')
+}
+
 export async function enregistrerComptage(input: {
   ligneId: string
   quantiteComptee: number | null
   quantiteDispo: number | null
-  compteParNom?: string | null
 }) {
   await prisma.ligneInventaireTournant.update({
     where: { id: input.ligneId },
     data: {
       quantiteComptee: input.quantiteComptee,
       quantiteDispo: input.quantiteDispo,
-      compteParNom: input.compteParNom ?? undefined,
       dateComptage: input.quantiteComptee !== null ? new Date() : null,
     },
   })
