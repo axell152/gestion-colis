@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ajouterLigneManuelle } from '@/lib/inventaire-actions'
 
 const champClass =
-  'flex-1 px-3 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20 uppercase'
+  'flex-1 px-3 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/25'
 
 const boutonClass =
   'px-4 py-3 text-base font-semibold rounded-xl bg-[#1A1A1A] text-white active:scale-[0.98] disabled:opacity-50'
@@ -38,13 +38,14 @@ export default function AjouterLigneManuelle() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Ajouter un Code (ex: DV8248)"
+          placeholder="Ajouter un code à l'inventaire (ex:DV8248)"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleAjouter()
           }}
-          className={champClass}
+          // On ajoute la classe "uppercase" ici pour que seule la saisie le soit, pas le placeholder
+          className={`${champClass} uppercase`}
         />
         <button onClick={handleAjouter} disabled={isPending} className={boutonClass}>
           {isPending ? '...' : 'Ajouter'}
