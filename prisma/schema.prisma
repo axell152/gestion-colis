@@ -38,8 +38,43 @@ enum Finition {
 
 // Table de correspondance CODE -> LIBELLE, importée depuis le fichier Excel existant
 model ReferenceCatalogue {
-  code    String @id
-  libelle String
+  code        String  @id
+  libelle     String
+  // Champs ajoutés pour l'inventaire tournant (issus de INVENTAIRE TOURNANT GRAVESON.xlsm)
+  emplacement String? // emplacement nominal de rangement (ex: "A60 110"), distinct de Colis.emplacement
+  service     String? // "CLO" (service alu) ou "NEG"/"PLA" (service négoce)
+}
+
+// Historique des familles déjà tirées, pour la règle "pas 2 fois en 6 mois"
+model FamilleHistorique {
+  id       String   @id @default(cuid())
+  famille  String
+  date     DateTime @default(now())
+
+  @@index([famille])
+}
+
+model InventaireTournant {
+  id           String                    @id @default(cuid())
+  date         DateTime                  @default(now())
+  compteParNom String?                   // personne désignée pour compter cet inventaire (choix unique)
+  lignes       LigneInventaireTournant[]
+}
+
+model LigneInventaireTournant {
+  id               String              @id @default(cuid())
+  inventaire       InventaireTournant  @relation(fields: [inventaireId], references: [id])
+  inventaireId     String
+  code             String
+  libelle          String
+  emplacement      String?
+  service          String?
+  quantiteComptee  Int?                // saisie par l'utilisateur, null tant que non comptée
+  quantiteDispo    Int?                // saisie manuelle indépendante, comme dans l'Excel actuel
+  compteParNom     String?             // nom de la personne qui a fait le comptage
+  dateComptage     DateTime?           // date/heure de la saisie du comptage
+
+  @@index([inventaireId])
 }
 
 model User {
