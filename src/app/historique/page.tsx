@@ -8,7 +8,7 @@ const LABEL_TYPE: Record<string, string> = {
   SORTIE: 'Sortie',
   DEPLACEMENT: 'Déplacement',
   AJUSTEMENT: 'Ajustement',
-  MODIFICATION_CODE: 'Modification référence',
+  MODIFICATION_CODE: 'Modification Code',
 }
 
 const champClass =
