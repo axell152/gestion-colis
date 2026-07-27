@@ -15,6 +15,7 @@ const liens = [
 const liensBureau = [
   { href: '/historique', label: 'Historique', icone: '📜' },
   { href: '/dispatch', label: 'Dispatch', icone: '📊' },
+  { href: '/inventaire', label: 'Inventaire tournant', icone: '📋' },
   { href: '/utilisateur', label: 'Utilisateurs', icone: '👥' },
 ]
 
