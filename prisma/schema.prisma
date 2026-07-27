@@ -70,6 +70,8 @@ model LigneInventaireTournant {
   service          String?
   quantiteComptee  Int?                // saisie par l'utilisateur, null tant que non comptée
   quantiteDispo    Int?                // saisie manuelle indépendante, comme dans l'Excel actuel
+  compteParNom     String?             // nom de la personne qui a fait le comptage
+  dateComptage     DateTime?           // date/heure de la saisie du comptage
 
   @@index([inventaireId])
 }
