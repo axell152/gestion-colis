@@ -55,9 +55,10 @@ model FamilleHistorique {
 }
 
 model InventaireTournant {
-  id        String                    @id @default(cuid())
-  date      DateTime                  @default(now())
-  lignes    LigneInventaireTournant[]
+  id           String                    @id @default(cuid())
+  date         DateTime                  @default(now())
+  compteParNom String?                   // personne désignée pour compter cet inventaire (choix unique)
+  lignes       LigneInventaireTournant[]
 }
 
 model LigneInventaireTournant {
