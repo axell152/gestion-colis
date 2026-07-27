@@ -56,7 +56,6 @@ export default function QuantitePage() {
     }
 
     setColisTrouve(colis)
-    setNouveauCode(colis.reference ?? '')
   }
   
   async function onSubmit(e: React.FormEvent) {
@@ -119,8 +118,8 @@ export default function QuantitePage() {
     if (numeroColis) {
       const colisMaj = await rechercherColisParNumero(numeroColis)
       setColisTrouve(colisMaj)
-      if (colisMaj) setNouveauCode(colisMaj.reference ?? '')
     }
+    setNouveauCode('')
   }
 
   return (
@@ -182,7 +181,7 @@ export default function QuantitePage() {
               type="text"
               value={nouveauCode}
               onChange={(e) => setNouveauCode(e.target.value.toUpperCase())}
-              placeholder="Nouveau code (ex: EPPO426E)"
+              placeholder="Correction du code (ex: EPPO426E)"
               className={champClass}
             />
 
@@ -191,7 +190,7 @@ export default function QuantitePage() {
               min={0}
               value={quantite}
               onChange={(e) => setQuantite(e.target.value)}
-              placeholder="Nouvelle quantité (optionnel)"
+              placeholder="Nouvelle quantité (ex: 8)"
               className={champClass}
             />
 
