@@ -8,6 +8,7 @@ const LABEL_TYPE: Record<string, string> = {
   SORTIE: 'Sortie',
   DEPLACEMENT: 'Déplacement',
   AJUSTEMENT: 'Ajustement',
+  MODIFICATION_CODE: 'Modification référence',
 }
 
 const champClass =
@@ -73,6 +74,8 @@ function detailMouvement(m: (typeof mouvements)[number]) {
         return `${m.emplacementAvant} → ${m.emplacementApres}`
       case 'AJUSTEMENT':
         return `${m.quantiteAvant} → ${m.quantiteApres}`
+      case 'MODIFICATION_CODE':
+        return `${m.referenceAvant} → ${m.referenceApres}`
       default:
         return '—'
     }
@@ -106,6 +109,7 @@ function detailMouvement(m: (typeof mouvements)[number]) {
             <option value="SORTIE">Sortie</option>
             <option value="DEPLACEMENT">Déplacement</option>
             <option value="AJUSTEMENT">Ajustement</option>
+            <option value="MODIFICATION_CODE">Modification référence</option>
           </select>
 
           <select
