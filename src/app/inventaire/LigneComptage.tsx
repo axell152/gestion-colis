@@ -6,9 +6,6 @@ import { enregistrerComptage, supprimerLigne } from '@/lib/inventaire-actions'
 const champClass =
   'w-20 px-2 py-2 text-base text-center rounded-lg border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
 
-const selectClass =
-  'px-2 py-2 text-sm rounded-lg border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
-
 type Ligne = {
   id: string
   code: string
@@ -17,33 +14,24 @@ type Ligne = {
   service: string | null
   quantiteComptee: number | null
   quantiteDispo: number | null
-  compteParNom: string | null
   dateComptage: Date | null
 }
 
-export default function LigneComptage({
-  ligne,
-  utilisateurs,
-}: {
-  ligne: Ligne
-  utilisateurs: { id: string; name: string }[]
-}) {
+export default function LigneComptage({ ligne }: { ligne: Ligne }) {
   const [comptee, setComptee] = useState<string>(ligne.quantiteComptee?.toString() ?? '')
   const [dispo, setDispo] = useState<string>(ligne.quantiteDispo?.toString() ?? '')
-  const [compteur, setCompteur] = useState<string>(ligne.compteParNom ?? '')
   const [isPending, startTransition] = useTransition()
 
   const nComptee = comptee === '' ? null : Number(comptee)
   const nDispo = dispo === '' ? null : Number(dispo)
   const difference = nComptee !== null && nDispo !== null ? nComptee - nDispo : null
 
-  const sauvegarder = (nouvelleComptee: string, nouvelleDispo: string, nouveauCompteur: string) => {
+  const sauvegarder = (nouvelleComptee: string, nouvelleDispo: string) => {
     startTransition(() => {
       enregistrerComptage({
         ligneId: ligne.id,
         quantiteComptee: nouvelleComptee === '' ? null : Number(nouvelleComptee),
         quantiteDispo: nouvelleDispo === '' ? null : Number(nouvelleDispo),
-        compteParNom: nouveauCompteur === '' ? null : nouveauCompteur,
       })
     })
   }
@@ -78,7 +66,7 @@ export default function LigneComptage({
           inputMode="numeric"
           value={comptee}
           onChange={(e) => setComptee(e.target.value)}
-          onBlur={(e) => sauvegarder(e.target.value, dispo, compteur)}
+          onBlur={(e) => sauvegarder(e.target.value, dispo)}
           className={champClass}
         />
       </td>
@@ -93,7 +81,7 @@ export default function LigneComptage({
           inputMode="numeric"
           value={dispo}
           onChange={(e) => setDispo(e.target.value)}
-          onBlur={(e) => sauvegarder(comptee, e.target.value, compteur)}
+          onBlur={(e) => sauvegarder(comptee, e.target.value)}
           className={champClass}
         />
       </td>
@@ -101,26 +89,6 @@ export default function LigneComptage({
         {difference !== null ? difference : '—'}
       </td>
 
-      {/* Compté par : choix manuel de la personne qui a fait le comptage */}
-      <td className="px-2 py-2 print:hidden">
-        <select
-          value={compteur}
-          disabled={isPending}
-          onChange={(e) => {
-            const valeur = e.target.value
-            setCompteur(valeur)
-            sauvegarder(comptee, dispo, valeur)
-          }}
-          className={selectClass}
-        >
-          <option value="">—</option>
-          {utilisateurs.map((u) => (
-            <option key={u.id} value={u.name}>
-              {u.name}
-            </option>
-          ))}
-        </select>
-      </td>
       <td className="px-3 py-2 text-sm text-[#ADA695] whitespace-nowrap print:hidden">
         {ligne.dateComptage ? new Date(ligne.dateComptage).toLocaleString('fr-FR') : '—'}
       </td>
