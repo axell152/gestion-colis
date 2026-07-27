@@ -190,7 +190,7 @@ export default function QuantitePage() {
               min={0}
               value={quantite}
               onChange={(e) => setQuantite(e.target.value)}
-              placeholder="Nouvelle quantité (ex: 8)"
+              placeholder="Nouvelle quantité (ex: 80)"
               className={champClass}
             />
 
