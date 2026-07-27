@@ -14,7 +14,8 @@ export default async function InventairePage() {
   const utilisateurs = await listerUtilisateurs()
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-6 space-y-6">
+    // Remplacement de max-w-6xl par max-w-full (ou w-full) avec un padding horizontal ajusté si besoin
+    <main className="w-full px-6 py-6 space-y-6">
       <h1 className="text-xl font-bold text-[#1A1A1A] print:hidden">Inventaire tournant</h1>
 
       {/* Titre + compteur visibles uniquement sur la feuille imprimée */}
@@ -51,7 +52,8 @@ export default async function InventairePage() {
           <p className="text-sm text-[#ADA695] print:hidden">
             Généré le {inventaire.date.toLocaleDateString('fr-FR')} — {inventaire.lignes.length} référence(s)
           </p>
-          <div className="overflow-x-auto rounded-xl border border-[#EAE4D9] print:border-none print:overflow-visible">
+          {/* Suppression de overflow-x-auto pour éviter la barre de défilement et étirer le tableau */}
+          <div className="w-full rounded-xl border border-[#EAE4D9] print:border-none">
             <table className="w-full">
               <thead className="bg-[#F5F1EA] text-left text-xs uppercase text-[#ADA695] print:bg-transparent">
                 <tr>
