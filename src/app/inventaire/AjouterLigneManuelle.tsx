@@ -38,7 +38,7 @@ export default function AjouterLigneManuelle() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Code référence (ex: DV8248)"
+          placeholder="Ajouter un Code (ex: DV8248)"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           onKeyDown={(e) => {
