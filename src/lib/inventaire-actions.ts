@@ -109,6 +109,57 @@ export async function historiqueInventaires() {
   })
 }
 
+export async function ajouterLigneManuelle(codeSaisi: string) {
+  const code = codeSaisi.trim().toUpperCase()
+
+  if (!code) {
+    throw new Error('Merci de saisir un code.')
+  }
+
+  const reference = await prisma.referenceCatalogue.findUnique({ where: { code } })
+
+  if (!reference) {
+    throw new Error(`Référence "${code}" introuvable dans le catalogue.`)
+  }
+
+  // Réutilise l'inventaire en cours s'il y en a un, sinon en crée un nouveau
+  // (permet de démarrer un inventaire 100% manuel, sans tirage aléatoire).
+  let inventaire = await prisma.inventaireTournant.findFirst({
+    orderBy: { date: 'desc' },
+    include: { lignes: true },
+  })
+
+  if (!inventaire) {
+    inventaire = await prisma.inventaireTournant.create({
+      data: {},
+      include: { lignes: true },
+    })
+  }
+
+  const dejaPresente = inventaire.lignes.some((l) => l.code === code)
+  if (dejaPresente) {
+    throw new Error(`"${code}" est déjà dans l'inventaire en cours.`)
+  }
+
+  await prisma.ligneInventaireTournant.create({
+    data: {
+      inventaireId: inventaire.id,
+      code: reference.code,
+      libelle: reference.libelle,
+      emplacement: reference.emplacement,
+      service: reference.service,
+    },
+  })
+
+  revalidatePath('/inventaire')
+}
+
+export async function nouvelInventaireManuel() {
+  const inventaire = await prisma.inventaireTournant.create({ data: {} })
+  revalidatePath('/inventaire')
+  return inventaire
+}
+
 export async function enregistrerComptage(input: {
   ligneId: string
   quantiteComptee: number | null
