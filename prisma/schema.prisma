@@ -25,6 +25,7 @@ enum TypeMouvement {
   SORTIE
   DEPLACEMENT
   AJUSTEMENT
+  MODIFICATION_CODE
 }
 
 enum Finition {
@@ -108,6 +109,8 @@ model Mouvement {
   emplacementApres String?
   quantiteAvant Int?
   quantiteApres Int?
+  referenceAvant String?
+  referenceApres String?
   utilisateur      User          @relation(fields: [utilisateurId], references: [id])
   utilisateurId    String
   date             DateTime      @default(now())
