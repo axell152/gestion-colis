@@ -188,6 +188,18 @@ export async function enregistrerComptage(input: {
   revalidatePath('/inventaire')
 }
 
+export async function rechercherLignesParCode(codeSaisi: string) {
+  const code = codeSaisi.trim().toUpperCase()
+
+  if (!code) return []
+
+  return prisma.ligneInventaireTournant.findMany({
+    where: { code: { contains: code, mode: 'insensitive' } },
+    include: { inventaire: true },
+    orderBy: { inventaire: { date: 'desc' } },
+  })
+}
+
 export async function supprimerLigne(ligneId: string) {
   await prisma.ligneInventaireTournant.delete({ where: { id: ligneId } })
   revalidatePath('/inventaire')
