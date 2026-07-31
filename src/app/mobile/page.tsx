@@ -31,7 +31,7 @@ export default async function MobilePage() {
                 href={`/mobile/${u.id}?nom=${encodeURIComponent(u.name)}&role=${u.role}`}
                 className="flex items-center gap-4 bg-white rounded-2xl px-4 py-4 shadow-sm border border-[#EAE4D9] active:scale-[0.98] active:bg-[#FBF9F5] transition"
               >
-                <div className="w-12 h-12 shrink-0 rounded-full bg-[#E8703A] text-white flex items-center justify-center text-lg font-semibold">
+                <div className="w-12 h-12 shrink-0 rounded-full bg-[#005B9E] text-white flex items-center justify-center text-lg font-semibold">
                   {initiale}
                 </div>
 

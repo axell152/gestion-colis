@@ -85,7 +85,7 @@ export default async function InventairePage() {
               <li key={inv.id} className="px-3 py-2 text-sm">
                 <Link
                   href={`/inventaire/historique/${inv.id}`}
-                  className="flex justify-between hover:text-[#E8703A]"
+                  className="flex justify-between hover:text-[#005B9E]"
                 >
                   <span>{inv.date.toLocaleDateString('fr-FR')}</span>
                   <span className="text-[#ADA695]">{inv.lignes.length} référence(s)</span>
