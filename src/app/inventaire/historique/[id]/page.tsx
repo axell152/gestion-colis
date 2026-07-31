@@ -20,7 +20,7 @@ export default async function HistoriqueInventaireDetailPage({
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-6 space-y-6">
-      <Link href="/inventaire" className="text-sm text-[#E8703A] underline">
+      <Link href="/inventaire" className="text-sm text-[#005B9E] underline">
         ← Retour à l'inventaire
       </Link>
 
