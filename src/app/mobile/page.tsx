@@ -14,7 +14,7 @@ export default async function MobilePage() {
     <main className="min-h-screen bg-[#F5F1EA] flex flex-col items-center px-6 pt-16">
       <div className="w-full max-w-sm">
         <h1 className="text-3xl font-bold text-[#1A1A1A] text-center">
-          Qui êtes-vous ?
+          Inventaire & Surstock
         </h1>
         <p className="text-sm text-[#8A8378] text-center mt-2 mb-10">
           Sélectionnez votre profil pour commencer
