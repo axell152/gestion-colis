@@ -5,7 +5,7 @@ import { sortirColis, rechercherColisParNumero } from '@/lib/colis-actions'
 import UtilisateurActuel from '@/app/components/UtilisateurActuel'
 
 const champClass =
-  'w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/20'
+  'w-full px-4 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] placeholder-[#ADA695] focus:outline-none focus:border-[#005B9E] focus:ring-2 focus:ring-[#005B9E]/20'
 
 type ColisTrouve = Awaited<ReturnType<typeof rechercherColisParNumero>>
 
@@ -82,7 +82,7 @@ export default function SortiePage() {
           type="button"
           onClick={onVerifier}
           disabled={!numeroColis || recherche}
-          className="px-5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
+          className="px-5 rounded-xl bg-[#005B9E] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
         >
           Vérifier
         </button>
@@ -97,7 +97,7 @@ export default function SortiePage() {
 
           <button
             onClick={onConfirmer}
-            className="w-full mt-4 py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+            className="w-full mt-4 py-3.5 rounded-xl bg-[#005B9E] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
           >
             Confirmer la sortie de ce colis
           </button>
