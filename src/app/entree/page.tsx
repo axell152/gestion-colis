@@ -89,7 +89,7 @@ export default function EntreePage() {
         />
         <button
           type="submit"
-          className="py-3.5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
+          className="py-3.5 rounded-xl bg-[#005B9E] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition"
         >
           Enregistrer l'entrée
         </button>
