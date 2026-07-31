@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ajouterLigneManuelle } from '@/lib/inventaire-actions'
 
 const champClass =
-  'flex-1 px-3 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#E8703A] focus:ring-2 focus:ring-[#E8703A]/25'
+  'flex-1 px-3 py-3 text-base rounded-xl border border-[#D9D2C4] bg-white text-[#1A1A1A] focus:outline-none focus:border-[#005B9E] focus:ring-2 focus:ring-[#005B9E]/25'
 
 const boutonClass =
   'px-4 py-3 text-base font-semibold rounded-xl bg-[#1A1A1A] text-white active:scale-[0.98] disabled:opacity-50'
