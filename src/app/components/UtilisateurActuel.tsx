@@ -28,7 +28,7 @@ export default function UtilisateurActuel() {
           localStorage.removeItem('utilisateurNom')
           localStorage.removeItem('role')
         }}
-        className="text-sm text-[#E8703A] underline"
+        className="text-sm text-[#005B9E] underline"
       >
         Changer d'utilisateur
       </Link>
