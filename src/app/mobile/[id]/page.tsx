@@ -38,7 +38,7 @@ window.dispatchEvent(new Event('role-changed'))
 
   return (
     <main className="min-h-screen bg-[#F5F1EA] flex flex-col items-center justify-center px-6">
-      <div className="w-10 h-10 border-4 border-[#EAE4D9] border-t-[#E8703A] rounded-full animate-spin" />
+      <div className="w-10 h-10 border-4 border-[#EAE4D9] border-t-[#005B9E] rounded-full animate-spin" />
       <p className="mt-4 text-sm text-[#8A8378]">Connexion...</p>
     </main>
   )
