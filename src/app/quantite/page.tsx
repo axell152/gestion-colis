@@ -145,7 +145,7 @@ export default function QuantitePage() {
             type="button"
             onClick={onVerifier}
             disabled={!numeroColis || recherche}
-            className="px-5 rounded-xl bg-[#E8703A] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
+            className="px-5 rounded-xl bg-[#005B9E] text-white font-semibold text-base shadow-sm active:scale-[0.98] transition disabled:opacity-40"
           >
             Vérifier
           </button>
