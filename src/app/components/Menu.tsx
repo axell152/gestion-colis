@@ -70,7 +70,7 @@ export default function Menu() {
                 href={lien.href}
                 className={`flex items-center gap-3 px-4 py-3 text-base border-b border-[#F5F1EA] ${
                   actif
-                    ? 'bg-[#FBEADD] text-[#E8703A] font-semibold'
+                    ? 'bg-[#FBEADD] text-[#005B9E] font-semibold'
                     : 'text-[#1A1A1A]'
                 }`}
               >
