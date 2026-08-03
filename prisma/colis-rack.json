@@ -1,0 +1,1523 @@
+[
+  {
+    "numeroColis": "E005",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-03T09:50:43"
+  },
+  {
+    "numeroColis": "E006",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-03T11:25:22"
+  },
+  {
+    "numeroColis": "E007",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-03T11:24:53"
+  },
+  {
+    "numeroColis": "E008",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-03T09:37:47"
+  },
+  {
+    "numeroColis": "E014",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "C40",
+    "date": "2026-06-11T07:27:04"
+  },
+  {
+    "numeroColis": "E015",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "C40",
+    "date": "2026-06-11T07:27:30"
+  },
+  {
+    "numeroColis": "E016",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-11T06:54:42"
+  },
+  {
+    "numeroColis": "E017",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-11T07:08:34"
+  },
+  {
+    "numeroColis": "E018",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-11T07:08:59"
+  },
+  {
+    "numeroColis": "E010",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 70,
+    "emplacement": "R20",
+    "date": "2026-06-03T07:32:34"
+  },
+  {
+    "numeroColis": "E011",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 68,
+    "emplacement": "R20",
+    "date": "2026-06-03T07:31:58"
+  },
+  {
+    "numeroColis": "E012",
+    "reference": "EPLO429E",
+    "designation": "LISSE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 70,
+    "emplacement": "R20",
+    "date": "2026-06-03T06:25:45"
+  },
+  {
+    "numeroColis": "E022",
+    "reference": "EPPI426E",
+    "designation": "None",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R10",
+    "date": "2026-07-10T05:45:13"
+  },
+  {
+    "numeroColis": "E023",
+    "reference": "EPPI426E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R10",
+    "date": "2026-07-10T06:14:22"
+  },
+  {
+    "numeroColis": "E024",
+    "reference": "EPPI426E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R10",
+    "date": "2026-07-10T06:19:23"
+  },
+  {
+    "numeroColis": "E013",
+    "reference": "EPLO429E",
+    "designation": "LISSE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 70,
+    "emplacement": "R20",
+    "date": "2026-06-03T06:26:21"
+  },
+  {
+    "numeroColis": "E019",
+    "reference": "EPLO431E",
+    "designation": "LISSE P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-29T06:29:26"
+  },
+  {
+    "numeroColis": "E020",
+    "reference": "CPOT31E",
+    "designation": "POTEAUX P100 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R10",
+    "date": "2026-06-29T06:52:37"
+  },
+  {
+    "numeroColis": "E021",
+    "reference": "EPPI426E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 54,
+    "emplacement": "R10",
+    "date": "2026-06-29T06:54:26"
+  },
+  {
+    "numeroColis": "E025",
+    "reference": "EPPI429E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R10",
+    "date": "2026-07-09T12:57:58"
+  },
+  {
+    "numeroColis": "E026",
+    "reference": "EPPI431E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 66,
+    "emplacement": "R10",
+    "date": "2026-07-09T08:56:51"
+  },
+  {
+    "numeroColis": "E027",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T09:05:56"
+  },
+  {
+    "numeroColis": "E028",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-09T12:29:30"
+  },
+  {
+    "numeroColis": "E029",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-09T12:28:58"
+  },
+  {
+    "numeroColis": "E030",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-09T12:28:26"
+  },
+  {
+    "numeroColis": "E031",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T11:24:22"
+  },
+  {
+    "numeroColis": "E032",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T11:24:50"
+  },
+  {
+    "numeroColis": "E037",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-10T05:58:47"
+  },
+  {
+    "numeroColis": "E038",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 76,
+    "emplacement": "R20",
+    "date": "2026-07-10T06:21:29"
+  },
+  {
+    "numeroColis": "E033",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T09:49:19"
+  },
+  {
+    "numeroColis": "E034",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T09:48:44"
+  },
+  {
+    "numeroColis": "E035",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-09T12:17:31"
+  },
+  {
+    "numeroColis": "E036",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 64,
+    "emplacement": "R20",
+    "date": "2026-07-09T12:16:59"
+  },
+  {
+    "numeroColis": "E039",
+    "reference": "EPPO431E",
+    "designation": "POTEAUX P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-09T08:56:15"
+  },
+  {
+    "numeroColis": "E040",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "D10",
+    "date": "2026-07-10T06:33:02"
+  },
+  {
+    "numeroColis": "E041",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "D10",
+    "date": "2026-07-10T06:35:45"
+  },
+  {
+    "numeroColis": "E046",
+    "reference": "EPPO458E",
+    "designation": "POTEAUX P40 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-23T08:54:15"
+  },
+  {
+    "numeroColis": "E217",
+    "reference": "EPLO258E",
+    "designation": "LISSE P26 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E218",
+    "reference": "EPLO458E",
+    "designation": "LISSE P40 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 15,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E301",
+    "reference": "EPPO231E",
+    "designation": "POTEAUX P26 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 144,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E332",
+    "reference": "CTRANUE",
+    "designation": "TRAVERSE P100 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E335",
+    "reference": "CTRANUE",
+    "designation": "TRAVERSE P100 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E339",
+    "reference": "CPOT31E",
+    "designation": "POTEAUX P100 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 32,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E489",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E492",
+    "reference": "CPOT26E",
+    "designation": "POTEAUX P100 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E536",
+    "reference": "CPOT31E",
+    "designation": "POTEAUX P100 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E572",
+    "reference": "CPI458E",
+    "designation": "POTEAUX INTERMEDIAIRE P100 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 60,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E573",
+    "reference": "CPI458E",
+    "designation": "POTEAUX INTERMEDIAIRE P100 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 60,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E592",
+    "reference": "CPI426E",
+    "designation": "POTEAUX INTERMEDIAIRE P100 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 60,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E610",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E614",
+    "reference": "EPPI426E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E623",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E630",
+    "reference": "EPPO431E",
+    "designation": "POTEAUX P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E637",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E638",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E640",
+    "reference": "EPLO458E",
+    "designation": "LISSE P40 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E643",
+    "reference": "EPPO429E",
+    "designation": "POTEAUX P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E647",
+    "reference": "EPPO458E",
+    "designation": "POTEAUX P40 BRUT DE 5800",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E662",
+    "reference": "EPPI429E",
+    "designation": "POTEAUX INTERMEDIAIRE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 100,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E671",
+    "reference": "EPLO429E",
+    "designation": "LISSE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E673",
+    "reference": "EPLO429E",
+    "designation": "LISSE P40 BRUT DE 2900",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "E042",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "D10",
+    "date": "2026-07-10T06:31:40"
+  },
+  {
+    "numeroColis": "E043",
+    "reference": "EPTRANU4",
+    "designation": "TRAVERSE P40 BRUT DE 1169",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "D10",
+    "date": "2026-07-10T06:32:08"
+  },
+  {
+    "numeroColis": "E044",
+    "reference": "CPOT26E",
+    "designation": "POTEAUX P100 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R20",
+    "date": "2026-07-10T09:15:29"
+  },
+  {
+    "numeroColis": "E045",
+    "reference": "EPPO226E",
+    "designation": "POTEAUX P26 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 128,
+    "emplacement": "R20",
+    "date": "2026-07-10T09:16:26"
+  },
+  {
+    "numeroColis": "E046-DUP2",
+    "reference": "EPPO431E",
+    "designation": "POTEAUX P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-24T12:45:54"
+  },
+  {
+    "numeroColis": "E047",
+    "reference": "EPPO431E",
+    "designation": "POTEAUX P40 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-24T12:46:26"
+  },
+  {
+    "numeroColis": "E048",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-24T12:27:01"
+  },
+  {
+    "numeroColis": "E049",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R10",
+    "date": "2026-07-24T12:27:32"
+  },
+  {
+    "numeroColis": "E050",
+    "reference": "EPLO426E",
+    "designation": "LISSE P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 76,
+    "emplacement": "R20",
+    "date": "2026-07-24T12:31:47"
+  },
+  {
+    "numeroColis": "E051",
+    "reference": "CPOT26E",
+    "designation": "POTEAUX P100 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R10",
+    "date": "2026-07-27T08:42:57"
+  },
+  {
+    "numeroColis": "E052",
+    "reference": "CPOT31E",
+    "designation": "POTEAUX P100 BRUT DE 3150",
+    "finition": "E",
+    "quantite": 50,
+    "emplacement": "R10",
+    "date": "2026-07-27T08:43:27"
+  },
+  {
+    "numeroColis": "E053",
+    "reference": "EPPO426E",
+    "designation": "POTEAUX P40 BRUT DE 2650",
+    "finition": "E",
+    "quantite": 80,
+    "emplacement": "R20",
+    "date": "2026-07-24T12:31:13"
+  },
+  {
+    "numeroColis": "B001",
+    "reference": "EPCJ426B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C40",
+    "date": "2026-06-03T12:59:21"
+  },
+  {
+    "numeroColis": "B005",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C40",
+    "date": "2026-06-02T14:45:45"
+  },
+  {
+    "numeroColis": "B007",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C50",
+    "date": "2026-06-02T14:32:48"
+  },
+  {
+    "numeroColis": "B008",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C50",
+    "date": "2026-06-02T14:34:03"
+  },
+  {
+    "numeroColis": "B009",
+    "reference": "EPPACO31B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C30",
+    "date": "2026-06-03T11:48:53"
+  },
+  {
+    "numeroColis": "B010",
+    "reference": "EPPACO31B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150",
+    "finition": "B",
+    "quantite": 10,
+    "emplacement": "C30",
+    "date": "2026-06-03T11:49:29"
+  },
+  {
+    "numeroColis": "B011",
+    "reference": "EPL2629B",
+    "designation": "LISSE P26 DE 2900",
+    "finition": "B",
+    "quantite": 144,
+    "emplacement": "C20",
+    "date": "2026-06-12T13:46:08"
+  },
+  {
+    "numeroColis": "B012",
+    "reference": "EPCPSC60B",
+    "designation": "PROFIL CARRE PORTE SQUARE SV DE 6000",
+    "finition": "B",
+    "quantite": 55,
+    "emplacement": "F30",
+    "date": "2026-06-15T07:51:42"
+  },
+  {
+    "numeroColis": "B013",
+    "reference": "CL4029B",
+    "designation": "LISSE P100 DE 2900",
+    "finition": "B",
+    "quantite": 48,
+    "emplacement": "C70",
+    "date": "2026-06-29T06:34:15"
+  },
+  {
+    "numeroColis": "B014",
+    "reference": "CL4029B",
+    "designation": "LISSE P100 DE 2900",
+    "finition": "B",
+    "quantite": 80,
+    "emplacement": "C70",
+    "date": "2026-06-29T06:33:02"
+  },
+  {
+    "numeroColis": "B015",
+    "reference": "CL4029B",
+    "designation": "LISSE P100 DE 2900",
+    "finition": "B",
+    "quantite": 80,
+    "emplacement": "C70",
+    "date": "2026-06-29T06:33:38"
+  },
+  {
+    "numeroColis": "B016",
+    "reference": "EPCJ431B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 3150",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C30",
+    "date": "2026-07-09T13:41:45"
+  },
+  {
+    "numeroColis": "B017",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C50",
+    "date": "2026-07-10T05:19:42"
+  },
+  {
+    "numeroColis": "B018",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C40",
+    "date": "2026-07-09T13:05:24"
+  },
+  {
+    "numeroColis": "B019",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C40",
+    "date": "2026-07-09T13:04:46"
+  },
+  {
+    "numeroColis": "B022",
+    "reference": "EPPDV29B",
+    "designation": "PARCLOSE DV DE 2900",
+    "finition": "B",
+    "quantite": 400,
+    "emplacement": "C40",
+    "date": "2026-07-10T06:21:10"
+  },
+  {
+    "numeroColis": "B023",
+    "reference": "EPPACO26B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C30",
+    "date": "2026-07-09T13:42:18"
+  },
+  {
+    "numeroColis": "B024",
+    "reference": "EPPACO26B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C30",
+    "date": "2026-07-10T08:00:22"
+  },
+  {
+    "numeroColis": "B025",
+    "reference": "EPPACO29B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C50",
+    "date": "2026-07-10T06:44:36"
+  },
+  {
+    "numeroColis": "B455",
+    "reference": "EPHABSA93B",
+    "designation": "HUISSERIE ARRONDIE 930 STANDARD",
+    "finition": "B",
+    "quantite": 5,
+    "emplacement": "C50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B470",
+    "reference": "EPGOU58B",
+    "designation": "GOULOTTE ELECTRIQUE DE 5800",
+    "finition": "B",
+    "quantite": 28,
+    "emplacement": "F30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B522",
+    "reference": "EPPAC31B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE FERME DE 3150",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B545",
+    "reference": "CPACO26B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650",
+    "finition": "B",
+    "quantite": 4,
+    "emplacement": "C50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B573",
+    "reference": "CL4029B",
+    "designation": "LISSE P100 DE 2900",
+    "finition": "B",
+    "quantite": 80,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B641",
+    "reference": "EPCPDC60B",
+    "designation": "PROFIL CARRE PORTE SQUARE DV DE 6000",
+    "finition": "B",
+    "quantite": 40,
+    "emplacement": "F10",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B657",
+    "reference": "EPPACO26B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B664",
+    "reference": "EPPDV29B",
+    "designation": "PARCLOSE DV DE 2900",
+    "finition": "B",
+    "quantite": 400,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B666",
+    "reference": "EPPACO29B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "B",
+    "quantite": 15,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B671",
+    "reference": "EPPACO26B",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "B",
+    "quantite": 13,
+    "emplacement": "C40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B672",
+    "reference": "EPP3D26B",
+    "designation": "POTEAU 3D DE 2650",
+    "finition": "B",
+    "quantite": 14,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B673",
+    "reference": "EPGOU29B",
+    "designation": "GOULOTTE ELECTRIQUE DE 2900",
+    "finition": "B",
+    "quantite": 20,
+    "emplacement": "C60",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B674",
+    "reference": "EPP3D29B",
+    "designation": "POTEAU 3D DE 2900",
+    "finition": "B",
+    "quantite": 28,
+    "emplacement": "C60",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B675",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B676",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B678",
+    "reference": "EPCJ426B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B679",
+    "reference": "EPCJ426B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B680",
+    "reference": "EPCJ429B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2900",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B691",
+    "reference": "EPCJ429B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2900",
+    "finition": "B",
+    "quantite": 550,
+    "emplacement": "C30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B693",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "B026",
+    "reference": "EPCPABIA60B",
+    "designation": "PROFIL PORTE ALU BIPLANE DE 6000",
+    "finition": "B",
+    "quantite": 30,
+    "emplacement": "F50",
+    "date": "2026-07-24T12:20:47"
+  },
+  {
+    "numeroColis": "B027",
+    "reference": "EPCJ426B",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "B",
+    "quantite": 560,
+    "emplacement": "C50",
+    "date": "2026-07-27T08:24:46"
+  },
+  {
+    "numeroColis": "B028",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C50",
+    "date": "2026-07-27T08:28:11"
+  },
+  {
+    "numeroColis": "B029",
+    "reference": "EPL4029B",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "B",
+    "quantite": 96,
+    "emplacement": "C50",
+    "date": "2026-07-27T08:27:40"
+  },
+  {
+    "numeroColis": "N004",
+    "reference": "EPPDV29N",
+    "designation": "PARCLOSE DV DE 2900",
+    "finition": "N",
+    "quantite": 420,
+    "emplacement": "E50",
+    "date": "2026-06-11T07:05:50"
+  },
+  {
+    "numeroColis": "N006",
+    "reference": "EPHABSC93N",
+    "designation": "HUISSERIE CARREE 930 STANDARD",
+    "finition": "N",
+    "quantite": 32,
+    "emplacement": "C20",
+    "date": "2026-07-08T06:36:31"
+  },
+  {
+    "numeroColis": "N009",
+    "reference": "EPPACO26N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "N",
+    "quantite": 15,
+    "emplacement": "E30",
+    "date": "2026-07-10T05:49:21"
+  },
+  {
+    "numeroColis": "N087",
+    "reference": "EPP3D58N",
+    "designation": "POTEAU 3D DE 5800",
+    "finition": "N",
+    "quantite": 12,
+    "emplacement": "F30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N106",
+    "reference": "EPPACO31N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150",
+    "finition": "N",
+    "quantite": 13,
+    "emplacement": "E60",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N138",
+    "reference": "EPHCSA83N",
+    "designation": "HUISSERIE CLARIT ARRONDIE 830",
+    "finition": "N",
+    "quantite": 11,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N139",
+    "reference": "EPCJ431N",
+    "designation": "COUVRE-JOINT 40X1,5 DE 3150",
+    "finition": "N",
+    "quantite": 676,
+    "emplacement": "E60",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N152",
+    "reference": "EPPACO29N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "N",
+    "quantite": 10,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N159",
+    "reference": "CPACO26N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT P100 DE 2650",
+    "finition": "N",
+    "quantite": 9,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N165",
+    "reference": "EPPACO31N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150",
+    "finition": "N",
+    "quantite": 20,
+    "emplacement": "E50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N173",
+    "reference": "EPCPDC60N",
+    "designation": "PROFIL CARRE PORTE SQUARE DV DE 6000",
+    "finition": "N",
+    "quantite": 40,
+    "emplacement": "F40",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N175",
+    "reference": "EPCPSC60N",
+    "designation": "PROFIL CARRE PORTE SQUARE SV DE 6000",
+    "finition": "N",
+    "quantite": 48,
+    "emplacement": "F30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N179",
+    "reference": "EPPDV29N",
+    "designation": "PARCLOSE DV DE 2900",
+    "finition": "N",
+    "quantite": 400,
+    "emplacement": "E20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N181",
+    "reference": "EPP3D29N",
+    "designation": "POTEAU 3D DE 2900",
+    "finition": "N",
+    "quantite": 28,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N183",
+    "reference": "EPPACO29N",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "N",
+    "quantite": 20,
+    "emplacement": "E60",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N185",
+    "reference": "EPGOU29N",
+    "designation": "GOULOTTE ELECTRIQUE DE 2900",
+    "finition": "N",
+    "quantite": 14,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N187",
+    "reference": "EPCJ429N",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2900",
+    "finition": "N",
+    "quantite": 560,
+    "emplacement": "E50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N188",
+    "reference": "EPCJ431N",
+    "designation": "COUVRE-JOINT 40X1,5 DE 3150",
+    "finition": "N",
+    "quantite": 560,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N190",
+    "reference": "EPPHC53N",
+    "designation": "HUISSERIE 75 CARREE DE 5300",
+    "finition": "N",
+    "quantite": 84,
+    "emplacement": "",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "N001",
+    "reference": "EPL4029N",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "N",
+    "quantite": 96,
+    "emplacement": "E20",
+    "date": "2026-06-03T11:18:27"
+  },
+  {
+    "numeroColis": "N002",
+    "reference": "EPL4029N",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "N",
+    "quantite": 96,
+    "emplacement": "E20",
+    "date": "2026-06-03T11:18:55"
+  },
+  {
+    "numeroColis": "N005",
+    "reference": "EPCJ426N",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "N",
+    "quantite": 560,
+    "emplacement": "E40",
+    "date": "2026-06-29T07:00:29"
+  },
+  {
+    "numeroColis": "N007",
+    "reference": "EPL4029N",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "N",
+    "quantite": 96,
+    "emplacement": "E60",
+    "date": "2026-07-09T11:50:22"
+  },
+  {
+    "numeroColis": "N008",
+    "reference": "EPL4029N",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "N",
+    "quantite": 96,
+    "emplacement": "E60",
+    "date": "2026-07-09T11:49:51"
+  },
+  {
+    "numeroColis": "N010",
+    "reference": "EPL4029N",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "N",
+    "quantite": 96,
+    "emplacement": "E20",
+    "date": "2026-07-24T12:37:01"
+  },
+  {
+    "numeroColis": "N011",
+    "reference": "EPCJ426N",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "N",
+    "quantite": 560,
+    "emplacement": "E70",
+    "date": "2026-07-27T07:49:58"
+  },
+  {
+    "numeroColis": "G007",
+    "reference": "EPHABSC93G",
+    "designation": "HUISSERIE CARREE 930 STANDARD",
+    "finition": "G",
+    "quantite": 32,
+    "emplacement": "C30",
+    "date": "2026-07-02T09:06:00"
+  },
+  {
+    "numeroColis": "G013",
+    "reference": "EPPDV29G",
+    "designation": "PARCLOSE DV DE 2900",
+    "finition": "G",
+    "quantite": 400,
+    "emplacement": "E50",
+    "date": "2026-07-10T05:41:14"
+  },
+  {
+    "numeroColis": "G015",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E20",
+    "date": "2026-07-23T09:03:44"
+  },
+  {
+    "numeroColis": "G239",
+    "reference": "EPPHA53G",
+    "designation": "PROFIL HUISSERIE ARRONDIE DE 5300",
+    "finition": "G",
+    "quantite": 48,
+    "emplacement": "F50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G276",
+    "reference": "EPHCSA83G",
+    "designation": "HUISSERIE CLARIT ARRONDIE 830",
+    "finition": "G",
+    "quantite": 7,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G276-DUP2",
+    "reference": "EPHBSA83G",
+    "designation": "HUISSERIE BOIS ARRONDIE 830",
+    "finition": "G",
+    "quantite": 2,
+    "emplacement": "E30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G315",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G319",
+    "reference": "EPCPSC60G",
+    "designation": "PROFIL CARRE PORTE SQUARE SV DE 6000",
+    "finition": "G",
+    "quantite": 48,
+    "emplacement": "F30",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G322",
+    "reference": "EPP3D26G",
+    "designation": "POTEAU 3D DE 2650",
+    "finition": "G",
+    "quantite": 28,
+    "emplacement": "E80",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G324",
+    "reference": "EPPSV29G",
+    "designation": "PARCLOSE SV DE 2900",
+    "finition": "G",
+    "quantite": 320,
+    "emplacement": "E50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G327",
+    "reference": "EPPACO31G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 3150",
+    "finition": "G",
+    "quantite": 20,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G329",
+    "reference": "EPP3D29G",
+    "designation": "POTEAU 3D DE 2900",
+    "finition": "G",
+    "quantite": 28,
+    "emplacement": "E50",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G332",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G333",
+    "reference": "EPCJ426G",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "G",
+    "quantite": 56,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G334",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E70",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G338",
+    "reference": "EPPACO26G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "G",
+    "quantite": 10,
+    "emplacement": "E20",
+    "date": "2026-06-01T00:00:00"
+  },
+  {
+    "numeroColis": "G001",
+    "reference": "EPCJ426G",
+    "designation": "COUVRE-JOINT 40X1,5 DE 2650",
+    "finition": "G",
+    "quantite": 582,
+    "emplacement": "E40",
+    "date": "2026-06-03T13:05:33"
+  },
+  {
+    "numeroColis": "G002",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E40",
+    "date": "2026-06-03T13:03:24"
+  },
+  {
+    "numeroColis": "G003",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E40",
+    "date": "2026-06-03T13:03:55"
+  },
+  {
+    "numeroColis": "G005",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E20",
+    "date": "2026-06-03T11:19:55"
+  },
+  {
+    "numeroColis": "G006",
+    "reference": "EPPACO29G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "G",
+    "quantite": 20,
+    "emplacement": "E80",
+    "date": "2026-06-03T07:49:31"
+  },
+  {
+    "numeroColis": "G008",
+    "reference": "EPL4029G",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "G",
+    "quantite": 96,
+    "emplacement": "E30",
+    "date": "2026-07-10T06:12:33"
+  },
+  {
+    "numeroColis": "G009",
+    "reference": "EPPACO26G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "G",
+    "quantite": 20,
+    "emplacement": "E30",
+    "date": "2026-07-10T06:02:44"
+  },
+  {
+    "numeroColis": "G010",
+    "reference": "EPPACO26G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "G",
+    "quantite": 15,
+    "emplacement": "E80",
+    "date": "2026-07-09T08:45:03"
+  },
+  {
+    "numeroColis": "G011",
+    "reference": "EPPACO26G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2650",
+    "finition": "G",
+    "quantite": 20,
+    "emplacement": "E80",
+    "date": "2026-07-09T08:44:24"
+  },
+  {
+    "numeroColis": "G012",
+    "reference": "EPPACO29G",
+    "designation": "POTEAU D'ANGLE DROIT CARRE OUVERT DE 2900",
+    "finition": "G",
+    "quantite": 20,
+    "emplacement": "E30",
+    "date": "2026-07-10T06:11:52"
+  },
+  {
+    "numeroColis": "A011",
+    "reference": "EPL4029A",
+    "designation": "LISSE P40 DE 2900",
+    "finition": "A",
+    "quantite": 96,
+    "emplacement": "E80",
+    "date": "2026-06-01T00:00:00"
+  }
+]
