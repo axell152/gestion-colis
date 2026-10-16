@@ -5,11 +5,14 @@ import ExportExcel from './ExportExcel'
 
 export const dynamic = 'force-dynamic'
 
-// Premier numéro libre de la finition : comble les trous.
+// Les N premiers numéros libres de la finition : comble les trous.
 // On regarde TOUS les colis (EN_STOCK et SORTI) : un numéro déjà sorti du stock
 // reste en base (numeroColis est unique) et n'est donc jamais proposé.
-async function prochainNumeroColis(finition: FinitionCode): Promise<string | null> {
-  if (!(finition in FINITIONS)) return null
+async function prochainsNumerosColis(
+  finition: FinitionCode,
+  nombre: number
+): Promise<string[]> {
+  if (!(finition in FINITIONS)) return []
   const prefixe = finition // E, B, G, A ou N : même lettre que le numéro de colis
 
   const existants = await prisma.colis.findMany({
@@ -24,10 +27,15 @@ async function prochainNumeroColis(finition: FinitionCode): Promise<string | nul
     if (m) utilises.add(parseInt(m[1], 10))
   }
 
+  const resultat: string[] = []
   let n = 1
-  while (utilises.has(n)) n++
-
-  return `${prefixe}${String(n).padStart(3, '0')}`
+  while (resultat.length < nombre) {
+    if (!utilises.has(n)) {
+      resultat.push(`${prefixe}${String(n).padStart(3, '0')}`)
+    }
+    n++
+  }
+  return resultat
 }
 
 export default async function DispatchPage({
@@ -37,6 +45,7 @@ export default async function DispatchPage({
     finition?: string
     code?: string
     prochain?: string
+    nombre?: string
   }
 }) {
   const colisEnStock = await prisma.colis.findMany({
@@ -59,17 +68,15 @@ export default async function DispatchPage({
           .includes(searchParams.code.toUpperCase())
     )
 
-  const prochainNumero =
-    searchParams.prochain === '1'
-      ? await prochainNumeroColis(finitionSelectionnee)
-      : null
+  const nombreDemande = Math.min(
+    Math.max(parseInt(searchParams.nombre ?? '1', 10) || 1, 1),
+    50
+  )
 
-  const hrefProchain =
-    `/dispatch?finition=${finitionSelectionnee}` +
-    (searchParams.code
-      ? `&code=${encodeURIComponent(searchParams.code)}`
-      : '') +
-    `&prochain=1`
+  const prochainsNumeros =
+    searchParams.prochain === '1'
+      ? await prochainsNumerosColis(finitionSelectionnee, nombreDemande)
+      : []
 
  return (
     <main className="p-4">
@@ -107,29 +114,87 @@ export default async function DispatchPage({
           codeInitial={searchParams.code ?? ''}
         />
 
-        <div className="flex justify-center items-center gap-3 mt-4">
-          <a
-            href={hrefProchain}
+        <form
+          method="get"
+          action="/dispatch"
+          className="flex justify-center items-center gap-3 mt-4"
+        >
+          <input type="hidden" name="finition" value={finitionSelectionnee} />
+          {searchParams.code && (
+            <input type="hidden" name="code" value={searchParams.code} />
+          )}
+          <input type="hidden" name="prochain" value="1" />
+
+          <label style={{ whiteSpace: 'nowrap' }}>
+            Nombre de colis{' '}
+            <input
+              type="number"
+              name="nombre"
+              min={1}
+              max={50}
+              defaultValue={nombreDemande}
+              style={{
+                width: 64,
+                padding: '6px 8px',
+                border: '1px solid #ccc',
+                borderRadius: 6,
+                textAlign: 'center',
+              }}
+            />
+          </label>
+
+          <button
+            type="submit"
             style={{
               padding: '8px 12px',
               border: '1px solid #005B9E',
               borderRadius: 6,
               color: '#005B9E',
-              textDecoration: 'none',
+              background: 'white',
               whiteSpace: 'nowrap',
+              cursor: 'pointer',
             }}
           >
-            Prochain n° de colis
-          </a>
+            Prochains n° de colis
+          </button>
+        </form>
 
-          {searchParams.prochain === '1' && (
-            <span style={{ fontWeight: 'bold', fontSize: 18 }}>
-              {prochainNumero
-                ? `${libelleFinition(finitionSelectionnee)} : ${prochainNumero}`
-                : 'Finition inconnue'}
-            </span>
-          )}
-        </div>
+        {searchParams.prochain === '1' && (
+          <div className="mt-3 text-center">
+            {prochainsNumeros.length === 0 ? (
+              <span style={{ fontWeight: 'bold' }}>Finition inconnue</span>
+            ) : (
+              <>
+                <div style={{ color: '#555', marginBottom: 6 }}>
+                  {libelleFinition(finitionSelectionnee)}
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: 8,
+                  }}
+                >
+                  {prochainsNumeros.map((num) => (
+                    <span
+                      key={num}
+                      style={{
+                        padding: '6px 12px',
+                        border: '1px solid #005B9E',
+                        borderRadius: 6,
+                        fontWeight: 'bold',
+                        fontSize: 18,
+                      }}
+                    >
+                      {num}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        )}
 
         <div className="flex justify-center mt-4">
           <ExportExcel colisEnStock={colisEnStock} />
