@@ -1,18 +1,19 @@
 'use server'
 
 import { prisma } from './prisma'
-import { extrairePrefixe, derniereLettre } from './famille'
+import { choisirFamilles } from './tirage-inventaire'
 import { revalidatePath } from 'next/cache'
 
 const NB_LIGNES_MAX = 10
 const MOIS_ANTI_REPETITION = 6
 
 /**
- * Port de la macro VBA `GenererInventaire` :
- * - tire des familles de références au hasard
- * - exclut les familles déjà comptées dans les X derniers mois
- * - ajoute toutes les tailles/déclinaisons de la famille tirée (même finition)
- * - s'arrête à NB_LIGNES_MAX lignes
+ * Génère l'inventaire tournant. Port de la macro VBA `GenererInventaire`, avec une différence :
+ * la règle des 6 mois est une PRÉFÉRENCE et non plus un blocage.
+ *
+ * - familles jamais comptées en priorité, puis celles comptées il y a plus de 6 mois
+ * - si ça ne suffit pas, on complète avec les familles les plus anciennement comptées
+ * => l'inventaire proposé n'est jamais vide, et toutes les références tournent.
  */
 export async function genererInventaire() {
   const references = await prisma.referenceCatalogue.findMany({
@@ -25,74 +26,44 @@ export async function genererInventaire() {
     )
   }
 
-  const seuilAntiRepetition = new Date()
-  seuilAntiRepetition.setMonth(seuilAntiRepetition.getMonth() - MOIS_ANTI_REPETITION)
-
-  const historiqueRecent = await prisma.familleHistorique.findMany({
-    where: { date: { gte: seuilAntiRepetition } },
+  // Date du dernier passage de chaque famille
+  const passages = await prisma.familleHistorique.groupBy({
+    by: ['famille'],
+    _max: { date: true },
   })
-  const famillesRecentes = new Set(historiqueRecent.map((h) => h.famille))
-
-  // Mélange (Fisher-Yates)
-  const pool = [...references]
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[pool[i], pool[j]] = [pool[j], pool[i]]
+  const dernierPassage = new Map<string, Date>()
+  for (const p of passages) {
+    if (p._max.date) dernierPassage.set(p.famille, p._max.date)
   }
 
-  const famillesAjoutees = new Set<string>()
-  const lignes: {
-    code: string
-    libelle: string
-    emplacement: string | null
-    service: string | null
-  }[] = []
+  const { lignes, familles, nbRepeteesAvantDelai } = choisirFamilles(
+    references,
+    dernierPassage,
+    { nbLignesMax: NB_LIGNES_MAX, moisAntiRepetition: MOIS_ANTI_REPETITION }
+  )
 
-  for (const ref of pool) {
-    if (lignes.length >= NB_LIGNES_MAX) break
-
-    const famille = extrairePrefixe(ref.code)
-
-    if (famillesAjoutees.has(famille)) continue
-    if (famillesRecentes.has(famille)) continue
-
-    famillesAjoutees.add(famille)
-    const finition = derniereLettre(ref.code)
-
-    // Toutes les déclinaisons de cette famille, même finition
-    const declinaisons = references.filter(
-      (autre) => extrairePrefixe(autre.code) === famille && derniereLettre(autre.code) === finition
-    )
-
-    for (const decl of declinaisons) {
-      if (lignes.length >= NB_LIGNES_MAX) break
-      lignes.push({
-        code: decl.code,
-        libelle: decl.libelle,
-        emplacement: decl.emplacement,
-        service: decl.service,
-      })
-    }
-
-    await prisma.familleHistorique.create({ data: { famille } })
-  }
-
-  const inventaire = await prisma.inventaireTournant.create({
-    data: {
-      lignes: {
-        create: lignes.map((l) => ({
-          code: l.code,
-          libelle: l.libelle,
-          emplacement: l.emplacement,
-          service: l.service,
-        })),
+  // Inventaire + historique enregistrés ensemble (tout ou rien)
+  const [inventaire] = await prisma.$transaction([
+    prisma.inventaireTournant.create({
+      data: {
+        lignes: {
+          create: lignes.map((l) => ({
+            code: l.code,
+            libelle: l.libelle,
+            emplacement: l.emplacement,
+            service: l.service,
+          })),
+        },
       },
-    },
-    include: { lignes: true },
-  })
+      include: { lignes: true },
+    }),
+    prisma.familleHistorique.createMany({
+      data: familles.map((famille) => ({ famille })),
+    }),
+  ])
 
   revalidatePath('/inventaire')
-  return inventaire
+  return { inventaire, nbRepeteesAvantDelai }
 }
 
 export async function dernierInventaire() {
