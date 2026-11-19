@@ -12,54 +12,55 @@ const TAILLES_CONNUES = ['26', '29', '30', '31', '58']
 export function extrairePrefixe(code: string): string {
   const c = code.trim()
 
-  // Trouver la position du premier chiffre
-  let premierChiffre = -1
+  // Tous les blocs de chiffres consécutifs du code, avec leur position
+  const blocs: { pos: number; chiffres: string }[] = []
   for (let pos = 0; pos < c.length; pos++) {
     if (c[pos] >= '0' && c[pos] <= '9') {
-      premierChiffre = pos
-      break
+      let chiffres = ''
+      let fin = pos
+      while (fin < c.length && c[fin] >= '0' && c[fin] <= '9') {
+        chiffres += c[fin]
+        fin++
+      }
+      blocs.push({ pos, chiffres })
+      pos = fin - 1
     }
   }
 
   // Pas de chiffres = produit standalone
-  if (premierChiffre === -1) {
-    return c
-  }
+  if (blocs.length === 0) return c
 
-  // Extraire le bloc de chiffres consécutifs
-  let blocChiffres = ''
-  for (let pos = premierChiffre; pos < c.length; pos++) {
-    if (c[pos] >= '0' && c[pos] <= '9') {
-      blocChiffres += c[pos]
-    } else {
-      break
+  // Construit la famille à partir d'un bloc dont les 2 derniers chiffres sont la taille
+  const familleDepuisBloc = (bloc: { pos: number; chiffres: string }): string => {
+    const posApresBloc = bloc.pos + bloc.chiffres.length
+
+    // Lettre de finition juste après le bloc
+    let finition = ''
+    if (posApresBloc < c.length) {
+      const charApres = c[posApresBloc]
+      if (charApres >= 'A' && charApres <= 'Z') finition = charApres
     }
+
+    const prefixeLettre = c.slice(0, bloc.pos)
+    const chiffresAvantTaille = bloc.chiffres.length > 2 ? bloc.chiffres.slice(0, -2) : ''
+    return prefixeLettre + chiffresAvantTaille + finition
   }
 
-  const posApresBloc = premierChiffre + blocChiffres.length
+  const estUneTaille = (bloc: { chiffres: string }) =>
+    TAILLES_CONNUES.includes(bloc.chiffres.slice(-2))
 
-  // Les 2 derniers chiffres sont-ils une taille connue ?
-  const taille = blocChiffres.slice(-2)
-  const estUneTaille = TAILLES_CONNUES.includes(taille)
+  // Règle d'origine (macro VBA) : on regarde le PREMIER bloc de chiffres
+  if (estUneTaille(blocs[0])) return familleDepuisBloc(blocs[0])
 
-  if (!estUneTaille) {
-    // Pas une taille connue -> produit distinct
-    return c
-  }
+  // Correction : certains codes ont des chiffres dans le nom du produit AVANT la taille
+  // (ex. EPP3D29A : "3" dans "3D", puis la taille 29). Sans ça, ils étaient traités
+  // comme des produits isolés et leurs autres tailles n'étaient jamais regroupées.
+  // On essaie alors le DERNIER bloc, uniquement quand le 1er n'était pas une taille.
+  const dernier = blocs[blocs.length - 1]
+  if (blocs.length > 1 && estUneTaille(dernier)) return familleDepuisBloc(dernier)
 
-  // C'est une taille : récupérer la lettre de finition juste après le bloc
-  let finition = ''
-  if (posApresBloc < c.length) {
-    const charApres = c[posApresBloc]
-    if (charApres >= 'A' && charApres <= 'Z') {
-      finition = charApres
-    }
-  }
-
-  const prefixeLettre = c.slice(0, premierChiffre)
-  const chiffresAvantTaille = blocChiffres.length > 2 ? blocChiffres.slice(0, -2) : ''
-
-  return prefixeLettre + chiffresAvantTaille + finition
+  // Pas une taille connue -> produit distinct
+  return c
 }
 
 /**
