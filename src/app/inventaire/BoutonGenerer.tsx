@@ -10,6 +10,7 @@ const boutonClass =
 export default function BoutonGenerer({ dejaUnInventaire }: { dejaUnInventaire: boolean }) {
   const [isPending, startTransition] = useTransition()
   const [erreur, setErreur] = useState<string | null>(null)
+  const [info, setInfo] = useState<string | null>(null)
   const router = useRouter()
 
   const handleClick = () => {
@@ -21,9 +22,15 @@ export default function BoutonGenerer({ dejaUnInventaire }: { dejaUnInventaire: 
     }
 
     setErreur(null)
+    setInfo(null)
     startTransition(async () => {
       try {
-        await genererInventaire()
+        const { nbRepeteesAvantDelai } = await genererInventaire()
+        if (nbRepeteesAvantDelai > 0) {
+          setInfo(
+            `Tout a été compté il y a moins de 6 mois : ${nbRepeteesAvantDelai} famille(s) proposée(s) en avance (les plus anciennes).`
+          )
+        }
         router.refresh()
       } catch (e) {
         setErreur(e instanceof Error ? e.message : 'Erreur inconnue')
@@ -36,6 +43,7 @@ export default function BoutonGenerer({ dejaUnInventaire }: { dejaUnInventaire: 
       <button onClick={handleClick} disabled={isPending} className={boutonClass}>
         {isPending ? 'Génération...' : "Générer l'inventaire du jour"}
       </button>
+      {info && <p className="text-sm text-[#ADA695] font-medium">{info}</p>}
       {erreur && <p className="text-sm text-[#C00000] font-medium">{erreur}</p>}
     </div>
   )
